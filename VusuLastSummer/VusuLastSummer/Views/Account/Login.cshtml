@@ -1,0 +1,44 @@
+﻿@using VusuLastSummer.ViewModels.Account
+@model LoginVM
+<!-- Begin Main Content Area -->
+<main class="main-content">
+
+    <div class="login-register-area section-space-y-axis-100">
+        <div class="container">
+            <div class="row justify-content-center">
+
+                <div class="col-lg-6 pt-5 pt-lg-0">
+                    <form action="#">
+                        <div class="login-form">
+                            <h4 class="login-title text-center">Login</h4>
+                            <div class="row">
+                                <div asp-validation-summary="ModelOnly"></div>
+                                <div class="col-md-12 col-12">
+                                    <label for="UsernameorEmail">Username Or Email</label>
+                                    <input asp-for="UsernameorEmail" placeholder="Username or Email" />
+                                    <span asp-validation-for="UsernameorEmail" class="text-danger"></span>
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="Password">Password</label>
+                                    <input asp-for="Password" placeholder="Password" />
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+                                <div class="col-md-12 d-flex gap-2">
+                                    <label for="IsPersistent">Remember Me</label>
+                                    <input asp-for="IsPersistent" />
+
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-custom-size lg-size btn-pronia-primary">
+                                        Register
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<!-- Main Content Area End Here -->

@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - Brûlé Coffee</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+  <div class="admin-layout">
+    <!-- Sidebar -->
+    <aside class="admin-sidebar">
+      <h2>Admin Panel</h2>
+      <nav>
+        <a href="#" class="sidebar-link active" data-tab="dashboard">Dashboard</a>
+        <a href="#" class="sidebar-link" data-tab="products">Products</a>
+        <a href="#" class="sidebar-link" data-tab="orders">Orders</a>
+        <a href="#" class="sidebar-link" data-tab="users">Users</a>
+        <a href="#" class="sidebar-link" data-tab="reservations">Reservations</a>
+        <a href="#" class="sidebar-link" data-tab="blog">Blog</a>
+      </nav>
+      <a href="index.html" class="btn btn-secondary" style="margin-top: auto;">Back to Site</a>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+      <!-- Dashboard -->
+      <section id="dashboard" class="admin-section active">
+        <h1>Admin Panel - Brûlé Coffee</h1>
+        <p>Xoş gəlmisiniz! Burada sifarişləri, məhsulları, istifadəçiləri və rezervasyonları idarə edə bilərsiniz.</p>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <h3>Total Orders</h3>
+            <p id="total-orders">0</p>
+          </div>
+          <div class="stat-card">
+            <h3>Revenue</h3>
+            <p id="total-revenue">$0.00</p>
+          </div>
+          <div class="stat-card">
+            <h3>Active Users</h3>
+            <p id="active-users">0</p>
+          </div>
+          <div class="stat-card">
+            <h3>Today's Reservations</h3>
+            <p id="today-reservations">0</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Products -->
+      <section id="products" class="admin-section">
+        <h1>Products Management</h1>
+        <button class="btn" id="add-product-btn">Add New Product</button>
+        <div class="table-container">
+          <table id="products-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Orders -->
+      <section id="orders" class="admin-section">
+        <h1>Orders Management</h1>
+        <div class="table-container">
+          <table id="orders-table">
+            <thead>
+              <tr>
+                <th>Order #</th>
+                <th>Customer</th>
+                <th>Total</th>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Users -->
+      <section id="users" class="admin-section">
+        <h1>Users Management</h1>
+        <div class="table-container">
+          <table id="users-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Joined</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Reservations -->
+      <section id="reservations" class="admin-section">
+        <h1>Reservations Management</h1>
+        <div class="table-container">
+          <table id="reservations-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Guests</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Blog -->
+      <section id="blog" class="admin-section">
+        <h1>Blog Management</h1>
+        <button class="btn" id="add-blog-btn">Add New Post</button>
+        <div class="table-container">
+          <table id="blog-table">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Modals -->
+  <div id="product-modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 id="product-modal-title">Add Product</h2>
+      <form id="product-form">
+        <input type="hidden" id="product-id">
+        <div class="form-group">
+          <label for="product-name">Name</label>
+          <input type="text" id="product-name" required>
+        </div>
+        <div class="form-group">
+          <label for="product-category">Category</label>
+          <select id="product-category" required>
+            <option value="Espresso">Espresso</option>
+            <option value="Cold Brew">Cold Brew</option>
+            <option value="Tea">Tea</option>
+            <option value="Pastries">Pastries</option>
+            <option value="Seasonal">Seasonal</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="product-price">Price</label>
+          <input type="number" id="product-price" step="0.01" required>
+        </div>
+        <div class="form-group">
+          <label for="product-description">Description</label>
+          <textarea id="product-description" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="product-image">Image URL</label>
+          <input type="url" id="product-image" required>
+        </div>
+        <button type="submit" class="btn">Save Product</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/header.js"></script>
+  <script src="js/footer.js"></script>
+  <script src="js/toast.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Require admin auth
+    if (!requireAuth('admin')) return;
+
+    let currentTab = 'dashboard';
+
+    // Tab switching
+    document.querySelectorAll('.sidebar-link').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const tab = this.dataset.tab;
+        switchTab(tab);
+      });
+    });
+
+    function switchTab(tab) {
+      document.querySelectorAll('.admin-section').forEach(section => section.classList.remove('active'));
+      document.querySelectorAll('.sidebar-link').forEach(link => link.classList.remove('active'));
+      document.getElementById(tab).classList.add('active');
+      document.querySelector(`[data-tab="${tab}"]`).classList.add('active');
+      currentTab = tab;
+      loadTabData(tab);
+    }
+
+    // Load tab data
+    function loadTabData(tab) {
+      switch (tab) {
+        case 'dashboard':
+          loadDashboard();
+          break;
+        case 'products':
+          loadProducts();
+          break;
+        case 'orders':
+          loadOrders();
+          break;
+        case 'users':
+          loadUsers();
+          break;
+        case 'reservations':
+          loadReservations();
+          break;
+        case 'blog':
+          loadBlog();
+          break;
+      }
+    }
+
+    // Dashboard
+    function loadDashboard() {
+      const orders = JSON.parse(localStorage.getItem('brule_orders') || '[]');
+      const reservations = JSON.parse(localStorage.getItem('brule_reservations') || '[]');
+      const users = JSON.parse(localStorage.getItem('brule_user') ? [JSON.parse(localStorage.getItem('brule_user'))] : []);
+
+      document.getElementById('total-orders').textContent = orders.length;
+      document.getElementById('total-revenue').textContent = '$' + orders.reduce((sum, order) => sum + order.total, 0).toFixed(2);
+      document.getElementById('active-users').textContent = users.length;
+      document.getElementById('today-reservations').textContent = reservations.filter(r => r.date === new Date().toISOString().split('T')[0]).length;
+    }
+
+    // Products
+    function loadProducts() {
+      const tbody = document.querySelector('#products-table tbody');
+      tbody.innerHTML = products.map(product => `
+        <tr>
+          <td>${product.id}</td>
+          <td>${product.name}</td>
+          <td>${product.category}</td>
+          <td>$${product.price.toFixed(2)}</td>
+          <td>
+            <button class="btn btn-secondary edit-product" data-id="${product.id}">Edit</button>
+            <button class="btn btn-secondary delete-product" data-id="${product.id}">Delete</button>
+          </td>
+        </tr>
+      `).join('');
+
+      // Edit buttons
+      document.querySelectorAll('.edit-product').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const id = parseInt(this.dataset.id);
+          const product = products.find(p => p.id === id);
+          if (product) {
+            document.getElementById('product-id').value = product.id;
+            document.getElementById('product-name').value = product.name;
+            document.getElementById('product-category').value = product.category;
+            document.getElementById('product-price').value = product.price;
+            document.getElementById('product-description').value = product.description;
+            document.getElementById('product-image').value = product.image;
+            document.getElementById('product-modal-title').textContent = 'Edit Product';
+            document.getElementById('product-modal').style.display = 'block';
+          }
+        });
+      });
+
+      // Delete buttons
+      document.querySelectorAll('.delete-product').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const id = parseInt(this.dataset.id);
+          if (confirm('Delete this product?')) {
+            const index = products.findIndex(p => p.id === id);
+            if (index > -1) {
+              products.splice(index, 1);
+              localStorage.setItem('brule_products', JSON.stringify(products));
+              loadProducts();
+              showToast('Product deleted', 'success');
+            }
+          }
+        });
+      });
+    }
+
+    // Orders
+    function loadOrders() {
+      const orders = JSON.parse(localStorage.getItem('brule_orders') || '[]');
+      const tbody = document.querySelector('#orders-table tbody');
+      tbody.innerHTML = orders.map(order => `
+        <tr>
+          <td>${order.orderNumber}</td>
+          <td>${order.fullName}</td>
+          <td>$${order.total.toFixed(2)}</td>
+          <td>
+            <select class="status-select" data-order="${order.orderNumber}" value="${order.status}">
+              <option value="pending" ${order.status === 'pending' ? 'selected' : ''}>Pending</option>
+              <option value="preparing" ${order.status === 'preparing' ? 'selected' : ''}>Preparing</option>
+              <option value="ready" ${order.status === 'ready' ? 'selected' : ''}>Ready</option>
+              <option value="delivered" ${order.status === 'delivered' ? 'selected' : ''}>Delivered</option>
+            </select>
+          </td>
+          <td>${new Date(order.timestamp).toLocaleDateString()}</td>
+          <td><button class="btn btn-secondary view-order" data-order="${order.orderNumber}">View</button></td>
+        </tr>
+      `).join('');
+
+      // Status changes
+      document.querySelectorAll('.status-select').forEach(select => {
+        select.addEventListener('change', function() {
+          const orderNumber = this.dataset.order;
+          const newStatus = this.value;
+          const orderIndex = orders.findIndex(o => o.orderNumber == orderNumber);
+          if (orderIndex > -1) {
+            orders[orderIndex].status = newStatus;
+            localStorage.setItem('brule_orders', JSON.stringify(orders));
+            showToast('Status updated', 'success');
+          }
+        });
+      });
+    }
+
+    // Users
+    function loadUsers() {
+      const users = JSON.parse(localStorage.getItem('brule_user') ? [JSON.parse(localStorage.getItem('brule_user'))] : []);
+      const tbody = document.querySelector('#users-table tbody');
+      tbody.innerHTML = users.map(user => `
+        <tr>
+          <td>${user.name}</td>
+          <td>${user.email}</td>
+          <td>${user.role}</td>
+          <td>${user.joined || 'N/A'}</td>
+        </tr>
+      `).join('');
+    }
+
+    // Reservations
+    function loadReservations() {
+      const reservations = JSON.parse(localStorage.getItem('brule_reservations') || '[]');
+      const tbody = document.querySelector('#reservations-table tbody');
+      tbody.innerHTML = reservations.map((res, index) => `
+        <tr>
+          <td>${res.name}</td>
+          <td>${res.email}</td>
+          <td>${res.date}</td>
+          <td>${res.time}</td>
+          <td>${res.guests}</td>
+          <td>
+            <button class="btn btn-secondary approve-reservation" data-index="${index}">Approve</button>
+            <button class="btn btn-secondary cancel-reservation" data-index="${index}">Cancel</button>
+          </td>
+        </tr>
+      `).join('');
+
+      // Approve/Cancel
+      document.querySelectorAll('.approve-reservation').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const index = parseInt(this.dataset.index);
+          reservations.splice(index, 1);
+          localStorage.setItem('brule_reservations', JSON.stringify(reservations));
+          loadReservations();
+          showToast('Reservation approved', 'success');
+        });
+      });
+
+      document.querySelectorAll('.cancel-reservation').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const index = parseInt(this.dataset.index);
+          reservations.splice(index, 1);
+          localStorage.setItem('brule_reservations', JSON.stringify(reservations));
+          loadReservations();
+          showToast('Reservation cancelled', 'info');
+        });
+      });
+    }
+
+    // Blog (placeholder)
+    function loadBlog() {
+      const tbody = document.querySelector('#blog-table tbody');
+      tbody.innerHTML = '<tr><td colspan="4">Blog management coming soon...</td></tr>';
+    }
+
+    // Product modal
+    document.getElementById('add-product-btn').addEventListener('click', function() {
+      document.getElementById('product-form').reset();
+      document.getElementById('product-id').value = '';
+      document.getElementById('product-modal-title').textContent = 'Add Product';
+      document.getElementById('product-modal').style.display = 'block';
+    });
+
+    document.querySelector('.close').addEventListener('click', function() {
+      document.getElementById('product-modal').style.display = 'none';
+    });
+
+    document.getElementById('product-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const id = document.getElementById('product-id').value;
+      const product = {
+        id: id ? parseInt(id) : products.length + 1,
+        name: document.getElementById('product-name').value,
+        category: document.getElementById('product-category').value,
+        price: parseFloat(document.getElementById('product-price').value),
+        description: document.getElementById('product-description').value,
+        image: document.getElementById('product-image').value
+      };
+
+      if (id) {
+        const index = products.findIndex(p => p.id === parseInt(id));
+        if (index > -1) {
+          products[index] = product;
+        }
+      } else {
+        products.push(product);
+      }
+
+      localStorage.setItem('brule_products', JSON.stringify(products));
+      document.getElementById('product-modal').style.display = 'none';
+      loadProducts();
+      showToast('Product saved', 'success');
+    });
+
+    // Initial load
+    document.addEventListener('DOMContentLoaded', function() {
+      loadDashboard();
+    });
+  </script>
+</body>
+</html>

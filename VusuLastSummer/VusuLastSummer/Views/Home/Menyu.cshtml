@@ -1,0 +1,80 @@
+﻿@{
+    ViewData["Title"] = "Menu";
+    ViewData["Page"] = "menu";
+}
+
+<section data-section="menu-list">
+    <div class="container">
+        <h1 data-key="page-title">Our Menu</h1>
+
+        <div data-role="menu-filters">
+            <div data-role="category-filter">
+                <button class="btn btn-secondary category-filter active" data-category="All">All</button>
+                <button class="btn btn-secondary category-filter" data-category="Espresso">Espresso</button>
+                <button class="btn btn-secondary category-filter" data-category="Cold Brew">Cold Brew</button>
+                <button class="btn btn-secondary category-filter" data-category="Tea">Tea</button>
+                <button class="btn btn-secondary category-filter" data-category="Pastries">Pastries</button>
+                <button class="btn btn-secondary category-filter" data-category="Seasonal">Seasonal</button>
+            </div>
+            <div data-role="search-sort">
+                <input type="text" id="search-input" placeholder="Search products..." data-role="search-input">
+                <select id="sort-select" data-role="sort-select">
+                    <option value="popular">Popular</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                </select>
+            </div>
+        </div>
+
+        <div data-layout="grid-4" id="products-grid"></div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        let currentCategory = 'All', currentSort = 'popular', searchQuery = '';
+
+        function renderProducts() {
+          let list = getProductsByCategory(currentCategory);
+          if (searchQuery) list = searchProducts(searchQuery);
+          list = sortProducts(list, currentSort);
+
+          document.getElementById('products-grid').innerHTML = list.map(p => `
+            <div class="card" data-product-id="${p.id}">
+              <img src="${p.image}" alt="${p.name}">
+              <div class="card-content">
+                <h3>${p.name}</h3>
+                <p>${p.description}</p>
+                <p data-role="product-price"><strong>$${p.price.toFixed(2)}</strong></p>
+                <div data-role="card-actions">
+                  <a href="/Home/Product?id=${p.id}" class="btn">View</a>
+                  <button class="btn btn-secondary add-to-cart" data-id="${p.id}">Add to Cart</button>
+                </div>
+              </div>
+            </div>`).join('');
+
+          document.querySelectorAll('.add-to-cart').forEach(btn => {
+            btn.addEventListener('click', function () {
+              addItem(parseInt(this.dataset.id));
+              updateCartBadge();
+              showToast('Added to cart!', 'success');
+            });
+          });
+        }
+
+        document.querySelectorAll('.category-filter').forEach(btn => {
+          btn.addEventListener('click', function () {
+            document.querySelectorAll('.category-filter').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            currentCategory = this.dataset.category;
+            renderProducts();
+          });
+        });
+
+        document.getElementById('search-input').addEventListener('input', function () { searchQuery = this.value; renderProducts(); });
+        document.getElementById('sort-select').addEventListener('change', function () { currentSort = this.value; renderProducts(); });
+
+        document.addEventListener('DOMContentLoaded', renderProducts);
+    </script>
+}
+

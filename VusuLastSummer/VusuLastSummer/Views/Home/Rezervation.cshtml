@@ -1,0 +1,93 @@
+﻿@{
+    ViewData["Title"] = "Reservations";
+    ViewData["Page"] = "reservations";
+}
+
+<section data-section="reservations">
+    <div class="container">
+        <h1 data-key="page-title">Table Reservation</h1>
+        <div data-layout="grid-2">
+
+            <div class="card" data-role="reservation-form-card">
+                <div class="card-content">
+                    <h3>Make a Reservation</h3>
+                    <form id="reservation-form" data-role="reservation-form">
+                        <div data-role="form-group"><label for="res-name">Full Name *</label><input type="text" id="res-name" required></div>
+                        <div data-role="form-group"><label for="res-email">Email *</label><input type="email" id="res-email" required></div>
+                        <div data-role="form-group"><label for="res-phone">Phone *</label><input type="tel" id="res-phone" required></div>
+                        <div data-role="form-group"><label for="res-date">Date *</label><input type="date" id="res-date" required></div>
+                        <div data-role="form-group">
+                            <label for="res-time">Time *</label>
+                            <select id="res-time" required>
+                                <option value="">Select time</option>
+                                <option value="08:00">8:00 AM</option>
+                                <option value="09:00">9:00 AM</option>
+                                <option value="10:00">10:00 AM</option>
+                                <option value="11:00">11:00 AM</option>
+                                <option value="12:00">12:00 PM</option>
+                                <option value="13:00">1:00 PM</option>
+                                <option value="14:00">2:00 PM</option>
+                                <option value="15:00">3:00 PM</option>
+                                <option value="16:00">4:00 PM</option>
+                                <option value="17:00">5:00 PM</option>
+                                <option value="18:00">6:00 PM</option>
+                                <option value="19:00">7:00 PM</option>
+                                <option value="20:00">8:00 PM</option>
+                                <option value="21:00">9:00 PM</option>
+                            </select>
+                        </div>
+                        <div data-role="form-group">
+                            <label for="res-guests">Guests *</label>
+                            <select id="res-guests" required>
+                                <option value="">Select</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                            </select>
+                        </div>
+                        <div data-role="form-group"><label for="res-requests">Special Requests</label><textarea id="res-requests" rows="3" placeholder="Any special requests..."></textarea></div>
+                        <button type="submit" class="btn btn-full">Reserve Table</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="card" data-role="reservations-list-card">
+                <div class="card-content"><h3>Your Reservations</h3><div id="reservations-list"></div></div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', () => { document.getElementById('res-date').min = new Date().toISOString().split('T')[0]; loadReservations(); });
+        function loadReservations() {
+          const list = JSON.parse(localStorage.getItem('brule_reservations')||'[]');
+          const c = document.getElementById('reservations-list');
+          if (!list.length) { c.innerHTML='<p>No reservations yet.</p>'; return; }
+          c.innerHTML = list.map((res,i)=>`<div class="card" data-role="reservation-item"><div class="card-content"><div data-role="reservation-row"><div><h4>${res.name}</h4><p>${res.date} at ${res.time}</p><p>${res.guests} guests</p>${res.requests?`<p><em>${res.requests}</em></p>`:''}</div><button class="btn btn-secondary cancel-reservation" data-index="${i}">Cancel</button></div></div></div>`).join('');
+          document.querySelectorAll('.cancel-reservation').forEach(btn=>{
+            btn.addEventListener('click',function(){
+              const arr=JSON.parse(localStorage.getItem('brule_reservations')||'[]');
+              arr.splice(parseInt(this.dataset.index),1);
+              localStorage.setItem('brule_reservations',JSON.stringify(arr));
+              loadReservations(); showToast('Reservation cancelled','info');
+            });
+          });
+        }
+        document.getElementById('reservation-form').addEventListener('submit', function (e) {
+          e.preventDefault();
+          const arr=JSON.parse(localStorage.getItem('brule_reservations')||'[]');
+          arr.push({ name:document.getElementById('res-name').value, email:document.getElementById('res-email').value, phone:document.getElementById('res-phone').value, date:document.getElementById('res-date').value, time:document.getElementById('res-time').value, guests:document.getElementById('res-guests').value, requests:document.getElementById('res-requests').value, timestamp:new Date().toISOString() });
+          localStorage.setItem('brule_reservations',JSON.stringify(arr));
+          showToast('Reservation confirmed!','success'); this.reset(); loadReservations();
+        });
+    </script>
+}
+

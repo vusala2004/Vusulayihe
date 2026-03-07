@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Last Summer</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="main">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Welcome to Last Summer</h1>
+        <p>Experience the perfect blend of tradition and innovation in every cup</p>
+        <a href="menu.html" class="btn">Explore Our Menu</a>
+      </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="section">
+      <div class="container">
+        <div class="grid grid-2 fade-in">
+          <div>
+            <h2>Our Story</h2>
+            <p>Last Summer is a gripping Turkish drama series that aired on Fox TV in 2021. The story centers on idealistic public prosecutor Selim Kara, who takes the son of a crime boss — a young man named Akgün — under his protection in exchange for the father's testimony against organized crime. Kureansiklopedi Akgün moves into Selim's home in İzmir's Çeşme district, where he gradually becomes part of the family and begins to transform his life. Turkish Drama The series masterfully weaves together themes of crime, justice, redemption, and love — especially through the slow-burn romance between Akgün and Selim's daughter Yağmur. Starring Ali Atay and Alperen Duymaz, the show earned an IMDb rating of 8.0 IMDb and left a lasting impression on viewers worldwide.</p>
+            <a href="about.html" class="btn btn-secondary">Learn More</a>
+          </div>
+          <div>
+            <img src="../img/Sonyaz2.jpg" alt="Coffee shop interior" style="width: 100%; border-radius: 10px;">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="section" style="background: var(--sand);">
+      <div class="container">
+        <h2>Featured Products</h2>
+        <div class="grid grid-3" id="featured-products">
+          <!-- Products will be loaded here -->
+        </div>
+        <div class="text-center mt-3">
+          <a href="menu.html" class="btn">View Full Menu</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section">
+      <div class="container">
+        <h2>What Our Customers Say</h2>
+        <div class="grid grid-3" id="testimonials">
+          <!-- Testimonials will be loaded here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="section" style="background: var(--espresso); color: var(--cream);">
+      <div class="container text-center">
+        <h2>Stay Updated</h2>
+        <p>Subscribe to our newsletter for the latest coffee tips, seasonal specials, and exclusive offers.</p>
+        <form id="newsletter-form" class="flex justify-center gap-2 mt-3" style="max-width: 500px; margin: 0 auto;">
+          <input type="email" placeholder="Enter your email" required style="flex: 1; padding: 0.75rem; border-radius: 5px; border: none;">
+          <button type="submit" class="btn">Subscribe</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/header.js"></script>
+  <script src="js/footer.js"></script>
+  <script src="js/toast.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Load featured products
+    document.addEventListener('DOMContentLoaded', function() {
+      const featuredProducts = products.slice(0, 3);
+      const container = document.getElementById('featured-products');
+      container.innerHTML = featuredProducts.map(product => `
+        <div class="card">
+          <img src="${product.image}" alt="${product.name}">
+          <div class="card-content">
+            <h3>${product.name}</h3>
+            <p>${product.description}</p>
+            <p class="mb-2"><strong>$${product.price.toFixed(2)}</strong></p>
+            <a href="product.html?id=${product.id}" class="btn btn-full">View Details</a>
+          </div>
+        </div>
+      `).join('');
+    });
+
+    // Load testimonials
+    document.addEventListener('DOMContentLoaded', function() {
+      const testimonials = [
+        {
+          name: 'Sarah Johnson',
+          text: 'Brûlé Coffee has the best espresso in town. The atmosphere is perfect for both work and relaxation.',
+          rating: 5
+        },
+        {
+          name: 'Mike Chen',
+          text: 'Their seasonal lattes are incredible. I\'m hooked on the pumpkin spice!',
+          rating: 5
+        },
+        {
+          name: 'Emma Davis',
+          text: 'Great service and even better coffee. My morning routine wouldn\'t be the same without Brûlé.',
+          rating: 5
+        }
+      ];
+
+      const container = document.getElementById('testimonials');
+      container.innerHTML = testimonials.map(testimonial => `
+        <div class="card text-center">
+          <div class="card-content">
+            <p>"${testimonial.text}"</p>
+            <p class="mt-2"><strong>${testimonial.name}</strong></p>
+            <p>${'★'.repeat(testimonial.rating)}</p>
+          </div>
+        </div>
+      `).join('');
+    });
+
+    // Newsletter form
+    document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = this.querySelector('input[type="email"]').value;
+      // Save to localStorage (simulate)
+      const subscribers = JSON.parse(localStorage.getItem('brule_newsletter') || '[]');
+      if (!subscribers.includes(email)) {
+        subscribers.push(email);
+        localStorage.setItem('brule_newsletter', JSON.stringify(subscribers));
+        showToast('Thank you for subscribing!', 'success');
+        this.reset();
+      } else {
+        showToast('You\'re already subscribed!', 'info');
+      }
+    });
+  </script>
+</body>
+</html>

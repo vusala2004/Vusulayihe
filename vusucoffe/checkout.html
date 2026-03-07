@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - Brûlé Coffee</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="main">
+    <section class="section">
+      <div class="container">
+        <h1 class="text-center">Checkout</h1>
+
+        <div class="grid grid-2 gap-3">
+          <!-- Checkout Form -->
+          <div>
+            <form id="checkout-form">
+              <div class="form-group">
+                <label for="full-name">Full Name *</label>
+                <input type="text" id="full-name" required>
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" required>
+              </div>
+
+              <div class="form-group">
+                <label for="phone">Phone *</label>
+                <input type="tel" id="phone" required>
+              </div>
+
+              <div class="form-group">
+                <label>Delivery Method</label>
+                <div class="flex gap-2">
+                  <button type="button" class="btn btn-secondary delivery-toggle active" data-method="pickup">Pickup</button>
+                  <button type="button" class="btn btn-secondary delivery-toggle" data-method="delivery">Delivery</button>
+                </div>
+              </div>
+
+              <div id="address-fields" class="hidden">
+                <div class="form-group">
+                  <label for="address">Delivery Address *</label>
+                  <input type="text" id="address" placeholder="Street address">
+                </div>
+
+                <div class="form-group">
+                  <label for="city">City *</label>
+                  <input type="text" id="city">
+                </div>
+
+                <div class="form-group">
+                  <label for="zip">ZIP Code *</label>
+                  <input type="text" id="zip">
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-full">Continue to Payment</button>
+            </form>
+          </div>
+
+          <!-- Order Summary -->
+          <div>
+            <div class="card">
+              <div class="card-content">
+                <h3>Order Summary</h3>
+                <div id="order-items">
+                  <!-- Order items will be loaded here -->
+                </div>
+                <hr style="margin: 1rem 0;">
+                <p>Subtotal: $<span id="subtotal">0.00</span></p>
+                <p>Delivery Fee: $<span id="delivery-fee">0.00</span></p>
+                <p><strong>Total: $<span id="total">0.00</span></strong></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/header.js"></script>
+  <script src="js/footer.js"></script>
+  <script src="js/toast.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    let deliveryMethod = 'pickup';
+
+    // Toggle delivery method
+    document.querySelectorAll('.delivery-toggle').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.delivery-toggle').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        deliveryMethod = this.dataset.method;
+        const addressFields = document.getElementById('address-fields');
+        const deliveryFee = document.getElementById('delivery-fee');
+
+        if (deliveryMethod === 'delivery') {
+          addressFields.classList.remove('hidden');
+          deliveryFee.textContent = '3.00';
+          updateTotal();
+        } else {
+          addressFields.classList.add('hidden');
+          deliveryFee.textContent = '0.00';
+          updateTotal();
+        }
+      });
+    });
+
+    // Render order summary
+    function renderOrderSummary() {
+      const cart = getCart();
+      const container = document.getElementById('order-items');
+
+      container.innerHTML = cart.map(item => `
+        <div class="flex justify-between mb-1">
+          <span>${item.name} (${item.size}) x${item.quantity}</span>
+          <span>$${(item.price * item.quantity).toFixed(2)}</span>
+        </div>
+      `).join('');
+
+      updateTotal();
+    }
+
+    // Update total
+    function updateTotal() {
+      const subtotal = getTotal();
+      const deliveryFee = deliveryMethod === 'delivery' ? 3.00 : 0.00;
+      const total = subtotal + deliveryFee;
+
+      document.getElementById('subtotal').textContent = subtotal.toFixed(2);
+      document.getElementById('total').textContent = total.toFixed(2);
+    }
+
+    // Form validation
+    function validateForm() {
+      const form = document.getElementById('checkout-form');
+      const requiredFields = form.querySelectorAll('input[required]');
+      let isValid = true;
+
+      requiredFields.forEach(field => {
+        if (!field.value.trim()) {
+          field.parentElement.classList.add('error');
+          isValid = false;
+        } else {
+          field.parentElement.classList.remove('error');
+        }
+      });
+
+      if (deliveryMethod === 'delivery') {
+        const addressFields = ['address', 'city', 'zip'];
+        addressFields.forEach(id => {
+          const field = document.getElementById(id);
+          if (!field.value.trim()) {
+            field.parentElement.classList.add('error');
+            isValid = false;
+          } else {
+            field.parentElement.classList.remove('error');
+          }
+        });
+      }
+
+      return isValid;
+    }
+
+    // Form submit
+    document.getElementById('checkout-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      if (!validateForm()) {
+        showToast('Please fill in all required fields', 'error');
+        return;
+      }
+
+      // Save checkout data
+      const checkoutData = {
+        fullName: document.getElementById('full-name').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        deliveryMethod: deliveryMethod,
+        address: deliveryMethod === 'delivery' ? document.getElementById('address').value : '',
+        city: deliveryMethod === 'delivery' ? document.getElementById('city').value : '',
+        zip: deliveryMethod === 'delivery' ? document.getElementById('zip').value : '',
+        cart: getCart(),
+        subtotal: parseFloat(document.getElementById('subtotal').textContent),
+        deliveryFee: parseFloat(document.getElementById('delivery-fee').textContent),
+        total: parseFloat(document.getElementById('total').textContent)
+      };
+
+      localStorage.setItem('brule_checkout', JSON.stringify(checkoutData));
+      window.location.href = 'payment.html';
+    });
+
+    // Initial render
+    document.addEventListener('DOMContentLoaded', function() {
+      renderOrderSummary();
+      // Redirect if cart is empty
+      if (getCart().length === 0) {
+        window.location.href = 'cart.html';
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog - Brûlé Coffee</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="main">
+    <section class="section">
+      <div class="container">
+        <h1 class="text-center">Coffee Blog</h1>
+
+        <!-- Category Filter -->
+        <div class="flex justify-center gap-2 mb-3">
+          <button class="btn btn-secondary blog-category active" data-category="All">All</button>
+          <button class="btn btn-secondary blog-category" data-category="Brewing Tips">Brewing Tips</button>
+          <button class="btn btn-secondary blog-category" data-category="Recipes">Recipes</button>
+          <button class="btn btn-secondary blog-category" data-category="News">News</button>
+        </div>
+
+        <!-- Blog Grid -->
+        <div class="grid grid-3" id="blog-grid">
+          <!-- Blog posts will be loaded here -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/header.js"></script>
+  <script src="js/footer.js"></script>
+  <script src="js/toast.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    const blogPosts = [
+      {
+        id: 1,
+        title: 'The Art of Espresso: Perfecting Your Shot',
+        category: 'Brewing Tips',
+        excerpt: 'Learn the secrets to pulling the perfect espresso shot at home. From grind size to tamping technique, we cover everything you need to know.',
+        date: '2024-02-15',
+        image: '../img/indir (13).jpg',
+        content: 'Full blog content here...'
+      },
+      {
+        id: 2,
+        title: 'Seasonal Coffee Blends: What\'s New This Month',
+        category: 'News',
+        excerpt: 'Discover our latest seasonal offerings featuring beans from Ethiopia and Colombia. Each blend tells a unique story of origin and flavor.',
+        date: '2024-02-10',
+        image: '../img/indir (14).jpg',
+        content: 'Full blog content here...'
+      },
+      {
+        id: 3,
+        title: 'Homemade Pumpkin Spice Latte Recipe',
+        category: 'Recipes',
+        excerpt: 'Create the perfect fall favorite at home with our easy-to-follow pumpkin spice latte recipe. No fancy equipment required!',
+        date: '2024-02-05',
+        image: '../img/indir15.jpg',
+        content: 'Full blog content here...'
+      },
+      {
+        id: 4,
+        title: 'Cold Brew vs. Iced Coffee: What\'s the Difference?',
+        category: 'Brewing Tips',
+        excerpt: 'Understanding the key differences between cold brew and iced coffee, and when to choose each method for maximum enjoyment.',
+        date: '2024-01-28',
+        image: '../img/indir16.jpg',
+        content: 'Full blog content here...'
+      },
+      {
+        id: 5,
+        title: 'Coffee and Sustainability: Our Commitment',
+        category: 'News',
+        excerpt: 'Learn about our efforts to source sustainable coffee and support farming communities around the world.',
+        date: '2024-01-20',
+        image: '../img/indir17.jpg',
+        content: 'Full blog content here...'
+      },
+      {
+        id: 6,
+        title: 'Matcha Latte Variations to Try at Home',
+        category: 'Recipes',
+        excerpt: 'Explore creative twists on the classic matcha latte, from spicy to fruity variations that will surprise your taste buds.',
+        date: '2024-01-15',
+        image: '../img/indir18.jpg',
+        content: 'Full blog content here...'
+      }
+    ];
+
+    let currentCategory = 'All';
+
+    // Render blog posts
+    function renderBlogPosts() {
+      let filteredPosts = currentCategory === 'All' ? blogPosts : blogPosts.filter(post => post.category === currentCategory);
+
+      const container = document.getElementById('blog-grid');
+      container.innerHTML = filteredPosts.map(post => `
+        <div class="card">
+          <img src="${post.image}" alt="${post.title}">
+          <div class="card-content">
+            <div style="background: var(--gold); color: var(--espresso); padding: 0.25rem 0.5rem; border-radius: 3px; display: inline-block; font-size: 0.875rem; margin-bottom: 0.5rem;">
+              ${post.category}
+            </div>
+            <h3>${post.title}</h3>
+            <p class="mb-2">${post.excerpt}</p>
+            <p style="color: #666; font-size: 0.875rem;">${new Date(post.date).toLocaleDateString()}</p>
+            <a href="#" class="btn" onclick="showToast('Full blog post coming soon!', 'info')">Read More</a>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Category filter
+    document.querySelectorAll('.blog-category').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.blog-category').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        currentCategory = this.dataset.category;
+        renderBlogPosts();
+      });
+    });
+
+    // Initial render
+    document.addEventListener('DOMContentLoaded', renderBlogPosts);
+  </script>
+</body>
+</html>

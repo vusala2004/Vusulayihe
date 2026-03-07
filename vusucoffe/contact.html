@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Brûlé Coffee</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="main">
+    <section class="section">
+      <div class="container">
+        <h1 class="text-center">Contact Us</h1>
+
+        <div class="grid grid-2 gap-3">
+          <!-- Contact Form -->
+          <div>
+            <div class="card">
+              <div class="card-content">
+                <h3>Send us a message</h3>
+                <form id="contact-form">
+                  <div class="form-group">
+                    <label for="contact-name">Name *</label>
+                    <input type="text" id="contact-name" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="contact-email">Email *</label>
+                    <input type="email" id="contact-email" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="contact-subject">Subject *</label>
+                    <input type="text" id="contact-subject" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="contact-message">Message *</label>
+                    <textarea id="contact-message" rows="5" required></textarea>
+                  </div>
+
+                  <button type="submit" class="btn btn-full">Send Message</button>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Info -->
+          <div>
+            <div class="card mb-3">
+              <div class="card-content">
+                <h3>Get in Touch</h3>
+                <div class="grid grid-2 gap-2">
+                  <div class="text-center">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">📍</div>
+                    <h4>Address</h4>
+                    <p>123 Coffee Street<br>Bean City, BC 12345</p>
+                  </div>
+                  <div class="text-center">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">📞</div>
+                    <h4>Phone</h4>
+                    <p>(555) 123-4567</p>
+                  </div>
+                  <div class="text-center">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">✉️</div>
+                    <h4>Email</h4>
+                    <p>hello@brule.com</p>
+                  </div>
+                  <div class="text-center">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🕒</div>
+                    <h4>Hours</h4>
+                    <p>Mon-Fri: 7AM-8PM<br>Sat-Sun: 8AM-9PM</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Map Placeholder -->
+            <div class="card">
+              <div class="card-content">
+                <h3>Find Us</h3>
+                <div style="width: 100%; height: 250px; background: var(--sand); border-radius: 10px; display: flex; align-items: center; justify-content: center; position: relative;">
+                  <div style="font-size: 3rem;">🗺️</div>
+                  <div style="position: absolute; bottom: 10px; left: 10px; background: rgba(255,255,255,0.9); padding: 0.5rem; border-radius: 5px;">
+                    123 Coffee Street, Bean City
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Social Links -->
+            <div class="card mt-3">
+              <div class="card-content text-center">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                  <a href="#" aria-label="Facebook">📘</a>
+                  <a href="#" aria-label="Instagram">📷</a>
+                  <a href="#" aria-label="Twitter">🐦</a>
+                  <a href="#" aria-label="LinkedIn">💼</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/header.js"></script>
+  <script src="js/footer.js"></script>
+  <script src="js/toast.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Contact form
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const message = {
+        name: document.getElementById('contact-name').value,
+        email: document.getElementById('contact-email').value,
+        subject: document.getElementById('contact-subject').value,
+        message: document.getElementById('contact-message').value,
+        timestamp: new Date().toISOString()
+      };
+
+      // Save to localStorage (simulate sending)
+      const messages = JSON.parse(localStorage.getItem('brule_messages') || '[]');
+      messages.push(message);
+      localStorage.setItem('brule_messages', JSON.stringify(messages));
+
+      showToast('Message sent successfully!', 'success');
+      this.reset();
+    });
+  </script>
+</body>
+</html>

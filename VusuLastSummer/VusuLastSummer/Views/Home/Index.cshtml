@@ -1,0 +1,115 @@
+﻿@{
+    ViewData["Title"] = "Welcome";
+    ViewData["Page"] = "index";
+}
+
+<!-- ── HERO ── -->
+<section data-section="hero">
+    <div data-role="hero-content">
+        <h1 data-key="hero-title">Welcome to Last Summer</h1>
+        <p data-key="hero-subtitle">Experience the perfect blend of tradition and innovation in every cup</p>
+        <a href="/Home/Menu" class="btn" data-role="hero-cta">Explore Our Menu</a>
+    </div>
+</section>
+
+<!-- ── OUR STORY ── -->
+<section data-section="our-story">
+    <div class="container">
+        <div data-layout="grid-2">
+            <div data-role="story-text">
+                <h2>Our Story</h2>
+                <p>
+                    Last Summer is a gripping Turkish drama series that aired on Fox TV in 2021.
+                    The story centers on idealistic public prosecutor Selim Kara, who takes the son
+                    of a crime boss — Akgün — under his protection. Akgün moves into Selim's home in
+                    İzmir's Çeşme district, gradually becoming part of the family. The series weaves
+                    themes of crime, justice, redemption, and love — especially the slow-burn romance
+                    between Akgün and Selim's daughter Yağmur. Starring Ali Atay and Alperen Duymaz,
+                    IMDb rating 8.0.
+                </p>
+                <a href="/Home/About" class="btn btn-secondary">Learn More</a>
+            </div>
+            <div data-role="story-image">
+                <img src="~/img/Sonyaz2.jpg" alt="Last Summer scene">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── FEATURED PRODUCTS ── -->
+<section data-section="featured-products">
+    <div class="container">
+        <h2>Featured Products</h2>
+        <div data-layout="grid-3" id="featured-products"></div>
+        <div data-role="section-cta">
+            <a href="/Home/Menu" class="btn">View Full Menu</a>
+        </div>
+    </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section data-section="testimonials">
+    <div class="container">
+        <h2>What Our Customers Say</h2>
+        <div data-layout="grid-3" id="testimonials"></div>
+    </div>
+</section>
+
+<!-- ── NEWSLETTER ── -->
+<section data-section="newsletter">
+    <div class="container">
+        <h2>Stay Updated</h2>
+        <p>Subscribe for the latest coffee tips, seasonal specials, and exclusive offers.</p>
+        <form id="newsletter-form" data-role="newsletter-form">
+            <input type="email" placeholder="Enter your email" required data-role="email-input">
+            <button type="submit" class="btn">Subscribe</button>
+        </form>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+          document.getElementById('featured-products').innerHTML =
+            products.slice(0, 3).map(p => `
+              <div class="card" data-product-id="${p.id}">
+                <img src="${p.image}" alt="${p.name}">
+                <div class="card-content">
+                  <h3>${p.name}</h3>
+                  <p>${p.description}</p>
+                  <p data-role="product-price"><strong>$${p.price.toFixed(2)}</strong></p>
+                  <a href="/Home/Product?id=${p.id}" class="btn btn-full">View Details</a>
+                </div>
+              </div>`).join('');
+
+          document.getElementById('testimonials').innerHTML = [
+            { name: 'Sarah Johnson', text: 'Brûlé Coffee has the best espresso in town. Perfect for work and relaxation.', rating: 5 },
+            { name: 'Mike Chen',     text: "Their seasonal lattes are incredible. Hooked on the pumpkin spice!",           rating: 5 },
+            { name: 'Emma Davis',    text: "Great service and even better coffee. My morning routine depends on Brûlé.",   rating: 5 }
+          ].map(t => `
+            <div class="card" data-role="testimonial-card">
+              <div class="card-content">
+                <p data-role="testimonial-text">"${t.text}"</p>
+                <p data-role="testimonial-name"><strong>${t.name}</strong></p>
+                <p data-role="testimonial-rating">${'★'.repeat(t.rating)}</p>
+              </div>
+            </div>`).join('');
+
+          document.getElementById('newsletter-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            const subs  = JSON.parse(localStorage.getItem('brule_newsletter') || '[]');
+            if (!subs.includes(email)) {
+              subs.push(email);
+              localStorage.setItem('brule_newsletter', JSON.stringify(subs));
+              showToast('Thank you for subscribing!', 'success');
+              this.reset();
+            } else {
+              showToast("You're already subscribed!", 'info');
+            }
+          });
+
+        });
+    </script>
+}

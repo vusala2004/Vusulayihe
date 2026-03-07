@@ -1,0 +1,37 @@
+wwwroot\css\admin.css
+wwwroot\css\style.css
+wwwroot\img\Akgun.jpg
+wwwroot\img\Americano.jpg
+wwwroot\img\BlueberryMuffin.jpg
+wwwroot\img\Canan.jpg
+wwwroot\img\Cappuccino.jpg
+wwwroot\img\ChaiLatte.jpg
+wwwroot\img\ChocolateChipCookie.jpg
+wwwroot\img\ColdBrew.jpg
+wwwroot\img\Croissant.jpg
+wwwroot\img\Espressocoffee.jpg
+wwwroot\img\GingerbreadCookie.jpg
+wwwroot\img\Greentea.jpg
+wwwroot\img\IcedLatte.jpg
+wwwroot\img\indir (12).jpg
+wwwroot\img\indir (13).jpg
+wwwroot\img\indir (14).jpg
+wwwroot\img\indir15.jpg
+wwwroot\img\indir16.jpg
+wwwroot\img\indir17.jpg
+wwwroot\img\indir18.jpg
+wwwroot\img\Latte.jpg
+wwwroot\img\MatchaLatte.jpg
+wwwroot\img\NitroColdBrew.jpg
+wwwroot\img\PumpkinSpiceLatte.jpg
+wwwroot\img\Selim.jpg
+wwwroot\img\Sonyaz1.jpg
+wwwroot\img\Sonyaz2.jpg
+wwwroot\img\Yagmur.jpg
+wwwroot\js\auth.js
+wwwroot\js\cart.js
+wwwroot\js\footer.js
+wwwroot\js\header.js
+wwwroot\js\main.js
+wwwroot\js\products.js
+wwwroot\js\toast.js

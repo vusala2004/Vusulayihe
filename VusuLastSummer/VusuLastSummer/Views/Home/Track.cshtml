@@ -1,0 +1,60 @@
+﻿@{
+    ViewData["Title"] = "Track Order";
+    ViewData["Page"] = "track";
+}
+
+<section data-section="track-order">
+    <div class="container">
+        <h1 data-key="page-title">Track Your Order</h1>
+        <div class="card" data-role="track-card">
+            <div class="card-content" id="track-content">
+                <div data-role="progress-bar">
+                    <div data-role="progress-track"></div>
+                    <div data-role="progress-line" id="progress-line"></div>
+                    <div data-role="step" id="step-1" data-state="active">1</div>
+                    <div data-role="step" id="step-2">2</div>
+                    <div data-role="step" id="step-3">3</div>
+                    <div data-role="step" id="step-4">4</div>
+                </div>
+                <div data-layout="grid-4" data-role="step-labels">
+                    <div data-role="step-label">Order Received</div>
+                    <div data-role="step-label">Preparing</div>
+                    <div data-role="step-label">Ready</div>
+                    <div data-role="step-label">Delivered</div>
+                </div>
+                <div data-role="countdown" id="countdown">00:00</div>
+                <div data-role="map-placeholder">
+                    <span data-role="map-pin">📍</span>
+                    <div data-role="map-label">Estimated delivery location</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        let currentStep=1, countdownInterval=null, timeLeft=35*60;
+        function animateProgress(t) {
+          document.getElementById('progress-line').style.width=((t-1)/3*100)+'%';
+          for(let i=1;i<=4;i++){const el=document.getElementById('step-'+i);if(i<t)el.dataset.state='completed';else if(i===t)el.dataset.state='active';else delete el.dataset.state;}
+        }
+        function updateCountdown() {
+          const m=Math.floor(timeLeft/60),s=timeLeft%60;
+          document.getElementById('countdown').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+          if(timeLeft>0){timeLeft--;}else{clearInterval(countdownInterval);if(currentStep<4){currentStep++;animateProgress(currentStep);timeLeft=(Math.floor(Math.random()*10)+5)*60;countdownInterval=setInterval(updateCountdown,1000);}}
+        }
+        function startTracking() {
+          animateProgress(1); countdownInterval=setInterval(updateCountdown,1000);
+          setTimeout(()=>{currentStep=2;animateProgress(2);timeLeft=15*60;},5000);
+          setTimeout(()=>{currentStep=3;animateProgress(3);timeLeft=7*60;},15000);
+          setTimeout(()=>{currentStep=4;animateProgress(4);clearInterval(countdownInterval);document.getElementById('countdown').textContent='Delivered!';},25000);
+        }
+        document.addEventListener('DOMContentLoaded',function(){
+          const active=JSON.parse(localStorage.getItem('brule_orders')||'[]').find(o=>['pending','preparing','ready'].includes(o.status));
+          if(!active){document.getElementById('track-content').innerHTML='<div data-role="no-orders"><h3>No active orders</h3><p>You don\'t have any orders currently being prepared.</p><a href="/Home/Menu" class="btn">Order Now</a></div>';return;}
+          startTracking();
+        });
+    </script>
+}
+

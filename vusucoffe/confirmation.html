@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmed - Brûlé Coffee</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .checkmark {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 2rem auto;
+      animation: checkmark 1s ease-in-out;
+    }
+    .checkmark::after {
+      content: '✓';
+      font-size: 3rem;
+      color: var(--espresso);
+      animation: checkmark-stroke 1s ease-in-out 0.5s both;
+    }
+    @keyframes checkmark {
+      0% { transform: scale(0); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+    @keyframes checkmark-stroke {
+      0% { opacity: 0; transform: scale(0); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <main class="main">
+    <section class="section text-center">
+      <div class="container">
+        <div class="checkmark"></div>
+        <h1>Order Confirmed!</h1>
+        <p>Thank you for your order. We've received your payment and are preparing your items.</p>
+
+        <div class="card" style="max-width: 600px; margin: 2rem auto;">
+          <div class="card-content">
+            <h3>Order Details</h3>
+            <p><strong>Order Number:</strong> <span id="order-number"></span></p>
+            <p><strong>Estimated Time:</strong> <span id="estimated-time"></span></p>
+
+            <h4>Order Summary</h4>
+            <div id="order-items">
+              <!-- Order items will be loaded here -->
+            </div>
+            <hr style="margin: 1rem 0;">
+            <p>Subtotal: $<span id="subtotal">0.00</span></p>
+            <p>Delivery Fee: $<span id="delivery-fee">0.00</span></p>
+            <p><strong>Total: $<span id="total">0.00</span></strong></p>
+          </div>
+        </div>
+
+        <div class="flex justify-center gap-2">
+          <a href="track.html" class="btn">Track Order</a>
+          <a href="menu.html" class="btn btn-secondary">Back to Menu</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/header.js"></script>
+  <script src="js/footer.js"></script>
+  <script src="js/toast.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Get order from URL or localStorage
+    function getOrder() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const orderNumber = urlParams.get('order');
+      if (orderNumber) {
+        const orders = JSON.parse(localStorage.getItem('brule_orders') || '[]');
+        return orders.find(order => order.orderNumber == orderNumber);
+      }
+      return null;
+    }
+
+    // Render order
+    function renderOrder() {
+      const order = getOrder();
+      if (!order) {
+        window.location.href = 'index.html';
+        return;
+      }
+
+      document.getElementById('order-number').textContent = order.orderNumber;
+      document.getElementById('estimated-time').textContent = '20-35 minutes';
+
+      const container = document.getElementById('order-items');
+      container.innerHTML = order.cart.map(item => `
+        <div class="flex justify-between mb-1">
+          <span>${item.name} (${item.size}) x${item.quantity}</span>
+          <span>$${(item.price * item.quantity).toFixed(2)}</span>
+        </div>
+      `).join('');
+
+      document.getElementById('subtotal').textContent = order.subtotal.toFixed(2);
+      document.getElementById('delivery-fee').textContent = order.deliveryFee.toFixed(2);
+      document.getElementById('total').textContent = order.total.toFixed(2);
+    }
+
+    // Initial load
+    document.addEventListener('DOMContentLoaded', renderOrder);
+  </script>
+</body>
+</html>

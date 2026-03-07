@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - Last Summer</title>
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="~/css/models.css">
+</head>
+<body data-page="@ViewData["Page"]">
+
+    <!-- ══════════════════════════════════════
+         HEADER
+    ══════════════════════════════════════ -->
+    <header data-role="site-header">
+        <div class="container" data-role="header-inner">
+
+            <a href="/" data-role="logo">
+                <span data-role="logo-text">Last Summer</span>
+            </a>
+
+            <nav data-role="main-nav">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/Home/About" class="nav-link">About</a>
+                <a href="/Home/Menu" class="nav-link">Menu</a>
+                <a href="/Home/Blog" class="nav-link">Blog</a>
+                <a href="/Home/Reservations" class="nav-link">Reservations</a>
+                <a href="/Home/Contact" class="nav-link">Contact</a>
+            </nav>
+
+            <div data-role="header-actions">
+                <a href="/Home/Cart" data-role="cart-btn" aria-label="Cart">
+                    <span data-role="cart-icon">🛒</span>
+                    <span data-role="cart-badge" id="cart-badge">0</span>
+                </a>
+                <a href="/Home/Login" data-role="auth-btn" id="auth-btn">Login</a>
+            </div>
+
+            <button data-role="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+
+        </div>
+    </header>
+
+    <!-- ══════════════════════════════════════
+         MAIN — View buraya render olunur
+    ══════════════════════════════════════ -->
+    <main data-role="page-content">
+            @RenderBody()
+    </main>
+
+    <!-- ══════════════════════════════════════
+         FOOTER
+    ══════════════════════════════════════ -->
+    <footer data-role="site-footer">
+        <div class="container" data-role="footer-inner">
+
+            <div data-role="footer-grid">
+
+                <div data-role="footer-brand">
+                    <a href="/" data-role="footer-logo">Last Summer</a>
+                    <p>Inspired by the warmth of Son Yaz. Every cup tells a story.</p>
+                    <div data-role="social-icons">
+                        <a href="#" aria-label="Facebook">📘</a>
+                        <a href="#" aria-label="Instagram">📷</a>
+                        <a href="#" aria-label="Twitter">🐦</a>
+                    </div>
+                </div>
+
+                <div data-role="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/Home/About">About</a></li>
+                        <li><a href="/Home/Menu">Menu</a></li>
+                        <li><a href="/Home/Blog">Blog</a></li>
+                    </ul>
+                </div>
+
+                <div data-role="footer-links">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="/Home/Reservations">Reservations</a></li>
+                        <li><a href="/Home/Cart">Order Online</a></li>
+                        <li><a href="/Home/Track">Track Order</a></li>
+                        <li><a href="/Home/Contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div data-role="footer-contact">
+                    <h4>Contact</h4>
+                    <p>📍 123 Coffee Street, Bean City</p>
+                    <p>📞 (555) 123-4567</p>
+                    <p>✉️ hello@lastsummer.com</p>
+                    <p>🕒 Mon–Fri: 7AM–8PM</p>
+                </div>
+
+            </div>
+
+            <div data-role="footer-bottom">
+                <p>&copy; @DateTime.Now.Year Last Summer Coffee. All rights reserved.</p>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- ══════════════════════════════════════
+         TOAST
+    ══════════════════════════════════════ -->
+    <div id="toast-container" data-role="toast-container"></div>
+
+    <!-- ══════════════════════════════════════
+         SCRIPTS
+    ══════════════════════════════════════ -->
+    <script src="~/js/toast.js"></script>
+    <script src="~/js/auth.js"></script>
+    <script src="~/js/cart.js"></script>
+    <script src="~/js/products.js"></script>
+    <script src="~/js/main.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>

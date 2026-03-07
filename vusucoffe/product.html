@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product - Last Summer Coffee</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="main">
+    <section class="section">
+      <div class="container">
+        <div class="grid grid-2" id="product-details">
+          <!-- Product details will be loaded here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Products -->
+    <section class="section" style="background: var(--sand);">
+      <div class="container">
+        <h2>Related Products</h2>
+        <div class="grid grid-3" id="related-products">
+          <!-- Related products will be loaded here -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/header.js"></script>
+  <script src="js/footer.js"></script>
+  <script src="js/toast.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get('id');
+    let currentProduct = null;
+    let currentSize = 'M';
+    let currentQuantity = 1;
+
+    // Size price adjustments
+    const sizePrices = { S: -0.5, M: 0, L: 0.5 };
+
+    // Get current price
+    function getCurrentPrice() {
+      return currentProduct.price + sizePrices[currentSize];
+    }
+
+    // Update price display
+    function updatePrice() {
+      const priceElement = document.getElementById('product-price');
+      priceElement.textContent = `$${getCurrentPrice().toFixed(2)}`;
+    }
+
+    // Render product
+    function renderProduct() {
+      if (!currentProduct) return;
+
+      const container = document.getElementById('product-details');
+      container.innerHTML = `
+        <div>
+          <img src="${currentProduct.image}" alt="${currentProduct.name}" style="width: 100%; border-radius: 10px;">
+        </div>
+        <div>
+          <h1>${currentProduct.name}</h1>
+          <p class="mb-3">${currentProduct.description}</p>
+
+          <div class="form-group">
+            <label>Size:</label>
+            <div class="flex gap-1">
+              <button class="btn btn-secondary size-btn ${currentSize === 'S' ? 'active' : ''}" data-size="S">Small</button>
+              <button class="btn btn-secondary size-btn ${currentSize === 'M' ? 'active' : ''}" data-size="M">Medium</button>
+              <button class="btn btn-secondary size-btn ${currentSize === 'L' ? 'active' : ''}" data-size="L">Large</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Quantity:</label>
+            <div class="flex align-center gap-2">
+              <button class="btn btn-secondary" id="qty-minus">-</button>
+              <span id="quantity-display">${currentQuantity}</span>
+              <button class="btn btn-secondary" id="qty-plus">+</button>
+            </div>
+          </div>
+
+          <p class="mb-3">Price: <strong id="product-price">$${getCurrentPrice().toFixed(2)}</strong></p>
+
+          <button class="btn btn-full" id="add-to-cart-btn">Add to Cart</button>
+        </div>
+      `;
+
+      // Size buttons
+      document.querySelectorAll('.size-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+          currentSize = this.dataset.size;
+          updatePrice();
+        });
+      });
+
+      // Quantity buttons
+      document.getElementById('qty-minus').addEventListener('click', function() {
+        if (currentQuantity > 1) {
+          currentQuantity--;
+          document.getElementById('quantity-display').textContent = currentQuantity;
+        }
+      });
+
+      document.getElementById('qty-plus').addEventListener('click', function() {
+        currentQuantity++;
+        document.getElementById('quantity-display').textContent = currentQuantity;
+      });
+
+      // Add to cart
+      document.getElementById('add-to-cart-btn').addEventListener('click', function() {
+        addItem(currentProduct.id, currentQuantity, currentSize);
+        updateCartBadge();
+        showToast('Added to cart!', 'success');
+      });
+    }
+
+    // Render related products
+    function renderRelatedProducts() {
+      if (!currentProduct) return;
+
+      const related = products.filter(p => p.category === currentProduct.category && p.id !== currentProduct.id).slice(0, 3);
+      const container = document.getElementById('related-products');
+      container.innerHTML = related.map(product => `
+        <div class="card">
+          <img src="${product.image}" alt="${product.name}">
+          <div class="card-content">
+            <h3>${product.name}</h3>
+            <p>${product.description}</p>
+            <p class="mb-2"><strong>$${product.price.toFixed(2)}</strong></p>
+            <a href="product.html?id=${product.id}" class="btn btn-full">View Details</a>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Load product
+    document.addEventListener('DOMContentLoaded', function() {
+      currentProduct = getProductById(productId);
+      if (!currentProduct) {
+        window.location.href = 'menu.html';
+        return;
+      }
+      renderProduct();
+      renderRelatedProducts();
+    });
+  </script>
+</body>
+</html>

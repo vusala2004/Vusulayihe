@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment - Brûlé Coffee</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .card-preview {
+      width: 300px;
+      height: 180px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 10px;
+      color: white;
+      padding: 20px;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.6s;
+      margin: 2rem auto;
+    }
+    .card-preview.flipped {
+      transform: rotateY(180deg);
+    }
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 10px;
+    }
+    .card-back {
+      transform: rotateY(180deg);
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card-number-display {
+      font-size: 1.2rem;
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+    }
+    .card-holder-display {
+      margin-bottom: 0.5rem;
+    }
+    .card-expiry-display {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+    }
+  </style>
+</head>
+<body>
+  <main class="main">
+    <section class="section">
+      <div class="container">
+        <h1 class="text-center">Payment Details</h1>
+
+        <div class="grid grid-2 gap-3">
+          <!-- Payment Form -->
+          <div>
+            <form id="payment-form">
+              <div class="form-group">
+                <label for="card-number">Card Number *</label>
+                <input type="text" id="card-number" placeholder="1234 5678 9012 3456" maxlength="19" required>
+                <div id="card-type" class="mt-1"></div>
+              </div>
+
+              <div class="form-group">
+                <label for="card-holder">Cardholder Name *</label>
+                <input type="text" id="card-holder" placeholder="John Doe" required>
+              </div>
+
+              <div class="flex gap-2">
+                <div class="form-group" style="flex: 1;">
+                  <label for="expiry">Expiry Date *</label>
+                  <input type="text" id="expiry" placeholder="MM/YY" maxlength="5" required>
+                </div>
+                <div class="form-group" style="flex: 1;">
+                  <label for="cvv">CVV *</label>
+                  <input type="password" id="cvv" placeholder="123" maxlength="4" required>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-full">Pay Now</button>
+            </form>
+          </div>
+
+          <!-- Card Preview -->
+          <div>
+            <div class="card-preview" id="card-preview">
+              <div class="card-front">
+                <div class="card-number-display" id="card-number-display">•••• •••• •••• ••••</div>
+                <div class="card-holder-display">
+                  <small>Card Holder</small><br>
+                  <span id="card-holder-display">JOHN DOE</span>
+                </div>
+                <div class="card-expiry-display">
+                  <small>Expires</small><br>
+                  <span id="card-expiry-display">MM/YY</span>
+                </div>
+              </div>
+              <div class="card-back">
+                <div style="width: 100%; height: 40px; background: black; margin-bottom: 20px;"></div>
+                <div style="background: white; padding: 10px; text-align: center;">
+                  CVV: <span id="cvv-display">•••</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Order Summary -->
+            <div class="card">
+              <div class="card-content">
+                <h3>Order Summary</h3>
+                <div id="order-items">
+                  <!-- Order items will be loaded here -->
+                </div>
+                <hr style="margin: 1rem 0;">
+                <p>Subtotal: $<span id="subtotal">0.00</span></p>
+                <p>Delivery Fee: $<span id="delivery-fee">0.00</span></p>
+                <p><strong>Total: $<span id="total">0.00</span></strong></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/header.js"></script>
+  <script src="js/footer.js"></script>
+  <script src="js/toast.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    let checkoutData = null;
+
+    // Format card number
+    function formatCardNumber(value) {
+      return value.replace(/\s+/g, '').replace(/(\d{4})/g, '$1 ').trim();
+    }
+
+    // Detect card type
+    function detectCardType(number) {
+      const firstDigit = number.charAt(0);
+      if (firstDigit === '4') return 'Visa';
+      if (firstDigit === '5') return 'Mastercard';
+      if (firstDigit === '3') return 'American Express';
+      return '';
+    }
+
+    // Format expiry
+    function formatExpiry(value) {
+      return value.replace(/\D/g, '').replace(/(\d{2})(\d{2})/, '$1/$2');
+    }
+
+    // Update card preview
+    function updateCardPreview() {
+      const number = document.getElementById('card-number').value;
+      const holder = document.getElementById('card-holder').value.toUpperCase();
+      const expiry = document.getElementById('expiry').value;
+      const cvv = document.getElementById('cvv').value;
+
+      document.getElementById('card-number-display').textContent = number || '•••• •••• •••• ••••';
+      document.getElementById('card-holder-display').textContent = holder || 'JOHN DOE';
+      document.getElementById('card-expiry-display').textContent = expiry || 'MM/YY';
+      document.getElementById('cvv-display').textContent = cvv.replace(/./g, '•') || '•••';
+    }
+
+    // Card number input
+    document.getElementById('card-number').addEventListener('input', function(e) {
+      let value = e.target.value.replace(/\s+/g, '');
+      value = value.replace(/\D/g, '');
+      e.target.value = formatCardNumber(value);
+
+      const cardType = detectCardType(value);
+      document.getElementById('card-type').textContent = cardType;
+
+      updateCardPreview();
+    });
+
+    // Card holder input
+    document.getElementById('card-holder').addEventListener('input', updateCardPreview);
+
+    // Expiry input
+    document.getElementById('expiry').addEventListener('input', function(e) {
+      e.target.value = formatExpiry(e.target.value);
+      updateCardPreview();
+    });
+
+    // CVV input
+    document.getElementById('cvv').addEventListener('focus', function() {
+      document.getElementById('card-preview').classList.add('flipped');
+    });
+
+    document.getElementById('cvv').addEventListener('blur', function() {
+      document.getElementById('card-preview').classList.remove('flipped');
+    });
+
+    document.getElementById('cvv').addEventListener('input', updateCardPreview);
+
+    // Render order summary
+    function renderOrderSummary() {
+      if (!checkoutData) return;
+
+      const container = document.getElementById('order-items');
+      container.innerHTML = checkoutData.cart.map(item => `
+        <div class="flex justify-between mb-1">
+          <span>${item.name} (${item.size}) x${item.quantity}</span>
+          <span>$${(item.price * item.quantity).toFixed(2)}</span>
+        </div>
+      `).join('');
+
+      document.getElementById('subtotal').textContent = checkoutData.subtotal.toFixed(2);
+      document.getElementById('delivery-fee').textContent = checkoutData.deliveryFee.toFixed(2);
+      document.getElementById('total').textContent = checkoutData.total.toFixed(2);
+    }
+
+    // Form validation
+    function validateForm() {
+      const cardNumber = document.getElementById('card-number').value.replace(/\s+/g, '');
+      const expiry = document.getElementById('expiry').value;
+      const cvv = document.getElementById('cvv').value;
+
+      if (cardNumber.length < 13) {
+        showToast('Invalid card number', 'error');
+        return false;
+      }
+
+      if (!/^\d{2}\/\d{2}$/.test(expiry)) {
+        showToast('Invalid expiry date', 'error');
+        return false;
+      }
+
+      if (cvv.length < 3) {
+        showToast('Invalid CVV', 'error');
+        return false;
+      }
+
+      return true;
+    }
+
+    // Form submit
+    document.getElementById('payment-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      if (!validateForm()) return;
+
+      // Simulate payment processing
+      showToast('Processing payment...', 'info');
+
+      setTimeout(() => {
+        // Save order
+        const orderNumber = Math.floor(100000 + Math.random() * 900000);
+        const order = {
+          ...checkoutData,
+          orderNumber: orderNumber,
+          status: 'pending',
+          timestamp: new Date().toISOString()
+        };
+
+        const orders = JSON.parse(localStorage.getItem('brule_orders') || '[]');
+        orders.push(order);
+        localStorage.setItem('brule_orders', JSON.stringify(orders));
+
+        // Clear cart and checkout data
+        clearCart();
+        localStorage.removeItem('brule_checkout');
+
+        showToast('Payment successful!', 'success');
+        setTimeout(() => {
+          window.location.href = 'confirmation.html?order=' + orderNumber;
+        }, 1000);
+      }, 2000);
+    });
+
+    // Initial load
+    document.addEventListener('DOMContentLoaded', function() {
+      checkoutData = JSON.parse(localStorage.getItem('brule_checkout'));
+      if (!checkoutData) {
+        window.location.href = 'cart.html';
+        return;
+      }
+      renderOrderSummary();
+      updateCardPreview();
+    });
+  </script>
+</body>
+</html>
