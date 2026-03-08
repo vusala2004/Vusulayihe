@@ -1,0 +1,150 @@
+﻿@using VusuLastSummer.ViewModels
+@using VusuLastSummer.ViewModels.Payment
+@model PaymentVM
+@{
+    ViewData["Title"] = "Payment - Last Summer";
+}
+
+<style>
+    /* Sənin mükəmməl 3D Kart CSS-in */
+    .card-preview {
+        width: 300px;
+        height: 180px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 10px;
+        color: white;
+        padding: 20px;
+        position: relative;
+        transform-style: preserve-3d;
+        transition: transform 0.6s;
+        margin: 2rem auto;
+    }
+
+        .card-preview.flipped {
+            transform: rotateY(180deg);
+        }
+
+    .card-front, .card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: 10px;
+    }
+
+    .card-back {
+        transform: rotateY(180deg);
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .card-number-display {
+        font-size: 1.2rem;
+        letter-spacing: 2px;
+        margin-bottom: 1rem;
+    }
+
+    .card-holder-display {
+        margin-bottom: 0.5rem;
+    }
+
+    .card-expiry-display {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+    }
+</style>
+
+<section class="section">
+    <div class="container">
+        <h1 class="text-center">Payment Details</h1>
+
+        <div class="grid grid-2 gap-3">
+            <div>
+                <form asp-controller="Checkout" asp-action="Payment" method="post" id="payment-form">
+                    <div class="form-group">
+                        <label asp-for="CardNumber">Card Number *</label>
+                        <input asp-for="CardNumber" id="card-number" placeholder="1234 5678 9012 3456" maxlength="19" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="CardHolder">Cardholder Name *</label>
+                        <input asp-for="CardHolder" id="card-holder" placeholder="John Doe" required>
+                    </div>
+
+                    <div class="flex gap-2">
+                        <div class="form-group" style="flex: 1;">
+                            <label asp-for="Expiry">Expiry Date *</label>
+                            <input asp-for="Expiry" id="expiry" placeholder="MM/YY" maxlength="5" required>
+                        </div>
+                        <div class="form-group" style="flex: 1;">
+                            <label asp-for="CVV">CVV *</label>
+                            <input asp-for="CVV" id="cvv" placeholder="123" maxlength="4" type="password" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-full">Pay Now</button>
+                </form>
+            </div>
+
+            <div>
+                <div class="card-preview" id="card-preview">
+                    <div class="card-front">
+                        <div class="card-number-display" id="card-number-display">•••• •••• •••• ••••</div>
+                        <div class="card-holder-display">
+                            <small>Card Holder</small><br>
+                            <span id="card-holder-display">JOHN DOE</span>
+                        </div>
+                        <div class="card-expiry-display">
+                            <small>Expires</small><br>
+                            <span id="card-expiry-display">MM/YY</span>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <div style="width: 100%; height: 40px; background: black; margin-bottom: 20px;"></div>
+                        <div style="background: white; padding: 10px; text-align: center; color: black;">
+                            CVV: <span id="cvv-display">•••</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    function formatCardNumber(value) {
+        return value.replace(/\s+/g, '').replace(/(\d{4})/g, '$1 ').trim();
+    }
+    function updateCardPreview() {
+        const number = document.getElementById('card-number').value;
+        const holder = document.getElementById('card-holder').value.toUpperCase();
+        const expiry = document.getElementById('expiry').value;
+        const cvv = document.getElementById('cvv').value;
+
+        document.getElementById('card-number-display').textContent = number || '•••• •••• •••• ••••';
+        document.getElementById('card-holder-display').textContent = holder || 'JOHN DOE';
+        document.getElementById('card-expiry-display').textContent = expiry || 'MM/YY';
+        document.getElementById('cvv-display').textContent = cvv.replace(/./g, '•') || '•••';
+    }
+
+    document.getElementById('card-number').addEventListener('input', function(e) {
+        let value = e.target.value.replace(/\s+/g, '').replace(/\D/g, '');
+        e.target.value = formatCardNumber(value);
+        updateCardPreview();
+    });
+    document.getElementById('card-holder').addEventListener('input', updateCardPreview);
+    document.getElementById('expiry').addEventListener('input', function(e) {
+        e.target.value = e.target.value.replace(/\D/g, '').replace(/(\d{2})(\d{2})/, '$1/$2');
+        updateCardPreview();
+    });
+    document.getElementById('cvv').addEventListener('focus', function() {
+        document.getElementById('card-preview').classList.add('flipped');
+    });
+    document.getElementById('cvv').addEventListener('blur', function() {
+        document.getElementById('card-preview').classList.remove('flipped');
+    });
+    document.getElementById('cvv').addEventListener('input', updateCardPreview);
+</script>

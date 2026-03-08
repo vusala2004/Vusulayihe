@@ -1,0 +1,127 @@
+﻿@using VusuLastSummer.ViewModels
+@using VusuLastSummer.ViewModels.Checkout
+@model CheckoutVM
+@{
+    ViewData["Title"] = "Checkout";
+}
+
+<section class="section">
+    <div class="container">
+        <h1 class="text-center">Checkout</h1>
+
+        <div class="grid grid-2 gap-3">
+            <div>
+                <form asp-controller="Checkout" asp-action="Index" method="post" id="checkout-form">
+
+                    <div class="form-group">
+                        <label asp-for="FullName">Full Name *</label>
+                        <input asp-for="FullName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Email">Email *</label>
+                        <input asp-for="Email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Phone">Phone *</label>
+                        <input asp-for="Phone" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="DeliveryMethod">Delivery Method</label>
+                        <select asp-for="DeliveryMethod" id="delivery-method" style="width: 100%; padding: 0.75rem; border-radius: 5px; border: 1px solid var(--sand);">
+                            <option value="pickup">Pickup (Mağazadan götür)</option>
+                            <option value="delivery">Delivery (Çatdırılma)</option>
+                        </select>
+                    </div>
+
+                    <div id="delivery-fields" style="display: none;">
+                        <div class="form-group">
+                            <label asp-for="Address">Address *</label>
+                            <input asp-for="Address">
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="City">City *</label>
+                            <input asp-for="City">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-full" style="margin-top: 2rem;">Place Order</button>
+                </form>
+            </div>
+
+            <div>
+                <div class="card" style="position: sticky; top: 100px;">
+                    <div class="card-content">
+                        <h3>Order Summary</h3>
+
+                        <div id="checkout-items" class="mb-2">
+                            <div class="flex justify-between mb-1" style="font-size: 0.9rem;">
+                                <span>2x Classic Espresso</span>
+                                <span>$7.00</span>
+                            </div>
+                            <div class="flex justify-between mb-1" style="font-size: 0.9rem;">
+                                <span>1x Vanilla Latte</span>
+                                <span>$4.50</span>
+                            </div>
+                        </div>
+
+                        <hr style="border: 0; border-top: 1px solid var(--sand); margin: 1rem 0;">
+
+                        <div class="flex justify-between mb-1">
+                            <span>Subtotal</span>
+                            <span>$@Model.Subtotal.ToString("0.00")</span>
+                        </div>
+                        <div class="flex justify-between mb-1" id="delivery-fee-container" style="display:none;">
+                            <span>Delivery Fee</span>
+                            <span>$@Model.DeliveryFee.ToString("0.00")</span>
+                        </div>
+
+                        <hr style="border: 0; border-top: 1px solid var(--sand); margin: 1rem 0;">
+
+                        <div class="flex justify-between">
+                            <strong>Total</strong>
+                            <strong id="total-price">$@Model.Subtotal.ToString("0.00")</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        // Pickup və ya Delivery seçiminə görə ünvan yerlərini gizlədib/açan məntiq
+        const deliveryMethod = document.getElementById('delivery-method');
+        const deliveryFields = document.getElementById('delivery-fields');
+        const deliveryFeeContainer = document.getElementById('delivery-fee-container');
+        const totalPrice = document.getElementById('total-price');
+
+        const subtotal = @Model.Subtotal.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture);
+        const deliveryFee = @Model.DeliveryFee.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture);
+
+        deliveryMethod.addEventListener('change', function() {
+            if (this.value === 'delivery') {
+                deliveryFields.style.display = 'block';
+                deliveryFeeContainer.style.display = 'flex';
+                const total = parseFloat(subtotal) + parseFloat(deliveryFee);
+                totalPrice.textContent = "$" + total.toFixed(2);
+
+                // Ünvanları məcburi (required) edirik
+                document.getElementById('Address').setAttribute('required', 'required');
+                document.getElementById('City').setAttribute('required', 'required');
+            } else {
+                deliveryFields.style.display = 'none';
+                deliveryFeeContainer.style.display = 'none';
+                totalPrice.textContent = "$" + parseFloat(subtotal).toFixed(2);
+
+                // Ünvanların məcburiliyini çıxarırıq
+                document.getElementById('Address').removeAttribute('required');
+                document.getElementById('City').removeAttribute('required');
+            }
+        });
+    </script>
+}
+

@@ -1,0 +1,77 @@
+﻿@model VusuLastSummer.ViewModels.Blog.BlogIndexVM
+@{
+    ViewData["Title"] = "Coffee Blog";
+}
+
+<section class="section">
+    <div class="container">
+        <h1 class="text-center">Coffee Blog</h1>
+
+        <div class="flex justify-center gap-2 mb-3">
+            <button class="btn btn-secondary blog-category active" data-category="All">All</button>
+            <button class="btn btn-secondary blog-category" data-category="Brewing Tips">Brewing Tips</button>
+            <button class="btn btn-secondary blog-category" data-category="Recipes">Recipes</button>
+            <button class="btn btn-secondary blog-category" data-category="News">News</button>
+        </div>
+        <div class="grid grid-3" id="blog-grid">
+            @if (!Model.Posts.Any())
+            {
+                <p class="text-center" style="grid-column: span 3;">Hələlik heç bir bloq yazısı yoxdur.</p>
+            }
+            else
+            {
+                @foreach (var post in Model.Posts)
+                {
+                    <div class="card blog-card fade-in" data-category="@post.BlogCategory.Name">
+                        <img src="@(string.IsNullOrEmpty(post.ImageUrl) ? "/img/default-blog.jpg" : post.ImageUrl)" alt="@post.Title">
+                        <div class="card-content">
+                            <div style="background: var(--gold); color: var(--espresso); padding: 0.25rem 0.5rem; border-radius: 3px; display: inline-block; font-size: 0.875rem; margin-bottom: 0.5rem;">
+                                @post.BlogCategory.Name
+                            </div>
+                            <h3>@post.Title</h3>
+                            <p class="mb-2">
+                                @(post.Content.Length > 100 ? Html.Raw(post.Content.Substring(0, 100) + "...") : Html.Raw(post.Content))
+                            </p>
+                            <p style="color: #666; font-size: 0.875rem;">@post.PublishedAt.ToString("MMM dd, yyyy")</p>
+                            <a href="/Blog/@post.Slug" class="btn">Read More</a>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Category filter məntiqi
+            const categoryBtns = document.querySelectorAll('.blog-category');
+            const blogCards = document.querySelectorAll('.blog-card');
+
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Aktiv classını dəyişdir
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+
+                    const selectedCategory = this.dataset.category;
+
+                    // Postları göstər/gizlət (Səhifə yenilənmədən)
+                    blogCards.forEach(card => {
+                        if (selectedCategory === 'All' || card.dataset.category === selectedCategory) {
+                            card.style.display = 'block'; // Göstər
+                            // Animasiya effekti vermək üçün
+                            card.classList.remove('fade-in');
+                            void card.offsetWidth; // reflow trigger
+                            card.classList.add('fade-in');
+                        } else {
+                            card.style.display = 'none'; // Gizlət
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+}
+

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using VusuLastSummer.Models;
+using VusuLastSummer.Models.Base;
 
 namespace VusuLastSummer.DAL
 {
@@ -8,7 +9,8 @@ namespace VusuLastSummer.DAL
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
-
+        public DbSet<BlogCategory> BlogCategories { get; set; }
+        public DbSet<BlogPost> BlogPosts { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductImage> ProductImages { get; set; }

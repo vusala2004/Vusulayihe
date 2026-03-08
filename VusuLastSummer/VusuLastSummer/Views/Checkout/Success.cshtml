@@ -1,0 +1,100 @@
+﻿<div class="container text-center" style="margin-top: 5rem; margin-bottom: 5rem;">
+    <h1>Sifarişiniz qəbul edildi! 🎉</h1>
+    <p>Tezliklə sizinlə əlaqə saxlayacağıq.</p>
+    <a href="/Home" class="btn mt-3">Ana Səhifəyə Qayıt</a>
+</div>
+@using VusuLastSummer.ViewModels
+@using VusuLastSummer.ViewModels.Confirmation
+@model ConfirmationVM
+@{
+    ViewData["Title"] = "Order Confirmed - Last Summer";
+}
+
+<style>
+    .checkmark {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: var(--gold);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 2rem auto;
+        animation: checkmark 1s ease-in-out;
+    }
+
+        .checkmark::after {
+            content: '✓';
+            font-size: 3rem;
+            color: var(--espresso);
+            animation: checkmark-stroke 1s ease-in-out 0.5s both;
+        }
+
+    @@keyframes checkmark {
+        0% {
+            transform: scale(0);
+        }
+
+        50% {
+            transform: scale(1.2);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    @@keyframes checkmark-stroke {
+        0% {
+            opacity: 0;
+            transform: scale(0);
+        }
+
+        100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+</style>
+
+<section class="section text-center">
+    <div class="container">
+
+        <div class="checkmark"></div>
+        <h1>Order Confirmed!</h1>
+        <p>Thank you for your order. We've received your payment and are preparing your items.</p>
+
+        <div class="card" style="max-width: 600px; margin: 2rem auto;">
+            <div class="card-content">
+                <h3>Order Details</h3>
+                <p><strong>Order Number:</strong> <span>@Model.OrderNumber</span></p>
+                <p><strong>Estimated Time:</strong> <span>@Model.EstimatedTime</span></p>
+
+                <h4>Order Summary</h4>
+                <div id="order-items">
+
+                    @foreach (var item in Model.Items)
+                    {
+                        <div class="flex justify-between mb-1">
+                            <span>@item.ProductName (@item.Size) x@item.Quantity</span>
+                            <span>$@item.Total.ToString("0.00")</span>
+                        </div>
+                    }
+
+                </div>
+
+                <hr style="margin: 1rem 0; border: 0; border-top: 1px solid var(--sand);">
+
+                <p>Subtotal: $@Model.Subtotal.ToString("0.00")</p>
+                <p>Delivery Fee: $@Model.DeliveryFee.ToString("0.00")</p>
+                <p><strong>Total: $@Model.Total.ToString("0.00")</strong></p>
+            </div>
+        </div>
+
+        <div class="flex justify-center gap-2">
+            <a href="/" class="btn">Track Order</a>
+            <a href="/Menu" class="btn btn-secondary">Back to Menu</a>
+        </div>
+
+    </div>
+</section>

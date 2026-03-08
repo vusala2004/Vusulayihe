@@ -4186,11 +4186,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Acer\\OneDrive\\Desktop\\VusuLastSummer\\VusuLastSummer\\VusuLastSummer.csproj",
+      "projectUniqueName": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\VusuLastSummer.csproj",
       "projectName": "VusuLastSummer",
-      "projectPath": "C:\\Users\\Acer\\OneDrive\\Desktop\\VusuLastSummer\\VusuLastSummer\\VusuLastSummer.csproj",
+      "projectPath": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\VusuLastSummer.csproj",
       "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Acer\\OneDrive\\Desktop\\VusuLastSummer\\VusuLastSummer\\obj\\",
+      "outputPath": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

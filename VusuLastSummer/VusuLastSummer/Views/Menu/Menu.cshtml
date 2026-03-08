@@ -1,0 +1,122 @@
+﻿@using VusuLastSummer.ViewModels
+@using VusuLastSummer.ViewModels.Menu
+@model List<MenuVM>
+@{
+    ViewData["Title"] = "Our Menu - Last Summer";
+}
+
+<section class="section">
+    <div class="container">
+        <h1 class="text-center">Our Menu</h1>
+
+        <div class="flex justify-center gap-3 mb-3 flex-column" style="align-items: stretch;">
+            <div class="flex gap-2" style="flex-wrap: wrap; justify-content: center;">
+                <button class="btn btn-secondary category-filter active" data-category="All">All</button>
+                <button class="btn btn-secondary category-filter" data-category="Espresso">Espresso</button>
+                <button class="btn btn-secondary category-filter" data-category="Cold Brew">Cold Brew</button>
+                <button class="btn btn-secondary category-filter" data-category="Tea">Tea</button>
+                <button class="btn btn-secondary category-filter" data-category="Pastries">Pastries</button>
+                <button class="btn btn-secondary category-filter" data-category="Seasonal">Seasonal</button>
+            </div>
+
+            <div class="flex gap-2" style="max-width: 600px; margin: 0 auto;">
+                <input type="text" id="search-input" placeholder="Search products..." style="flex: 1; padding: 0.75rem; border-radius: 5px; border: 1px solid var(--sand);">
+                <select id="sort-select" style="padding: 0.75rem; border-radius: 5px; border: 1px solid var(--sand);">
+                    <option value="popular">Popular</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="grid grid-4" id="products-grid">
+            @foreach (var item in Model)
+            {
+                <div class="card product-item"
+                     data-category="@item.Category"
+                     data-name="@item.Name.ToLower()"
+                     data-price="@item.Price">
+
+                    <img src="@(string.IsNullOrEmpty(item.ImageUrl) ? "/img/default-product.jpg" : item.ImageUrl)" alt="@item.Name">
+                    <div class="card-content">
+                        <h3>@item.Name</h3>
+                        <p>@item.Description</p>
+                        <p class="mb-2"><strong>$@item.Price.ToString("0.00")</strong></p>
+                        <div class="flex gap-1">
+                            <a href="/Product/Details/@item.Id" class="btn" style="flex: 1;">View</a>
+                            <button class="btn btn-secondary add-to-cart" data-id="@item.Id" style="flex: 1;">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        // Sənin yazdığın məntiqi MVC-yə uyğunlaşdırdıq
+        const searchInput = document.getElementById('search-input');
+        const sortSelect = document.getElementById('sort-select');
+        const categoryBtns = document.querySelectorAll('.category-filter');
+        const grid = document.getElementById('products-grid');
+
+        function filterProducts() {
+            const searchQuery = searchInput.value.toLowerCase();
+            const activeCategory = document.querySelector('.category-filter.active').dataset.category;
+            const sortType = sortSelect.value;
+
+            // Bütün məhsul kartlarını alırıq
+            let cards = Array.from(document.querySelectorAll('.product-item'));
+
+            cards.forEach(card => {
+                const category = card.dataset.category;
+                const name = card.dataset.name;
+
+                // Həm axtarışa, həm də kateqoriyaya görə yoxlayırıq
+                const matchesCategory = activeCategory === 'All' || category === activeCategory;
+                const matchesSearch = name.includes(searchQuery);
+
+                if (matchesCategory && matchesSearch) {
+                    card.style.display = 'block'; // Göstər
+                } else {
+                    card.style.display = 'none';  // Gizlət
+                }
+            });
+
+            // Sort (Sıralama) Məntiqi
+            const visibleCards = cards.filter(card => card.style.display !== 'none');
+
+            visibleCards.sort((a, b) => {
+                const priceA = parseFloat(a.dataset.price);
+                const priceB = parseFloat(b.dataset.price);
+
+                if (sortType === 'price-low') return priceA - priceB;
+                if (sortType === 'price-high') return priceB - priceA;
+                return 0; // Popular - default halda dəyişmirik
+            });
+
+            // Sıralanmış kartları yenidən DOM-a əlavə edirik
+            visibleCards.forEach(card => grid.appendChild(card));
+        }
+
+        // Event Listeners (Tətikləyicilər)
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                filterProducts();
+            });
+        });
+
+        searchInput.addEventListener('input', filterProducts);
+        sortSelect.addEventListener('change', filterProducts);
+
+        // Add to Cart simulyasiyası
+        document.querySelectorAll('.add-to-cart').forEach(btn => {
+            btn.addEventListener('click', function() {
+                alert("Məhsul səbətə əlavə edildi: ID " + this.dataset.id);
+            });
+        });
+    </script>
+}
