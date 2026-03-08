@@ -150,3 +150,16 @@ C:\Users\Acer\OneDrive\Desktop\VusuLastSummer\VusuLastSummer\obj\Debug\net8.0\re
 C:\Users\Acer\OneDrive\Desktop\VusuLastSummer\VusuLastSummer\obj\Debug\net8.0\VusuLastSummer.pdb
 C:\Users\Acer\OneDrive\Desktop\VusuLastSummer\VusuLastSummer\obj\Debug\net8.0\VusuLastSummer.genruntimeconfig.cache
 C:\Users\Acer\OneDrive\Desktop\VusuLastSummer\VusuLastSummer\obj\Debug\net8.0\ref\VusuLastSummer.dll
+C:\Users\Acer\OneDrive\Desktop\Vusulayihe\VusuLastSummer\VusuLastSummer\obj\Debug\net8.0\VusuLastSummer.csproj.AssemblyReference.cache
+C:\Users\Acer\OneDrive\Desktop\Vusulayihe\VusuLastSummer\VusuLastSummer\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\Users\Acer\OneDrive\Desktop\Vusulayihe\VusuLastSummer\VusuLastSummer\obj\Debug\net8.0\VusuLastSummer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Acer\OneDrive\Desktop\Vusulayihe\VusuLastSummer\VusuLastSummer\obj\Debug\net8.0\VusuLastSummer.AssemblyInfoInputs.cache
+C:\Users\Acer\OneDrive\Desktop\Vusulayihe\VusuLastSummer\VusuLastSummer\obj\Debug\net8.0\VusuLastSummer.AssemblyInfo.cs
+C:\Users\Acer\OneDrive\Desktop\Vusulayihe\VusuLastSummer\VusuLastSummer\obj\Debug\net8.0\VusuLastSummer.csproj.CoreCompileInputs.cache
+C:\Users\Acer\OneDrive\Desktop\Vusulayihe\VusuLastSummer\VusuLastSummer\obj\Debug\net8.0\VusuLastSummer.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Acer\OneDrive\Desktop\Vusulayihe\VusuLastSummer\VusuLastSummer\obj\Debug\net8.0\VusuLastSummer.RazorAssemblyInfo.cache
+C:\Users\Acer\OneDrive\Desktop\Vusulayihe\VusuLastSummer\VusuLastSummer\obj\Debug\net8.0\VusuLastSummer.RazorAssemblyInfo.cs
+C:\Users\Acer\OneDrive\Desktop\Vusulayihe\VusuLastSummer\VusuLastSummer\obj\Debug\net8.0\VusuLastSummer.sourcelink.json
+C:\Users\Acer\OneDrive\Desktop\Vusulayihe\VusuLastSummer\VusuLastSummer\obj\Debug\net8.0\VusuLastSummer.dll
+C:\Users\Acer\OneDrive\Desktop\Vusulayihe\VusuLastSummer\VusuLastSummer\obj\Debug\net8.0\refint\VusuLastSummer.dll
+C:\Users\Acer\OneDrive\Desktop\Vusulayihe\VusuLastSummer\VusuLastSummer\obj\Debug\net8.0\VusuLastSummer.pdb

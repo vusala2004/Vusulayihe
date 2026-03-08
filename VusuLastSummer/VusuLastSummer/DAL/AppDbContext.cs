@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using VusuLastSummer.Models;
-using VusuLastSummer.Models.Base;
 
 namespace VusuLastSummer.DAL
 {

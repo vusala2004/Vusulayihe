@@ -1,0 +1,118 @@
+﻿@using VusuLastSummer.ViewModels
+@using VusuLastSummer.ViewModels.Product
+@model ProductVM
+@{
+    ViewData["Title"] = Model.Name + " - Last Summer Coffee";
+}
+
+<section class="section">
+    <div class="container">
+        <div class="grid grid-2" id="product-details">
+            <div>
+                <img src="@Model.ImageUrl" alt="@Model.Name" style="width: 100%; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            </div>
+
+            <div>
+                <h1>@Model.Name</h1>
+                <p class="mb-2">@Model.Description</p>
+                <h2 class="mb-2" style="color: var(--gold);">$<span id="product-price">@Model.Price.ToString("0.00")</span></h2>
+
+                <form asp-controller="Cart" asp-action="Add" method="post">
+                    <input type="hidden" name="ProductId" value="@Model.Id" />
+
+                    <div class="mb-2">
+                        <label><strong>Size:</strong></label>
+                        <div class="flex gap-2 mt-1">
+                            <button type="button" class="btn btn-secondary size-btn active" data-size="Small" data-price="0">Small</button>
+                            <button type="button" class="btn btn-secondary size-btn" data-size="Medium" data-price="0.50">Medium (+$0.50)</button>
+                            <button type="button" class="btn btn-secondary size-btn" data-size="Large" data-price="1.00">Large (+$1.00)</button>
+                        </div>
+                        <input type="hidden" name="Size" id="selected-size" value="Small" />
+                    </div>
+
+                    <div class="mb-2">
+                        <label><strong>Quantity:</strong></label>
+                        <div class="flex gap-2 mt-1 align-center" style="align-items: center;">
+                            <button type="button" class="btn btn-secondary" id="decrease-qty">-</button>
+                            <span id="quantity-display" style="font-size: 1.2rem; min-width: 30px; text-align: center;">1</span>
+                            <button type="button" class="btn btn-secondary" id="increase-qty">+</button>
+                        </div>
+                        <input type="hidden" name="Quantity" id="selected-quantity" value="1" />
+                    </div>
+
+                    <button type="submit" class="btn btn-full mt-3">Add to Cart</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" style="background: var(--sand);">
+    <div class="container">
+        <h2>Related Products</h2>
+        <div class="grid grid-3" id="related-products">
+
+            @foreach (var related in Model.RelatedProducts)
+            {
+                <div class="card">
+                    <img src="@related.ImageUrl" alt="@related.Name" style="width: 100%; border-radius: 10px 10px 0 0;">
+                    <div class="card-content">
+                        <h3>@related.Name</h3>
+                        <p class="mb-2"><strong>$@related.Price.ToString("0.00")</strong></p>
+                        <a asp-controller="Menu" asp-action="Details" asp-route-id="@related.Id" class="btn btn-full">View Details</a>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        // C#-dan əsas qiyməti alırıq
+        const basePrice = @Model.Price.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture);
+        let currentSizePrice = 0;
+        let currentQuantity = 1;
+
+        const priceDisplay = document.getElementById('product-price');
+        const sizeInput = document.getElementById('selected-size');
+        const qtyInput = document.getElementById('selected-quantity');
+        const qtyDisplay = document.getElementById('quantity-display');
+
+        function updatePrice() {
+            const total = (parseFloat(basePrice) + parseFloat(currentSizePrice)) * currentQuantity;
+            priceDisplay.textContent = total.toFixed(2);
+        }
+
+        // Ölçü düymələri
+        document.querySelectorAll('.size-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+
+                currentSizePrice = this.dataset.price;
+                sizeInput.value = this.dataset.size; // Form göndəriləndə bu məlumat gedəcək
+                updatePrice();
+            });
+        });
+
+        // Sayı artırmaq
+        document.getElementById('increase-qty').addEventListener('click', () => {
+            currentQuantity++;
+            qtyDisplay.textContent = currentQuantity;
+            qtyInput.value = currentQuantity;
+            updatePrice();
+        });
+
+        // Sayı azaltmaq
+        document.getElementById('decrease-qty').addEventListener('click', () => {
+            if (currentQuantity > 1) {
+                currentQuantity--;
+                qtyDisplay.textContent = currentQuantity;
+                qtyInput.value = currentQuantity;
+                updatePrice();
+            }
+        });
+    </script>
+}

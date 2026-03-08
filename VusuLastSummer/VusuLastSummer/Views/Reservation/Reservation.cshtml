@@ -1,0 +1,107 @@
+﻿@using VusuLastSummer.ViewModels
+@using VusuLastSummer.ViewModels.Reservation
+@model ReservationVM
+@{
+    ViewData["Title"] = "Reservations - Last Summer";
+}
+
+<section class="section">
+    <div class="container">
+        <h1 class="text-center">Table Reservation</h1>
+
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div style="background-color: #d4edda; color: #155724; padding: 1rem; border-radius: 5px; margin-bottom: 2rem; text-align: center; font-weight: bold;">
+                @TempData["SuccessMessage"]
+            </div>
+        }
+
+        <div class="grid grid-2 gap-3">
+            <div>
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Make a Reservation</h3>
+                        <form asp-controller="Reservation" asp-action="Index" method="post">
+                            <div class="form-group">
+                                <label asp-for="Name">Full Name *</label>
+                                <input asp-for="Name" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Email">Email *</label>
+                                <input asp-for="Email" type="email" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Phone">Phone *</label>
+                                <input asp-for="Phone" type="tel" required>
+                            </div>
+
+                            <div class="flex gap-2">
+                                <div class="form-group" style="flex: 1;">
+                                    <label asp-for="Date">Date *</label>
+                                    <input asp-for="Date" type="date" required>
+                                </div>
+                                <div class="form-group" style="flex: 1;">
+                                    <label asp-for="Time">Time *</label>
+                                    <input asp-for="Time" type="time" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Guests">Number of Guests *</label>
+                                <input asp-for="Guests" type="number" min="1" max="10" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Requests">Special Requests</label>
+                                <textarea asp-for="Requests" rows="3"></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-full">Book Table</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="card mb-3">
+                    <div class="card-content">
+                        <h3>Reservation Policy</h3>
+                        <ul style="list-style-position: inside; margin-top: 1rem;">
+                            <li class="mb-1">Tables are held for 15 minutes past the reservation time.</li>
+                            <li class="mb-1">For parties larger than 10, please contact us directly.</li>
+                            <li class="mb-1">Cancellations must be made at least 2 hours in advance.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Your Reservations</h3>
+                        <div id="reservation-history" class="mt-2">
+                            @if (!Model.History.Any())
+                            {
+                                <p>You have no current reservations.</p>
+                            }
+                            else
+                            {
+                                @foreach (var res in Model.History)
+                                {
+                                    <div style="background: var(--sand); padding: 1rem; border-radius: 5px; margin-bottom: 1rem;" class="flex justify-between align-center">
+                                        <div>
+                                            <p><strong>@res.Date.ToString("dd MMM yyyy") at @res.Time</strong></p>
+                                            <p>@res.Guests Guests</p>
+                                            <p>Status: <span style="color: @(res.Status == "Upcoming" ? "var(--gold)" : "green"); font-weight: bold;">@res.Status</span></p>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

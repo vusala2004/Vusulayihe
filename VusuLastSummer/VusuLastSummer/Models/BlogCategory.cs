@@ -1,4 +1,4 @@
-﻿namespace VusuLastSummer.Models.Base
+﻿namespace VusuLastSummer.Models
 {
     public class BlogCategory
     {

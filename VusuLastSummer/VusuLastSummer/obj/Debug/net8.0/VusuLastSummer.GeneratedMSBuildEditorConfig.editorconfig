@@ -80,20 +80,28 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Acer/OneDrive/Desktop/Vusulayihe/VusuLastSummer/VusuLastSummer/Views/Home/Product.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcm9kdWN0LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Acer/OneDrive/Desktop/Vusulayihe/VusuLastSummer/VusuLastSummer/Views/Home/Rezervation.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZXplcnZhdGlvbi5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/Acer/OneDrive/Desktop/Vusulayihe/VusuLastSummer/VusuLastSummer/Views/Home/Track.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxUcmFjay5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Acer/OneDrive/Desktop/Vusulayihe/VusuLastSummer/VusuLastSummer/Views/Menu/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVudVxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Acer/OneDrive/Desktop/Vusulayihe/VusuLastSummer/VusuLastSummer/Views/Menu/Menu.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVudVxNZW51LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Acer/OneDrive/Desktop/Vusulayihe/VusuLastSummer/VusuLastSummer/Views/Profile/Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxQcm9maWxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Acer/OneDrive/Desktop/Vusulayihe/VusuLastSummer/VusuLastSummer/Views/Reservation/Reservation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzZXJ2YXRpb25cUmVzZXJ2YXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Acer/OneDrive/Desktop/Vusulayihe/VusuLastSummer/VusuLastSummer/Views/Track/Track.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhY2tcVHJhY2suY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Acer/OneDrive/Desktop/Vusulayihe/VusuLastSummer/VusuLastSummer/Views/_ViewImports.cshtml]

@@ -3,12 +3,72 @@
   "WorkspaceRootPath": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|c:\\users\\acer\\onedrive\\desktop\\vusulayihe\\vusulastsummer\\vusulastsummer\\controllers\\aboutcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|solutionrelative:vusulastsummer\\controllers\\aboutcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|c:\\users\\acer\\onedrive\\desktop\\vusulayihe\\vusulastsummer\\vusulastsummer\\models\\blogpost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|solutionrelative:vusulastsummer\\models\\blogpost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|c:\\users\\acer\\onedrive\\desktop\\vusulayihe\\vusulastsummer\\vusulastsummer\\views\\home\\about.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|solutionrelative:vusulastsummer\\views\\home\\about.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|c:\\users\\acer\\onedrive\\desktop\\vusulayihe\\vusulastsummer\\vusulastsummer\\views\\track\\track.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|solutionrelative:vusulastsummer\\views\\track\\track.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|c:\\users\\acer\\onedrive\\desktop\\vusulayihe\\vusulastsummer\\vusulastsummer\\controllers\\trackcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|solutionrelative:vusulastsummer\\controllers\\trackcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|c:\\users\\acer\\onedrive\\desktop\\vusulayihe\\vusulastsummer\\vusulastsummer\\viewmodels\\track\\trackordervm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|solutionrelative:vusulastsummer\\viewmodels\\track\\trackordervm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|c:\\users\\acer\\onedrive\\desktop\\vusulayihe\\vusulastsummer\\vusulastsummer\\views\\reservation\\reservation.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|solutionrelative:vusulastsummer\\views\\reservation\\reservation.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|c:\\users\\acer\\onedrive\\desktop\\vusulayihe\\vusulastsummer\\vusulastsummer\\controllers\\reservationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|solutionrelative:vusulastsummer\\controllers\\reservationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|c:\\users\\acer\\onedrive\\desktop\\vusulayihe\\vusulastsummer\\vusulastsummer\\viewmodels\\reservation\\reservationvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|solutionrelative:vusulastsummer\\viewmodels\\reservation\\reservationvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|c:\\users\\acer\\onedrive\\desktop\\vusulayihe\\vusulastsummer\\vusulastsummer\\viewmodels\\reservation\\reservationhistoryvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|solutionrelative:vusulastsummer\\viewmodels\\reservation\\reservationhistoryvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|c:\\users\\acer\\onedrive\\desktop\\vusulayihe\\vusulastsummer\\vusulastsummer\\views\\profile\\profile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|solutionrelative:vusulastsummer\\views\\profile\\profile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|c:\\users\\acer\\onedrive\\desktop\\vusulayihe\\vusulastsummer\\vusulastsummer\\viewmodels\\profile\\profilevm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|solutionrelative:vusulastsummer\\viewmodels\\profile\\profilevm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|c:\\users\\acer\\onedrive\\desktop\\vusulayihe\\vusulastsummer\\vusulastsummer\\controllers\\profilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|solutionrelative:vusulastsummer\\controllers\\profilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|c:\\users\\acer\\onedrive\\desktop\\vusulayihe\\vusulastsummer\\vusulastsummer\\viewmodels\\profile\\userordervm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|solutionrelative:vusulastsummer\\viewmodels\\profile\\userordervm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|c:\\users\\acer\\onedrive\\desktop\\vusulayihe\\vusulastsummer\\vusulastsummer\\views\\menu\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|solutionrelative:vusulastsummer\\views\\menu\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|c:\\users\\acer\\onedrive\\desktop\\vusulayihe\\vusulastsummer\\vusulastsummer\\viewmodels\\home\\homevm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|solutionrelative:vusulastsummer\\viewmodels\\home\\homevm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|c:\\users\\acer\\onedrive\\desktop\\vusulayihe\\vusulastsummer\\vusulastsummer\\controllers\\menucontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|solutionrelative:vusulastsummer\\controllers\\menucontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|c:\\users\\acer\\onedrive\\desktop\\vusulayihe\\vusulastsummer\\vusulastsummer\\viewmodels\\product\\productvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|solutionrelative:vusulastsummer\\viewmodels\\product\\productvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|c:\\users\\acer\\onedrive\\desktop\\vusulayihe\\vusulastsummer\\vusulastsummer\\controllers\\aboutcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|solutionrelative:vusulastsummer\\controllers\\aboutcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|c:\\users\\acer\\onedrive\\desktop\\vusulayihe\\vusulastsummer\\vusulastsummer\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -19,64 +79,8 @@
       "RelativeMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|solutionrelative:vusulastsummer\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|c:\\users\\acer\\onedrive\\desktop\\vusulayihe\\vusulastsummer\\vusulastsummer\\views\\home\\rezervation.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|solutionrelative:vusulastsummer\\views\\home\\rezervation.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|c:\\users\\acer\\onedrive\\desktop\\vusulayihe\\vusulastsummer\\vusulastsummer\\views\\home\\track.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|solutionrelative:vusulastsummer\\views\\home\\track.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|c:\\users\\acer\\onedrive\\desktop\\vusulayihe\\vusulastsummer\\vusulastsummer\\views\\home\\checkout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|solutionrelative:vusulastsummer\\views\\home\\checkout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|c:\\users\\acer\\onedrive\\desktop\\vusulayihe\\vusulastsummer\\vusulastsummer\\views\\home\\cart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|solutionrelative:vusulastsummer\\views\\home\\cart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|c:\\users\\acer\\onedrive\\desktop\\vusulayihe\\vusulastsummer\\vusulastsummer\\views\\home\\product.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|solutionrelative:vusulastsummer\\views\\home\\product.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|c:\\users\\acer\\onedrive\\desktop\\vusulayihe\\vusulastsummer\\vusulastsummer\\views\\home\\menyu.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|solutionrelative:vusulastsummer\\views\\home\\menyu.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|c:\\users\\acer\\onedrive\\desktop\\vusulayihe\\vusulastsummer\\vusulastsummer\\views\\home\\blog.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|solutionrelative:vusulastsummer\\views\\home\\blog.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|c:\\users\\acer\\onedrive\\desktop\\vusulayihe\\vusulastsummer\\vusulastsummer\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|solutionrelative:vusulastsummer\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|c:\\users\\acer\\onedrive\\desktop\\vusulayihe\\vusulastsummer\\vusulastsummer\\dal\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|solutionrelative:vusulastsummer\\dal\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|c:\\users\\acer\\onedrive\\desktop\\vusulayihe\\vusulastsummer\\vusulastsummer\\models\\tag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|solutionrelative:vusulastsummer\\models\\tag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|c:\\users\\acer\\onedrive\\desktop\\vusulayihe\\vusulastsummer\\vusulastsummer\\models\\size.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|solutionrelative:vusulastsummer\\models\\size.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|c:\\users\\acer\\onedrive\\desktop\\vusulayihe\\vusulastsummer\\vusulastsummer\\models\\productsize.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|solutionrelative:vusulastsummer\\models\\productsize.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|c:\\users\\acer\\onedrive\\desktop\\vusulayihe\\vusulastsummer\\vusulastsummer\\models\\productimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|solutionrelative:vusulastsummer\\models\\productimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|c:\\users\\acer\\onedrive\\desktop\\vusulayihe\\vusulastsummer\\vusulastsummer\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|solutionrelative:vusulastsummer\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|c:\\users\\acer\\onedrive\\desktop\\vusulayihe\\vusulastsummer\\vusulastsummer\\models\\appuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11C3035C-9CB8-439D-8B06-D86E069E2A1B}|VusuLastSummer\\VusuLastSummer.csproj|solutionrelative:vusulastsummer\\models\\appuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -91,27 +95,196 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "AboutController.cs",
-              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Controllers\\AboutController.cs",
-              "RelativeDocumentMoniker": "VusuLastSummer\\Controllers\\AboutController.cs",
-              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Controllers\\AboutController.cs",
-              "RelativeToolTip": "VusuLastSummer\\Controllers\\AboutController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "BlogPost.cs",
+              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Models\\BlogPost.cs",
+              "RelativeDocumentMoniker": "VusuLastSummer\\Models\\BlogPost.cs",
+              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Models\\BlogPost.cs",
+              "RelativeToolTip": "VusuLastSummer\\Models\\BlogPost.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABTAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-08T10:12:27.91Z",
+              "WhenOpened": "2026-03-08T18:17:41.149Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Track.cshtml",
+              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Views\\Track\\Track.cshtml",
+              "RelativeDocumentMoniker": "VusuLastSummer\\Views\\Track\\Track.cshtml",
+              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Views\\Track\\Track.cshtml",
+              "RelativeToolTip": "VusuLastSummer\\Views\\Track\\Track.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-08T18:06:03.33Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "VusuLastSummer\\Views\\Home\\Index.cshtml",
-              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "VusuLastSummer\\Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHwAAAABAAAAAAAAAA==",
+              "Title": "TrackController.cs",
+              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Controllers\\TrackController.cs",
+              "RelativeDocumentMoniker": "VusuLastSummer\\Controllers\\TrackController.cs",
+              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Controllers\\TrackController.cs",
+              "RelativeToolTip": "VusuLastSummer\\Controllers\\TrackController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-08T18:04:54.003Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "TrackOrderVM.cs",
+              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\ViewModels\\Track\\TrackOrderVM.cs",
+              "RelativeDocumentMoniker": "VusuLastSummer\\ViewModels\\Track\\TrackOrderVM.cs",
+              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\ViewModels\\Track\\TrackOrderVM.cs",
+              "RelativeToolTip": "VusuLastSummer\\ViewModels\\Track\\TrackOrderVM.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-08T18:04:10.779Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Reservation.cshtml",
+              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Views\\Reservation\\Reservation.cshtml",
+              "RelativeDocumentMoniker": "VusuLastSummer\\Views\\Reservation\\Reservation.cshtml",
+              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Views\\Reservation\\Reservation.cshtml",
+              "RelativeToolTip": "VusuLastSummer\\Views\\Reservation\\Reservation.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-08T10:08:45.094Z",
+              "WhenOpened": "2026-03-08T17:57:40.098Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ReservationController.cs",
+              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Controllers\\ReservationController.cs",
+              "RelativeDocumentMoniker": "VusuLastSummer\\Controllers\\ReservationController.cs",
+              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Controllers\\ReservationController.cs",
+              "RelativeToolTip": "VusuLastSummer\\Controllers\\ReservationController.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAIwCUAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-08T17:54:19.899Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ReservationVM.cs",
+              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\ViewModels\\Reservation\\ReservationVM.cs",
+              "RelativeDocumentMoniker": "VusuLastSummer\\ViewModels\\Reservation\\ReservationVM.cs",
+              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\ViewModels\\Reservation\\ReservationVM.cs",
+              "RelativeToolTip": "VusuLastSummer\\ViewModels\\Reservation\\ReservationVM.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAAwA4AAABjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-08T17:53:28.421Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ReservationHistoryVM.cs",
+              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\ViewModels\\Reservation\\ReservationHistoryVM.cs",
+              "RelativeDocumentMoniker": "VusuLastSummer\\ViewModels\\Reservation\\ReservationHistoryVM.cs",
+              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\ViewModels\\Reservation\\ReservationHistoryVM.cs",
+              "RelativeToolTip": "VusuLastSummer\\ViewModels\\Reservation\\ReservationHistoryVM.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-08T17:52:35.126Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Profile.cshtml",
+              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Views\\Profile\\Profile.cshtml",
+              "RelativeDocumentMoniker": "VusuLastSummer\\Views\\Profile\\Profile.cshtml",
+              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Views\\Profile\\Profile.cshtml",
+              "RelativeToolTip": "VusuLastSummer\\Views\\Profile\\Profile.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-08T17:49:59.118Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ProfileController.cs",
+              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Controllers\\ProfileController.cs",
+              "RelativeDocumentMoniker": "VusuLastSummer\\Controllers\\ProfileController.cs",
+              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Controllers\\ProfileController.cs",
+              "RelativeToolTip": "VusuLastSummer\\Controllers\\ProfileController.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAxwCgAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-08T17:48:35.834Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ProfileVM.cs",
+              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\ViewModels\\Profile\\ProfileVM.cs",
+              "RelativeDocumentMoniker": "VusuLastSummer\\ViewModels\\Profile\\ProfileVM.cs",
+              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\ViewModels\\Profile\\ProfileVM.cs",
+              "RelativeToolTip": "VusuLastSummer\\ViewModels\\Profile\\ProfileVM.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAtwBMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-08T17:47:41.919Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "UserOrderVM.cs",
+              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\ViewModels\\Profile\\UserOrderVM.cs",
+              "RelativeDocumentMoniker": "VusuLastSummer\\ViewModels\\Profile\\UserOrderVM.cs",
+              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\ViewModels\\Profile\\UserOrderVM.cs",
+              "RelativeToolTip": "VusuLastSummer\\ViewModels\\Profile\\UserOrderVM.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-08T17:47:07.7Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Views\\Menu\\Details.cshtml",
+              "RelativeDocumentMoniker": "VusuLastSummer\\Views\\Menu\\Details.cshtml",
+              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Views\\Menu\\Details.cshtml",
+              "RelativeToolTip": "VusuLastSummer\\Views\\Menu\\Details.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-08T17:42:19.186Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "HomeVM.cs",
+              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\ViewModels\\Home\\HomeVM.cs",
+              "RelativeDocumentMoniker": "VusuLastSummer\\ViewModels\\Home\\HomeVM.cs",
+              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\ViewModels\\Home\\HomeVM.cs",
+              "RelativeToolTip": "VusuLastSummer\\ViewModels\\Home\\HomeVM.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-08T17:41:25.18Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "MenuController.cs",
+              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Controllers\\MenuController.cs",
+              "RelativeDocumentMoniker": "VusuLastSummer\\Controllers\\MenuController.cs",
+              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Controllers\\MenuController.cs",
+              "RelativeToolTip": "VusuLastSummer\\Controllers\\MenuController.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAiwCYAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-08T17:40:17.486Z",
               "EditorCaption": ""
             },
             {
@@ -120,7 +293,44 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 15,
+              "Title": "ProductVM.cs",
+              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\ViewModels\\Product\\ProductVM.cs",
+              "RelativeDocumentMoniker": "VusuLastSummer\\ViewModels\\Product\\ProductVM.cs",
+              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\ViewModels\\Product\\ProductVM.cs",
+              "RelativeToolTip": "VusuLastSummer\\ViewModels\\Product\\ProductVM.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAxwAwAAABPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-08T17:39:29.415Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "AboutController.cs",
+              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Controllers\\AboutController.cs",
+              "RelativeDocumentMoniker": "VusuLastSummer\\Controllers\\AboutController.cs",
+              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Controllers\\AboutController.cs",
+              "RelativeToolTip": "VusuLastSummer\\Controllers\\AboutController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-08T10:12:27.91Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "VusuLastSummer\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "VusuLastSummer\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-08T10:08:45.094Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "VusuLastSummer\\Views\\Shared\\_Layout.cshtml",
@@ -128,37 +338,11 @@
               "RelativeToolTip": "VusuLastSummer\\Views\\Shared\\_Layout.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-08T10:08:40.544Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-08T10:08:40.544Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Product.cshtml",
-              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Views\\Home\\Product.cshtml",
-              "RelativeDocumentMoniker": "VusuLastSummer\\Views\\Home\\Product.cshtml",
-              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Views\\Home\\Product.cshtml",
-              "RelativeToolTip": "VusuLastSummer\\Views\\Home\\Product.cshtml",
-              "ViewState": "AgIAAEwAAAAAAAAAAAAowGEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-06T21:57:17.978Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Rezervation.cshtml",
-              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Views\\Home\\Rezervation.cshtml",
-              "RelativeDocumentMoniker": "VusuLastSummer\\Views\\Home\\Rezervation.cshtml",
-              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Views\\Home\\Rezervation.cshtml",
-              "RelativeToolTip": "VusuLastSummer\\Views\\Home\\Rezervation.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-06T21:54:50.48Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 19,
               "Title": "Track.cshtml",
               "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Views\\Home\\Track.cshtml",
               "RelativeDocumentMoniker": "VusuLastSummer\\Views\\Home\\Track.cshtml",
@@ -167,163 +351,6 @@
               "ViewState": "AgIAACYAAAAAAAAAAAAmwDsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2026-03-06T21:54:32.345Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Checkout.cshtml",
-              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Views\\Home\\Checkout.cshtml",
-              "RelativeDocumentMoniker": "VusuLastSummer\\Views\\Home\\Checkout.cshtml",
-              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Views\\Home\\Checkout.cshtml",
-              "RelativeToolTip": "VusuLastSummer\\Views\\Home\\Checkout.cshtml",
-              "ViewState": "AgIAAEsAAAAAAAAAAAAmwGAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-06T21:53:48.74Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Cart.cshtml",
-              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Views\\Home\\Cart.cshtml",
-              "RelativeDocumentMoniker": "VusuLastSummer\\Views\\Home\\Cart.cshtml",
-              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Views\\Home\\Cart.cshtml",
-              "RelativeToolTip": "VusuLastSummer\\Views\\Home\\Cart.cshtml",
-              "ViewState": "AgIAAEYAAAAAAAAAAAAmwFsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-06T21:53:24.817Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Menyu.cshtml",
-              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Views\\Home\\Menyu.cshtml",
-              "RelativeDocumentMoniker": "VusuLastSummer\\Views\\Home\\Menyu.cshtml",
-              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Views\\Home\\Menyu.cshtml",
-              "RelativeToolTip": "VusuLastSummer\\Views\\Home\\Menyu.cshtml",
-              "ViewState": "AgIAADoAAAAAAAAAAAAowE8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-06T21:52:59.403Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Blog.cshtml",
-              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Views\\Home\\Blog.cshtml",
-              "RelativeDocumentMoniker": "VusuLastSummer\\Views\\Home\\Blog.cshtml",
-              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Views\\Home\\Blog.cshtml",
-              "RelativeToolTip": "VusuLastSummer\\Views\\Home\\Blog.cshtml",
-              "ViewState": "AgIAAIEAAAAAAAAAAAAowJYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-06T21:52:31.52Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "About.cshtml",
-              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Views\\Home\\About.cshtml",
-              "RelativeDocumentMoniker": "VusuLastSummer\\Views\\Home\\About.cshtml",
-              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Views\\Home\\About.cshtml",
-              "RelativeToolTip": "VusuLastSummer\\Views\\Home\\About.cshtml",
-              "ViewState": "AgIAACAAAAAAAAAAAAAUwNgAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-06T21:52:07.991Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "AppDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\DAL\\AppDbContext.cs",
-              "RelativeDocumentMoniker": "VusuLastSummer\\DAL\\AppDbContext.cs",
-              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\DAL\\AppDbContext.cs",
-              "RelativeToolTip": "VusuLastSummer\\DAL\\AppDbContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-06T21:31:19.216Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Tag.cs",
-              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Models\\Tag.cs",
-              "RelativeDocumentMoniker": "VusuLastSummer\\Models\\Tag.cs",
-              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Models\\Tag.cs",
-              "RelativeToolTip": "VusuLastSummer\\Models\\Tag.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-06T21:30:18.223Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "Size.cs",
-              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Models\\Size.cs",
-              "RelativeDocumentMoniker": "VusuLastSummer\\Models\\Size.cs",
-              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Models\\Size.cs",
-              "RelativeToolTip": "VusuLastSummer\\Models\\Size.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-06T21:30:03.799Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "ProductSize.cs",
-              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Models\\ProductSize.cs",
-              "RelativeDocumentMoniker": "VusuLastSummer\\Models\\ProductSize.cs",
-              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Models\\ProductSize.cs",
-              "RelativeToolTip": "VusuLastSummer\\Models\\ProductSize.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-06T21:28:48.682Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "ProductImage.cs",
-              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Models\\ProductImage.cs",
-              "RelativeDocumentMoniker": "VusuLastSummer\\Models\\ProductImage.cs",
-              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Models\\ProductImage.cs",
-              "RelativeToolTip": "VusuLastSummer\\Models\\ProductImage.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-06T21:28:12.331Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "Category.cs",
-              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Models\\Category.cs",
-              "RelativeDocumentMoniker": "VusuLastSummer\\Models\\Category.cs",
-              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Models\\Category.cs",
-              "RelativeToolTip": "VusuLastSummer\\Models\\Category.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAzAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-06T21:25:51.886Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Product.cs",
-              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Models\\Product.cs",
-              "RelativeDocumentMoniker": "VusuLastSummer\\Models\\Product.cs",
-              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Models\\Product.cs",
-              "RelativeToolTip": "VusuLastSummer\\Models\\Product.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAswA0AAAAHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-06T21:25:40.826Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "AppUser.cs",
-              "DocumentMoniker": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Models\\AppUser.cs",
-              "RelativeDocumentMoniker": "VusuLastSummer\\Models\\AppUser.cs",
-              "ToolTip": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Models\\AppUser.cs",
-              "RelativeToolTip": "VusuLastSummer\\Models\\AppUser.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-06T21:19:26.439Z"
             }
           ]
         }

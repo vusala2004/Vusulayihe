@@ -1,4 +1,4 @@
-﻿using VusuLastSummer.Models.Base;
+﻿using VusuLastSummer.Models;
 
 namespace VusuLastSummer.ViewModels.Blog
 {

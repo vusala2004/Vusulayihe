@@ -1,0 +1,184 @@
+﻿@using VusuLastSummer.ViewModels
+@using VusuLastSummer.ViewModels.Track
+@model TrackOrderVM
+@{
+    ViewData["Title"] = "Track Order - Last Summer";
+}
+
+<style>
+    /* Senin yazdığın mükemmel CSS kodları */
+    .progress-bar {
+        display: flex;
+        justify-content: space-between;
+        margin: 2rem 0;
+        position: relative;
+    }
+
+        .progress-bar::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--sand);
+            z-index: 1;
+        }
+
+    .progress-line {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        height: 2px;
+        background: var(--gold);
+        z-index: 2;
+        transition: width 1s ease;
+    }
+
+    .step {
+        background: white;
+        border: 2px solid var(--sand);
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 3;
+        position: relative;
+        transition: all 0.5s ease;
+    }
+
+        .step.active {
+            border-color: var(--gold);
+            background: var(--gold);
+            color: var(--espresso);
+        }
+
+    .step-label {
+        position: absolute;
+        top: 50px;
+        font-size: 0.8rem;
+        white-space: nowrap;
+        text-align: center;
+    }
+</style>
+
+<section class="section">
+    <div class="container">
+        <h1 class="text-center">Track Order</h1>
+
+        <div class="card" style="max-width: 600px; margin: 2rem auto;">
+            <div class="card-content">
+                @if (!Model.IsValidOrder)
+                {
+                    <h3 class="text-center">No active orders found.</h3>
+                    <div class="text-center mt-3">
+                        <a href="/Menu" class="btn">Browse Menu</a>
+                    </div>
+                }
+                else
+                {
+                    <div class="text-center mb-3">
+                        <h3>Order #@Model.OrderNumber</h3>
+                        <p>Estimated Delivery Time:</p>
+                        <div id="countdown" style="font-size: 2.5rem; font-weight: bold; color: var(--gold); font-variant-numeric: tabular-nums;">
+                            @Model.EstimatedMinutes:00
+                        </div>
+                    </div>
+
+                    <div class="progress-bar">
+                        <div class="progress-line" id="progress-line" style="width: 0%;"></div>
+
+                        <div class="step active" data-step="1">
+                            <span>📋</span>
+                            <div class="step-label">Order Placed</div>
+                        </div>
+                        <div class="step" data-step="2">
+                            <span>☕</span>
+                            <div class="step-label">Preparing</div>
+                        </div>
+                        <div class="step" data-step="3">
+                            <span>🚚</span>
+                            <div class="step-label">On the Way</div>
+                        </div>
+                        <div class="step" data-step="4">
+                            <span>🎉</span>
+                            <div class="step-label">Delivered</div>
+                        </div>
+                    </div>
+
+                    <div class="text-center" style="margin-top: 4rem;">
+                        <a href="/Contact" class="btn btn-secondary">Contact Support</a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        // C#'tan gelen başlangıç süresini saniyeye çeviriyoruz
+        let timeLeft = @Model.EstimatedMinutes * 60;
+        let countdownInterval;
+        let currentStep = 1;
+
+        function updateCountdown() {
+            if (timeLeft <= 0) {
+                clearInterval(countdownInterval);
+                document.getElementById('countdown').textContent = 'Delivered!';
+                return;
+            }
+
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            document.getElementById('countdown').textContent =
+                `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            timeLeft--;
+        }
+
+        function animateProgress(step) {
+            const steps = document.querySelectorAll('.step');
+            const line = document.getElementById('progress-line');
+
+            steps.forEach((s, index) => {
+                if (index < step) {
+                    s.classList.add('active');
+                } else {
+                    s.classList.remove('active');
+                }
+            });
+
+            const progress = ((step - 1) / (steps.length - 1)) * 100;
+            line.style.width = `${progress}%`;
+        }
+
+        // Simülasyonu başlat (Gerçek projede bu kısımlar SignalR ile tetiklenir)
+        document.addEventListener('DOMContentLoaded', function() {
+            if (@Model.IsValidOrder.ToString().ToLower()) {
+                animateProgress(1);
+                countdownInterval = setInterval(updateCountdown, 1000);
+
+                // Durumları zamanla değiştir (Simülasyon)
+                setTimeout(() => {
+                    currentStep = 2;
+                    animateProgress(2);
+                }, 5000); // 5 saniye sonra Preparing
+
+                setTimeout(() => {
+                    currentStep = 3;
+                    animateProgress(3);
+                    timeLeft = 10 * 60; // On the way olunca süreyi 10 dakikaya çek
+                }, 15000); // 15 saniye sonra On the Way
+
+                setTimeout(() => {
+                    currentStep = 4;
+                    animateProgress(4);
+                    clearInterval(countdownInterval);
+                    document.getElementById('countdown').textContent = 'Delivered!';
+                }, 25000); // 25 saniye sonra Delivered
+            }
+        });
+    </script>
+}

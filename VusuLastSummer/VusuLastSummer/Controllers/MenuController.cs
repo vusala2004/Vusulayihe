@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using VusuLastSummer.ViewModels.Menu;
+using VusuLastSummer.ViewModels.Product;
 
 namespace VusuLastSummer.Controllers
 {
@@ -18,6 +19,28 @@ namespace VusuLastSummer.Controllers
                 new MenuVM { Id = 6, Name = "Pumpkin Spice Latte", Category = "Seasonal", Description = "Your favorite fall seasonal drink.", Price = 5.00m, ImageUrl = "" }
             };
             return View();
+        }
+        public IActionResult Details(int id)
+        {
+            // Gələcəkdə bu məlumatları Verilənlər Bazasından (SQL) ID-yə görə çəkəcəyik.
+            // Hələlik səhifənin necə işlədiyini görmək üçün Dummy Data yaradırıq:
+
+            var product = new ProductVM
+            {
+                Id = id,
+                Name = "Classic Espresso",
+                Description = "A rich, full-bodied espresso with a sweet caramel finish. Perfectly brewed for your morning start.",
+                Price = 3.50m,
+                ImageUrl = "/images/espresso.jpg", // Öz şəkil yolunu yazarsan
+                Category = "Espresso",
+                RelatedProducts = new List<ProductVM>
+                {
+                    new ProductVM { Id = 2, Name = "Americano", Price = 3.00m, ImageUrl = "/images/americano.jpg" },
+                    new ProductVM { Id = 3, Name = "Macchiato", Price = 4.00m, ImageUrl = "/images/macchiato.jpg" }
+                }
+            };
+
+            return View(product);
         }
     }
 }
