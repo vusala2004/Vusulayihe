@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VusuLastSummer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b98f6b7a686e5bc0c0bdbc6f7f4b086f8e95477b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+efe8a94ad6a06b769e1f83e36920f24f9c3f80c2")]
 [assembly: System.Reflection.AssemblyProductAttribute("VusuLastSummer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VusuLastSummer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
