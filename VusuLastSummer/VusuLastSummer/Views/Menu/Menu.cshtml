@@ -30,24 +30,35 @@
         </div>
 
         <div class="grid grid-4" id="products-grid">
-            @foreach (var item in Model)
-            {
-                <div class="card product-item"
-                     data-category="@item.Category"
-                     data-name="@item.Name.ToLower()"
-                     data-price="@item.Price">
 
-                    <img src="@(string.IsNullOrEmpty(item.ImageUrl) ? "/img/default-product.jpg" : item.ImageUrl)" alt="@item.Name">
-                    <div class="card-content">
-                        <h3>@item.Name</h3>
-                        <p>@item.Description</p>
-                        <p class="mb-2"><strong>$@item.Price.ToString("0.00")</strong></p>
-                        <div class="flex gap-1">
-                            <a href="/Product/Details/@item.Id" class="btn" style="flex: 1;">View</a>
-                            <button class="btn btn-secondary add-to-cart" data-id="@item.Id" style="flex: 1;">Add to Cart</button>
+            @if (Model == null || !Model.Any())
+            {
+                <div style="grid-column: span 4; text-align: center; padding: 50px;">
+                    <p>Hələlik menyuya heç bir məhsul əlavə olunmayıb. ☕</p>
+                </div>
+            }
+            else
+            {
+                @foreach (var item in Model)
+                {
+                    <div class="card product-item"
+                         data-category="@item.Category"
+                         data-name="@item.Name?.ToLower()"
+                         data-price="@item.Price">
+
+                        <img src="@(string.IsNullOrEmpty(item.ImageUrl) ? "/img/default-product.jpg" : item.ImageUrl)" alt="@item.Name" />
+
+                        <div class="card-content">
+                            <h3>@item.Name</h3>
+                            <p>@item.Description</p>
+                            <p class="mb-2"><strong>$@item.Price.ToString("0.00")</strong></p>
+                            <div class="flex gap-1">
+                                <a href="/Product/Details/@item.Id" class="btn" style="flex: 1;">View</a>
+                                <button class="btn btn-secondary add-to-cart" data-id="@item.Id" style="flex: 1;">Add to Cart</button>
+                            </div>
                         </div>
                     </div>
-                </div>
+                }
             }
         </div>
     </div>
@@ -63,7 +74,12 @@
 
         function filterProducts() {
             const searchQuery = searchInput.value.toLowerCase();
-            const activeCategory = document.querySelector('.category-filter.active').dataset.category;
+            const activeCategoryBtn = document.querySelector('.category-filter.active');
+
+            // Əgər aktiv kateqoriya düyməsi yoxdursa, funksiya dayansın
+            if (!activeCategoryBtn) return;
+
+            const activeCategory = activeCategoryBtn.dataset.category;
             const sortType = sortSelect.value;
 
             // Bütün məhsul kartlarını alırıq
@@ -71,7 +87,7 @@
 
             cards.forEach(card => {
                 const category = card.dataset.category;
-                const name = card.dataset.name;
+                const name = card.dataset.name || "";
 
                 // Həm axtarışa, həm də kateqoriyaya görə yoxlayırıq
                 const matchesCategory = activeCategory === 'All' || category === activeCategory;
@@ -109,8 +125,12 @@
             });
         });
 
-        searchInput.addEventListener('input', filterProducts);
-        sortSelect.addEventListener('change', filterProducts);
+        if (searchInput) {
+            searchInput.addEventListener('input', filterProducts);
+        }
+        if (sortSelect) {
+            sortSelect.addEventListener('change', filterProducts);
+        }
 
         // Add to Cart simulyasiyası
         document.querySelectorAll('.add-to-cart').forEach(btn => {

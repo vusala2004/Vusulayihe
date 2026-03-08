@@ -23,7 +23,7 @@ namespace VusuLastSummer.Controllers
         }
 
         [HttpPost]
-        public IActionResult Index(ReservationVM model)
+        public IActionResult Reservation(ReservationVM model)
         {
             if (ModelState.IsValid)
             {

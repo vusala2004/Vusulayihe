@@ -14,7 +14,8 @@
             <button class="btn btn-secondary blog-category" data-category="News">News</button>
         </div>
         <div class="grid grid-3" id="blog-grid">
-            @if (!Model.Posts.Any())
+
+            @if (Model == null || Model.Posts == null || !Model.Posts.Any())
             {
                 <p class="text-center" style="grid-column: span 3;">Hələlik heç bir bloq yazısı yoxdur.</p>
             }
@@ -22,15 +23,15 @@
             {
                 @foreach (var post in Model.Posts)
                 {
-                    <div class="card blog-card fade-in" data-category="@post.BlogCategory.Name">
+                    <div class="card blog-card fade-in" data-category="@post.BlogCategory?.Name">
                         <img src="@(string.IsNullOrEmpty(post.ImageUrl) ? "/img/default-blog.jpg" : post.ImageUrl)" alt="@post.Title">
                         <div class="card-content">
                             <div style="background: var(--gold); color: var(--espresso); padding: 0.25rem 0.5rem; border-radius: 3px; display: inline-block; font-size: 0.875rem; margin-bottom: 0.5rem;">
-                                @post.BlogCategory.Name
+                                @post.BlogCategory?.Name
                             </div>
                             <h3>@post.Title</h3>
                             <p class="mb-2">
-                                @(post.Content.Length > 100 ? Html.Raw(post.Content.Substring(0, 100) + "...") : Html.Raw(post.Content))
+                                @(post.Content?.Length > 100 ? Html.Raw(post.Content.Substring(0, 100) + "...") : Html.Raw(post.Content))
                             </p>
                             <p style="color: #666; font-size: 0.875rem;">@post.PublishedAt.ToString("MMM dd, yyyy")</p>
                             <a href="/Blog/@post.Slug" class="btn">Read More</a>
@@ -74,4 +75,3 @@
         });
     </script>
 }
-

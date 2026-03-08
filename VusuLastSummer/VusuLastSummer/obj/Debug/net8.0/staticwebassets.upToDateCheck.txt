@@ -31,7 +31,7 @@ wwwroot\img\Yagmur.jpg
 wwwroot\js\auth.js
 wwwroot\js\cart.js
 wwwroot\js\footer.js
+wwwroot\js\header.js
 wwwroot\js\main.js
 wwwroot\js\products.js
 wwwroot\js\toast.js
-wwwroot\js\header.js

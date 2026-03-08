@@ -34,8 +34,8 @@ app.UseAuthentication();
 app.UseStaticFiles();
 
 app.MapControllerRoute(
-    "admin",
-    "{Area:exists}/{controller=dashboard}/{action=index}/{id?}"
+    "Admin",
+    "{Area:exists}/{controller=Dashboard}/{action=Index}/{id?}"
     );
 
 
