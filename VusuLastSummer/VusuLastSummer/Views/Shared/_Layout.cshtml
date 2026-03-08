@@ -11,17 +11,54 @@
 </head>
 <body>
 
+    <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+            <a asp-controller="Home" asp-action="Index" class="logo">Last Summer 🐦‍⬛</a>
+
+            <ul class="nav-links" id="nav-links">
+                <li><a asp-controller="Home" asp-action="Index" data-key="home">Home</a></li>
+                <li><a asp-controller="Menu" asp-action="Index" data-key="menu">Menu</a></li>
+                <li><a asp-controller="About" asp-action="Index" data-key="about">About</a></li>
+                <li><a asp-controller="Blog" asp-action="Index" data-key="blog">Blog</a></li>
+                <li><a asp-controller="Contact" asp-action="Index" data-key="contact">Contact</a></li>
+                <li><a asp-controller="Reservations" asp-action="Index" data-key="reservations">Reservations</a></li>
+            </ul>
+
+            <div class="flex gap-2 align-center">
+
+                <div class="cart-icon" onclick="window.location.href='/Cart'">
+                    🛒
+                    <span class="cart-badge" id="cart-badge" style="display: none;"></span>
+                </div>
+
+                <div class="user-icon" onclick="toggleUserMenu()">👤</div>
+
+                <div class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="user-menu" class="hidden"
+             style="position: absolute; top: 100%; right: 20px; background: var(--cream); padding: 1rem; border-radius: 5px; box-shadow: 0 4px 15px var(--shadow);">
+            <a href="/Profile">Profile</a>
+            <a href="#" onclick="logout()">Logout</a>
+        </div>
+    </nav>
     <main class="main">
         @RenderBody()
     </main>
 
-    <script src="~/js/header.js"></script>
-    <script src="~/js/footer.js"></script>
-    <script src="~/js/toast.js"></script>
-    <script src="~/js/auth.js"></script>
-    <script src="~/js/cart.js"></script>
-    <script src="~/js/products.js"></script>
-    <script src="~/js/main.js"></script>
+    <script src="~/js/header.js" asp-append-version="true"></script>
+    <script src="~/js/footer.js" asp-append-version="true"></script>
+    <script src="~/js/toast.js" asp-append-version="true"></script>
+    <script src="~/js/auth.js" asp-append-version="true"></script>
+    <script src="~/js/cart.js" asp-append-version="true"></script>
+    <script src="~/js/products.js" asp-append-version="true"></script>
+    <script src="~/js/main.js" asp-append-version="true"></script>
 
     @RenderSection("Scripts", required: false)
 </body>

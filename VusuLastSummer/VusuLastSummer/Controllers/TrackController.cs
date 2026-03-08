@@ -6,7 +6,7 @@ namespace VusuLastSummer.Controllers
     public class TrackController : Controller
     {
         // URL'den sipariş numarası alabiliriz: /Track?orderNumber=ORD-54892
-        public IActionResult Index(string? orderNumber)
+        public IActionResult Track(string? orderNumber)
         {
             // Eğer sipariş numarası yoksa, kullanıcıya son aktif siparişini gösterebiliriz.
             // Şimdilik test amaçlı rastgele bir sipariş numarası üretiyoruz:

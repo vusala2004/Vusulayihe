@@ -3,52 +3,47 @@ document.addEventListener('DOMContentLoaded', function() {
   // Skip header injection on admin page
   if (window.location.pathname.includes('admin.html')) return;
 
-  const headerHTML = `
-  <nav class="navbar" id="navbar">
-    <div class="navbar-container">
-      <a href="index.html" class="logo">Last Summer 🐦‍⬛</a>
+//    const headerHTML = `
+//  <nav class="navbar" id="navbar">
+//    <div class="navbar-container">
+//      <a href="/" class="logo">Last Summer 🐦‍⬛</a>
 
-      <ul class="nav-links" id="nav-links">
-        <li><a href="index.html" data-key="home">Home</a></li>
-        <li><a href="menu.html" data-key="menu">Menu</a></li>
-        <li><a href="about.html" data-key="about">About</a></li>
-        <li><a href="blog.html" data-key="blog">Blog</a></li>
-        <li><a href="contact.html" data-key="contact">Contact</a></li>
-        <li><a href="reservations.html" data-key="reservations">Reservations</a></li>
-      </ul>
+//      <ul class="nav-links" id="nav-links">
+//        <li><a href="/" data-key="home">Home</a></li>
+//        <li><a href="/Menu" data-key="menu">Menu</a></li>
+//        <li><a href="/About" data-key="about">About</a></li>
+//        <li><a href="/Blog" data-key="blog">Blog</a></li>
+//        <li><a href="/Contact" data-key="contact">Contact</a></li>
+//        <li><a href="/Reservations" data-key="reservations">Reservations</a></li>
+//      </ul>
 
-      <div class="flex gap-2 align-center">
+//      <div class="flex gap-2 align-center">
 
-        
+//        <div class="cart-icon" onclick="window.location.href='/Cart'">
+//          🛒
+//          <span class="cart-badge" id="cart-badge" style="display: none;"></span>
+//        </div>
 
-        <!-- Cart -->
-        <div class="cart-icon" onclick="window.location.href='cart.html'">
-          🛒
-          <span class="cart-badge" id="cart-badge" style="display: none;"></span>
-        </div>
+//        <div class="user-icon" onclick="toggleUserMenu()">👤</div>
 
-        <!-- User -->
-        <div class="user-icon" onclick="toggleUserMenu()">👤</div>
+//        <div class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
+//          <span></span>
+//          <span></span>
+//          <span></span>
+//        </div>
 
-        <!-- Mobile -->
-        <div class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
+//      </div>
+//    </div>
 
-      </div>
-    </div>
+//    <div id="user-menu" class="hidden"
+//         style="position: absolute; top: 100%; right: 20px; background: var(--cream); padding: 1rem; border-radius: 5px; box-shadow: 0 4px 15px var(--shadow);">
+//      <a href="/Profile">Profile</a>
+//      <a href="#" onclick="logout()">Logout</a>
+//    </div>
+//  </nav>
+//`;
 
-    <div id="user-menu" class="hidden"
-         style="position: absolute; top: 100%; right: 20px; background: var(--cream); padding: 1rem; border-radius: 5px; box-shadow: 0 4px 15px var(--shadow);">
-      <a href="profile.html">Profile</a>
-      <a href="#" onclick="logout()">Logout</a>
-    </div>
-  </nav>
-`;
-
-  document.body.insertAdjacentHTML('afterbegin', headerHTML);
+ /* document.body.insertAdjacentHTML('afterbegin', headerHTML);*/
 
   updateCartBadge();
   updateUserMenu();

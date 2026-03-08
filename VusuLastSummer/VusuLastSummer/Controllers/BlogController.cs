@@ -14,7 +14,7 @@ namespace VusuLastSummer.Controllers
         {
             _context = context;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Blog()
         {
             // Bütün kateqoriyaları və ancaq paylaşılan postları çəkirik
             var model = new BlogIndexVM

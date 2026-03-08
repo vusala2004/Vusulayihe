@@ -6,7 +6,7 @@ namespace VusuLastSummer.Controllers
     public class ProfileController : Controller
     {
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult Profile()
         {
             // Gələcəkdə bu məlumatlar Login olmuş istifadəçinin bazadakı məlumatları olacaq.
             // Hələlik test etmək üçün saxta data göndəririk:
@@ -28,7 +28,7 @@ namespace VusuLastSummer.Controllers
         }
 
         [HttpPost]
-        public IActionResult Index(ProfileVM model)
+        public IActionResult Profile(ProfileVM model)
         {
             // Formdan gələn məlumatları qəbul edib bazada yeniləyəcəyimiz yer
             if (ModelState.IsValid)

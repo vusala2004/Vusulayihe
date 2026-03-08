@@ -6,7 +6,7 @@ namespace VusuLastSummer.Controllers
 {
     public class MenuController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Menu()
         {
             // Baza olmadığı üçün C#-da saxta menyu siyahısı yaradırıq
             var products = new List<MenuVM>

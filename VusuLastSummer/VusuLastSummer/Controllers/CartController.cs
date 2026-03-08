@@ -5,7 +5,7 @@ namespace VusuLastSummer.Controllers
 {
     public class CartController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Cart()
         {
             // Baza tam qoşulana qədər səbəti 2 saxta məhsulla doldururuq
             var model = new CartIndexVM();

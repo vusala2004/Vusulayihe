@@ -7,14 +7,14 @@ namespace VusuLastSummer.Controllers
     {
         // Səhifə açılanda bu işləyir
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult Contact()
         {
             return View();
         }
 
         // Düyməyə basıb form göndəriləndə bu işləyir
         [HttpPost]
-        public IActionResult Index(ContactVM model)
+        public IActionResult Contact(ContactVM model)
         {
             if (ModelState.IsValid)
             {

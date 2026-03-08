@@ -6,7 +6,7 @@ namespace VusuLastSummer.Controllers
     public class ReservationController : Controller
     {
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult Reservation()
         {
             // Gələcəkdə bu tarixçə bazadan gələcək.
             // Hələlik istifadəçiyə əvvəlki rezervasiyalarını göstərmək üçün saxta data:
