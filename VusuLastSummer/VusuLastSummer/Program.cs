@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<AppDbContext>(opp =>
-    opp.UseSqlServer(builder.Configuration.GetConnectionString("Default"))
+    opp.UseSqlServer(builder.Configuration.GetConnectionString("default"))
 );
 //builder.Services.AddScoped<ILayoutService, LayoutService>();
 

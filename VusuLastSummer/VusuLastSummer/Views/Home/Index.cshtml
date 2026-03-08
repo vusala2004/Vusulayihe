@@ -1,4 +1,4 @@
-﻿@* @using VusuLastSummer.ViewModels
+﻿@using VusuLastSummer.ViewModels
 @using VusuLastSummer.ViewModels.Home
 @model HomeVM
 @{
@@ -41,8 +41,14 @@
             {
                 @foreach (var product in Model.FeaturedProducts)
                 {
+                    // Məhsulun əsas şəklini (IsPrimary) və ya ilk şəklini tapırıq. Heç biri yoxdursa default şəkil qoyuruq.
+                    var primaryImage = product.ProductImages?.FirstOrDefault(i => i.IsPrimary == true)?.ImageURL
+                    ?? product.ProductImages?.FirstOrDefault()?.ImageURL
+                    ?? "/img/default-product.jpg";
+
                     <div class="card">
-                        <img src="@(string.IsNullOrEmpty(product.ImageUrl) ? "/img/default-product.jpg" : product.ImageUrl)" alt="@product.Name">
+                        <img src="@primaryImage" alt="@product.Name">
+
                         <div class="card-content">
                             <h3>@product.Name</h3>
                             <p>@product.Description</p>
@@ -130,4 +136,4 @@
             }
         });
     </script>
-} *@
+} 
