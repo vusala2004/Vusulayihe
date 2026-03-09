@@ -17,6 +17,7 @@ namespace VusuLastSummer.Models
         // SƏNİN YAZDIĞIN YENİ ƏLAQƏLƏR:
         public List<ProductImage> ProductImages { get; set; } = new List<ProductImage>();
         public List<ProductSize> ProductSizes { get; set; } = new List<ProductSize>();
+        public ICollection<ProductTag>? ProductTags { get; set; }
 
     }
 }

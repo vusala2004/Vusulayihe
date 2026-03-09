@@ -22,6 +22,6 @@ namespace VusuLastSummer.DAL
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
 
-
+        public DbSet<ProductTag> ProductTags { get; set; }
     }
 }

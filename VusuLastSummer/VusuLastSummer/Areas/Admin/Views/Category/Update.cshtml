@@ -1,4 +1,4 @@
-﻿@model Category
+﻿@model VusuLastSummer.Areas.Admin.ViewModels.Categories.CategoryUpdateVM
 @{
     ViewData["Title"] = "Kateqoriyanı Yenilə";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
@@ -13,7 +13,7 @@
             <form asp-action="Update" method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger fw-bold mb-3"></div>
 
-                <input type="hidden" asp-for="Id" />
+               
 
                 <div class="mb-3">
                     <label asp-for="Name" class="form-label fw-bold">Kateqoriya Adı</label>

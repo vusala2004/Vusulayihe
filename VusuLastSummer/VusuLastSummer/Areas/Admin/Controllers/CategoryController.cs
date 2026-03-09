@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using VusuLastSummer.Areas.Admin.ViewModels.Categories;
 using VusuLastSummer.DAL;
 using VusuLastSummer.Models;
 
@@ -59,86 +60,79 @@ namespace VusuLastSummer.Areas.Admin.Controllers
         // 4. YARATMA POST
         // ==========================================
         [HttpPost]
-      //  [Authorize(Roles = "Admin,Moderator")]
-        public async Task<IActionResult> Create(Category category)
+        // [Authorize(Roles = "Admin,Moderator")]
+        public async Task<IActionResult> Create(CategoryCreateVM vm) // <-- Artıq Category yox, VM qəbul edirik
         {
-            ModelState.Remove("Products");
+            if (!ModelState.IsValid) return View(vm);
 
-            if (!ModelState.IsValid)
-            {
-                return View(category);
-            }
-
-            bool existCategory = await _context.Categories
-                .AnyAsync(c => c.Name.Trim() == category.Name.Trim());
+            bool existCategory = await _context.Categories.AnyAsync(c => c.Name.Trim() == vm.Name.Trim());
 
             if (existCategory)
             {
                 ModelState.AddModelError("Name", "Bu adda kateqoriya artıq mövcuddur!");
-                return View(category);
+                return View(vm);
             }
+
+            // VM-dən gələn datanı əsl Category modelinə çeviririk (Mapping)
+            Category category = new Category
+            {
+                Name = vm.Name
+            };
 
             await _context.Categories.AddAsync(category);
             await _context.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));
         }
-
         // ==========================================
         // 5. YENİLƏMƏ GET
         // ==========================================
-       // [Authorize(Roles = "Admin,Moderator")]
+        // UPDATE GET
+        // [Authorize(Roles = "Admin,Moderator")]
         public async Task<IActionResult> Update(int? id)
         {
             if (id is null || id < 1) return BadRequest();
-
             Category existCategory = await _context.Categories.FirstOrDefaultAsync(c => c.Id == id);
-
             if (existCategory is null) return NotFound();
 
-            return View(existCategory);
+            // Əsl modeli VM-ə çevirib View-a göndəririk
+            CategoryUpdateVM vm = new CategoryUpdateVM
+            {
+                Name = existCategory.Name
+            };
+
+            return View(vm);
         }
 
-        // ==========================================
-        // 6. YENİLƏMƏ POST
-        // ==========================================
+        // UPDATE POST
         [HttpPost]
-      //  [Authorize(Roles = "Admin,Moderator")]
-        public async Task<IActionResult> Update(int? id, Category category)
+        // [Authorize(Roles = "Admin,Moderator")]
+        public async Task<IActionResult> Update(int? id, CategoryUpdateVM vm) // <-- VM qəbul edirik
         {
             if (id is null || id < 1) return BadRequest();
-
             Category existCategory = await _context.Categories.FirstOrDefaultAsync(c => c.Id == id);
-
             if (existCategory is null) return NotFound();
 
-            ModelState.Remove("Products");
+            if (!ModelState.IsValid) return View(vm);
 
-            if (!ModelState.IsValid)
-            {
-                return View(category);
-            }
-
-            bool isExistCategory = await _context.Categories
-                .AnyAsync(c => c.Name.Trim() == category.Name.Trim() && c.Id != id);
+            bool isExistCategory = await _context.Categories.AnyAsync(c => c.Name.Trim() == vm.Name.Trim() && c.Id != id);
 
             if (isExistCategory)
             {
                 ModelState.AddModelError("Name", "Bu adda kateqoriya artıq mövcuddur!");
-                return View(category);
+                return View(vm);
             }
 
-            existCategory.Name = category.Name;
-
+            // VM-dəki yeni adı əsl modelə mənimsədirik
+            existCategory.Name = vm.Name;
             await _context.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));
         }
-
         // ==========================================
         // 7. SİLMƏ (SOFT DELETE) - GET və POST əvəzinə birbaşa silmə
         // ==========================================
-       // [Authorize(Roles = "Admin")]
+        // [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id is null || id < 1) return BadRequest();
