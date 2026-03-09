@@ -1,54 +1,38 @@
 ﻿@using VusuLastSummer.ViewModels.Account
 @model RegisterVM
 <!-- Begin Main Content Area -->
-<main class="main-content">
+<div style="display: flex; justify-content: center; align-items: center; min-height: 70vh;">
+    <div style="width: 100%; max-width: 450px; padding: 20px;">
+        <h2 style="text-align: center; font-family: serif; color: #3e2723; margin-bottom: 30px;">Register</h2>
 
-    <div class="login-register-area section-space-y-axis-100">
-        <div class="container">
-            <div class="row justify-content-center">
-
-                <div class="col-lg-6 pt-5 pt-lg-0">
-                    <form action="#">
-                        <div class="login-form">
-                            <h4 class="login-title text-center">Register</h4>
-                            <div class="row">
-                                <div asp-validation-summary="ModelOnly"></div>
-                                <div class="col-md-6 col-12">
-                                    <label for="Name">Name</label>
-                                    <input asp-for="Name" placeholder="Name" />
-                                    <span asp-validation-for="Name" class="text-danger"></span>
-                                </div>
-                                <div class="col-md-6 col-12">
-                                    <label for="Surname">Surname</label>
-                                    <input asp-for="Surname" placeholder="Surname" />
-                                    <span asp-validation-for="Surname" class="text-danger"></span>
-                                </div>
-                                <div class="col-md-12">
-                                    <label for="Email">Email</label>
-                                    <input asp-for="Email" placeholder="Email" />
-                                    <span asp-validation-for="Email" class="text-danger"></span>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="Password">Password</label>
-                                    <input asp-for="Password" placeholder="Password" />
-                                    <span asp-validation-for="Password" class="text-danger"></span>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="ConfirmPassword">ConfirmPassword</label>
-                                    <input asp-for="ConfirmPassword" placeholder="ConfirmPassword" />
-                                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-                                </div>
-                                <div class="col-12">
-                                    <button type="submit" class="btn btn-custom-size lg-size btn-pronia-primary">
-                                        Register
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+        <form method="post">
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px; color: #3e2723;">Username</label>
+                <input type="text" name="Username" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" />
             </div>
-        </div>
+
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px; color: #3e2723;">Email Address</label>
+                <input type="email" name="Email" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" />
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px; color: #3e2723;">Password</label>
+                <input type="password" name="Password" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" />
+            </div>
+
+            <div style="margin-bottom: 25px;">
+                <label style="display: block; margin-bottom: 5px; color: #3e2723;">Confirm Password</label>
+                <input type="password" name="ConfirmPassword" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" />
+            </div>
+
+            <button type="submit" style="width: 100%; padding: 10px; background-color: #c09e7a; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;">
+                Register
+            </button>
+
+            <div style="margin-top: 15px; text-align: center;">
+                <a href="/Account/Login" style="color: #c09e7a; text-decoration: none; font-size: 14px;">Already have an account? Login here</a>
+            </div>
+        </form>
     </div>
-</main>
-<!-- Main Content Area End Here -->
+</div>

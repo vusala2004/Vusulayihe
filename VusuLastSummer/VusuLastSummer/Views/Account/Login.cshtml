@@ -1,44 +1,28 @@
 ﻿@using VusuLastSummer.ViewModels.Account
 @model LoginVM
-<!-- Begin Main Content Area -->
-<main class="main-content">
+<div style="display: flex; justify-content: center; align-items: center; min-height: 60vh;">
+    <div style="width: 100%; max-width: 400px; padding: 20px;">
+        <h2 style="text-align: center; font-family: serif; color: #3e2723; margin-bottom: 30px;">Login</h2>
 
-    <div class="login-register-area section-space-y-axis-100">
-        <div class="container">
-            <div class="row justify-content-center">
-
-                <div class="col-lg-6 pt-5 pt-lg-0">
-                    <form action="#">
-                        <div class="login-form">
-                            <h4 class="login-title text-center">Login</h4>
-                            <div class="row">
-                                <div asp-validation-summary="ModelOnly"></div>
-                                <div class="col-md-12 col-12">
-                                    <label for="UsernameorEmail">Username Or Email</label>
-                                    <input asp-for="UsernameorEmail" placeholder="Username or Email" />
-                                    <span asp-validation-for="UsernameorEmail" class="text-danger"></span>
-                                </div>
-                                <div class="col-md-12">
-                                    <label for="Password">Password</label>
-                                    <input asp-for="Password" placeholder="Password" />
-                                    <span asp-validation-for="Password" class="text-danger"></span>
-                                </div>
-                                <div class="col-md-12 d-flex gap-2">
-                                    <label for="IsPersistent">Remember Me</label>
-                                    <input asp-for="IsPersistent" />
-
-                                </div>
-                                <div class="col-12">
-                                    <button type="submit" class="btn btn-custom-size lg-size btn-pronia-primary">
-                                        Register
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+        <form method="post">
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px; color: #3e2723;">Username Or Email</label>
+                <input type="text" name="UsernameOrEmail" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" />
             </div>
-        </div>
+
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px; color: #3e2723;">Password</label>
+                <input type="password" name="Password" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" />
+            </div>
+
+            <div style="margin-bottom: 20px; display: flex; align-items: center;">
+                <input type="checkbox" id="rememberMe" style="margin-right: 8px;" />
+                <label for="rememberMe" style="color: #3e2723;">Remember Me</label>
+            </div>
+
+            <button type="submit" style="width: 100%; padding: 10px; background-color: #c09e7a; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;">
+                Login
+            </button>
+        </form>
     </div>
-</main>
-<!-- Main Content Area End Here -->
+</div>
