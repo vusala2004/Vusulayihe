@@ -54,8 +54,7 @@
               "RelativeToolTip": "VusuLastSummer\\Areas\\Admin\\Views\\Category\\Delete.cshtml",
               "ViewState": "AgIAAAEAAAAAAAAAAAAcwBgAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-09T10:51:32.125Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-09T10:51:32.125Z"
             },
             {
               "$type": "Document",
@@ -67,8 +66,7 @@
               "RelativeToolTip": "VusuLastSummer\\Areas\\Admin\\Views\\Category\\Update.cshtml",
               "ViewState": "AgIAAAcAAAAAAAAAAAAcwB4AAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-09T10:51:13.112Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-09T10:51:13.112Z"
             },
             {
               "$type": "Document",
@@ -80,8 +78,7 @@
               "RelativeToolTip": "VusuLastSummer\\Areas\\Admin\\Views\\Category\\Details.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-09T10:50:53.609Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-09T10:50:53.609Z"
             },
             {
               "$type": "Document",
@@ -93,8 +90,7 @@
               "RelativeToolTip": "VusuLastSummer\\Areas\\Admin\\Views\\Category\\Create.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-09T10:34:53.842Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-09T10:34:53.842Z"
             },
             {
               "$type": "Document",
@@ -106,8 +102,7 @@
               "RelativeToolTip": "VusuLastSummer\\Areas\\Admin\\Views\\Category\\Index.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAC4AAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-09T10:32:09.632Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-09T10:32:09.632Z"
             },
             {
               "$type": "Document",
@@ -117,7 +112,7 @@
               "RelativeDocumentMoniker": "VusuLastSummer\\Areas\\Admin\\Controllers\\CategoryController.cs",
               "ToolTip": "C:\\Users\\Acer\\OneDrive\\Desktop\\Vusulayihe\\VusuLastSummer\\VusuLastSummer\\Areas\\Admin\\Controllers\\CategoryController.cs",
               "RelativeToolTip": "VusuLastSummer\\Areas\\Admin\\Controllers\\CategoryController.cs",
-              "ViewState": "AgIAACkAAAAAAAAAAAAgwAkAAAAGAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-09T10:09:37.604Z",
               "EditorCaption": ""
@@ -132,8 +127,7 @@
               "RelativeToolTip": "VusuLastSummer\\Areas\\Admin\\Views\\Dashboard\\Index.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-09T09:55:06.735Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-09T09:55:06.735Z"
             }
           ]
         }
