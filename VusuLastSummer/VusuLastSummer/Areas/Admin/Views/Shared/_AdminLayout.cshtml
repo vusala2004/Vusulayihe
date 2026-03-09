@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - Admin Panel</title>
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="~/css/admin.css">
+    @RenderSection("Styles", required: false)
+</head>
+<body>
+    <div class="admin-layout">
+        <aside class="admin-sidebar">
+            <h2>Admin Panel</h2>
+            <nav>
+                <a asp-area="Admin" asp-controller="Dashboard" asp-action="Index"
+                   class="sidebar-link @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Dashboard" ? "active" : "")">
+                    Dashboard
+                </a>
+
+                <a asp-area="Admin" asp-controller="Category" asp-action="Index"
+                   class="sidebar-link @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Category" ? "active" : "")">
+                    Categories
+                </a>
+
+                <a asp-area="Admin" asp-controller="Product" asp-action="Index"
+                   class="sidebar-link @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Product" ? "active" : "")">
+                    Products
+                </a>
+
+                <a asp-area="Admin" asp-controller="Order" asp-action="Index"
+                   class="sidebar-link @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Order" ? "active" : "")">
+                    Orders
+                </a>
+
+                <a asp-area="Admin" asp-controller="User" asp-action="Index"
+                   class="sidebar-link @(ViewContext.RouteData.Values["Controller"]?.ToString() == "User" ? "active" : "")">
+                    Users
+                </a>
+
+                <a asp-area="Admin" asp-controller="Reservation" asp-action="Index"
+                   class="sidebar-link @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Reservation" ? "active" : "")">
+                    Reservations
+                </a>
+
+                <a asp-area="Admin" asp-controller="Blog" asp-action="Index"
+                   class="sidebar-link @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Blog" ? "active" : "")">
+                    Blog
+                </a>
+            </nav>
+            <a asp-area="" asp-controller="Home" asp-action="Index" class="btn btn-secondary" style="margin-top: auto;">Back to Site</a>
+        </aside>
+
+        <main class="admin-main">
+            @RenderBody()
+        </main>
+    </div>
+
+    <script src="~/js/toast.js"></script>
+    <script src="~/js/main.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
+

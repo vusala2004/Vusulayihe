@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using VusuLastSummer.DAL;
@@ -25,19 +25,15 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(opt =>
 
 var app = builder.Build();
 
-app.UseAuthorization();
-app.UseAuthentication();
-
-
-
-
 app.UseStaticFiles();
+app.UseRouting(); // Bunu əlavə etmək yaxşı olar
+
+app.UseAuthentication(); // Əvvəl kim olduğunu yoxla
+app.UseAuthorization();  // Sonra icazəni yoxla
 
 app.MapControllerRoute(
-    "Admin",
-    "{Area:exists}/{controller=Dashboard}/{action=Index}/{id?}"
-    );
-
+    name: "areas",
+    pattern: "{area:exists}/{controller=Dashboard}/{action=Index}/{id?}");
 
 app.MapControllerRoute(
     "default",

@@ -1,0 +1,23 @@
+﻿@model Category
+@{
+    ViewData["Title"] = "Kateqoriya Detalları";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid p-4">
+    <div class="card shadow-sm border-info" style="max-width: 600px;">
+        <div class="card-header bg-info text-white">
+            <h4 class="mb-0">Kateqoriya Məlumatları</h4>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title text-muted">Sistem ID: @Model.Id</h5>
+            <p class="card-text fs-4 mt-3"><strong>Adı:</strong> @Model.Name</p>
+
+            <hr />
+            <div class="d-flex gap-2 mt-4">
+                <a asp-action="Update" asp-route-id="@Model.Id" class="btn btn-primary">Yenilə</a>
+                <a asp-action="Index" class="btn btn-secondary">Siyahıya Qayıt</a>
+            </div>
+        </div>
+    </div>
+</div>

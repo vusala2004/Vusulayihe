@@ -1,0 +1,25 @@
+﻿@model Category
+@{
+    ViewData["Title"] = "Kateqoriyanı Sil";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid p-4">
+    <div class="card shadow-sm border-danger" style="max-width: 600px;">
+        <div class="card-header bg-danger text-white">
+            <h4 class="mb-0">Diqqət! Silinmə Təsdiqi</h4>
+        </div>
+        <div class="card-body text-center">
+            <h5 class="text-danger mb-3">Bu kateqoriyanı silməkdə əminsiniz?</h5>
+            <p class="fs-4 fw-bold">@Model.Name</p>
+            <p class="text-muted small">Qeyd: Əgər bu kateqoriyaya aid məhsullar varsa, silinmə prosesi xəta verə bilər.</p>
+
+            <form asp-action="Delete" method="post" class="mt-4">
+                <input type="hidden" asp-for="Id" />
+
+                <button type="submit" class="btn btn-danger">Bəli, Sil</button>
+                <a asp-action="Index" class="btn btn-secondary ms-2">Xeyr, Qayıt</a>
+            </form>
+        </div>
+    </div>
+</div>
