@@ -46,7 +46,7 @@
                          data-name="@item.Name?.ToLower()"
                          data-price="@item.Price">
 
-                        <img src="@(string.IsNullOrEmpty(item.ImageUrl) ? "/img/default-product.jpg" : item.ImageUrl)" alt="@item.Name" />
+                        <img src="~/img/@item.ImageUrl" alt="@item.Name" style="width: 100%; border-radius: 8px;" />
 
                         <div class="card-content">
                             <h3>@item.Name</h3>
@@ -54,7 +54,11 @@
                             <p class="mb-2"><strong>$@item.Price.ToString("0.00")</strong></p>
                             <div class="flex gap-1">
                                 <a href="/Product/Details/@item.Id" class="btn" style="flex: 1;">View</a>
-                                <button class="btn btn-secondary add-to-cart" data-id="@item.Id" style="flex: 1;">Add to Cart</button>
+
+                                <form asp-controller="Cart" asp-action="Add" method="post" style="flex: 1; display:flex;">
+                                    <input type="hidden" name="ProductId" value="@item.Id" />
+                                    <input type="hidden" name="Size" value="Small" /> <input type="hidden" name="Quantity" value="1" /> <button type="submit" class="btn btn-secondary w-100" style="width: 100%;">Add to Cart</button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -132,11 +136,6 @@
             sortSelect.addEventListener('change', filterProducts);
         }
 
-        // Add to Cart simulyasiyası
-        document.querySelectorAll('.add-to-cart').forEach(btn => {
-            btn.addEventListener('click', function() {
-                alert("Məhsul səbətə əlavə edildi: ID " + this.dataset.id);
-            });
-        });
+    
     </script>
 }

@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using VusuLastSummer.DAL;
@@ -10,8 +10,6 @@ namespace VusuLastSummer.Controllers
 {
     public class HomeController : Controller
     {
-
-
         private readonly AppDbContext _context;
 
         public HomeController(AppDbContext context)
@@ -21,19 +19,22 @@ namespace VusuLastSummer.Controllers
 
         public async Task<IActionResult> Index()
         {
+            // Bütün məhsulları çəkirik, amma dizayn pozulmasın deyə yalnız 3 dənəsini (Take(3)) alırıq.
+            // Əgər IsDeleted problemi varsa, hələlik o şərti yığışdıraq ki, ekranda görə bilək:
+            var products = await _context.Products
+                .Include(p => p.ProductImages)
+                // .Where(p => !p.IsDeleted) <-- Əgər SQL-də hamısı gizlənibsə, bunu hələlik kommetdə saxla
+                .Take(3)
+                .ToListAsync();
 
-
-            var model = new HomeVM
+            HomeVM homeVM = new HomeVM
             {
-                // Bazadan yaln�z �n? ��xan 3 m?hsulu �?kirik
-                FeaturedProducts = await _context.Products
-                    .Where(p => p.IsFeatured)
-                    .Take(3)
-                    .ToListAsync()
+                FeaturedProducts = products
             };
-            return View();
+
+            return View(homeVM);
         }
 
-       
+
     }
 }

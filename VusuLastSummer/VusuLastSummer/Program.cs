@@ -22,11 +22,18 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(opt =>
     opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(3);
 }).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 
-
+// Session üçün konfiqurasiya əlavə edirik
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromDays(7); // Səbət 7 gün yadda qalsın
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
 var app = builder.Build();
 
 app.UseStaticFiles();
 app.UseRouting(); // Bunu əlavə etmək yaxşı olar
+app.UseSession(); // Mütləq UseRouting və UseAuthentication arasında olmalıdır
 
 app.UseAuthentication(); // Əvvəl kim olduğunu yoxla
 app.UseAuthorization();  // Sonra icazəni yoxla

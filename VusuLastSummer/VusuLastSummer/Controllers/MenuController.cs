@@ -33,32 +33,58 @@ namespace VusuLastSummer.Controllers
                 // Sənin modelində IsPrimary bool? (nullable) olduğu üçün .GetValueOrDefault() istifadə edirik
                 ImageUrl = p.ProductImages?.FirstOrDefault(pi => pi.IsPrimary.GetValueOrDefault())?.ImageURL
                            ?? p.ProductImages?.FirstOrDefault()?.ImageURL
-                           ?? "/img/default-product.jpg"
-            }).ToList();
+        }).ToList();
 
             return View(model);
         }
-        public IActionResult Details(int id)
+        public async Task<IActionResult> Details(int id)
         {
-            // Gələcəkdə bu məlumatları Verilənlər Bazasından (SQL) ID-yə görə çəkəcəyik.
-            // Hələlik səhifənin necə işlədiyini görmək üçün Dummy Data yaradırıq:
+            // 1. Baza (SQL) -dən kliklənən məhsulu tapırıq
+            var productFromDb = await _context.Products
+                .Include(p => p.Category)
+                .Include(p => p.ProductImages)
+                .FirstOrDefaultAsync(p => p.Id == id && !p.IsDeleted);
 
-            var product = new ProductVM
+            // Əgər belə bir məhsul yoxdursa və ya silinibbsə, 404 səhifəsi qaytarırıq
+            if (productFromDb == null)
             {
-                Id = id,
-                Name = "Classic Espresso",
-                Description = "A rich, full-bodied espresso with a sweet caramel finish. Perfectly brewed for your morning start.",
-                Price = 3.50m,
-                ImageUrl = "/images/espresso.jpg", // Öz şəkil yolunu yazarsan
-                Category = "Espresso",
-                RelatedProducts = new List<ProductVM>
+                return NotFound();
+            }
+
+            // 2. Bənzər məhsulları (Related Products) tapırıq
+            // Şərtimiz: Eyni kateqoriyada olsun, amma özü olmasın (p.Id != id) və cəmi 3 dənə gəlsin
+            var relatedProductsDb = await _context.Products
+                .Include(p => p.ProductImages)
+                .Where(p => p.CategoryId == productFromDb.CategoryId && p.Id != id && !p.IsDeleted)
+                .Take(3)
+                .ToListAsync();
+
+            // 3. Məlumatları bazadan alıb ViewModel-ə (HTML-ə gedəcək formata) köçürürük
+            var productVM = new ProductVM
+            {
+                Id = productFromDb.Id,
+                Name = productFromDb.Name,
+                Description = productFromDb.Description,
+                Price = productFromDb.Price,
+                Category = productFromDb.Category?.Name ?? "General",
+                // Əsas şəklin adını tapırıq (heç biri yoxdursa default adı veririk)
+                ImageUrl = productFromDb.ProductImages?.FirstOrDefault(pi => pi.IsPrimary.GetValueOrDefault())?.ImageURL
+                           ?? productFromDb.ProductImages?.FirstOrDefault()?.ImageURL
+                           ?? "default-product.jpg",
+
+                // Bənzər məhsulları da öz siyahısına (List) yığırıq
+                RelatedProducts = relatedProductsDb.Select(rp => new ProductVM
                 {
-                    new ProductVM { Id = 2, Name = "Americano", Price = 3.00m, ImageUrl = "/images/americano.jpg" },
-                    new ProductVM { Id = 3, Name = "Macchiato", Price = 4.00m, ImageUrl = "/images/macchiato.jpg" }
-                }
+                    Id = rp.Id,
+                    Name = rp.Name,
+                    Price = rp.Price,
+                    ImageUrl = rp.ProductImages?.FirstOrDefault(pi => pi.IsPrimary.GetValueOrDefault())?.ImageURL
+                               ?? rp.ProductImages?.FirstOrDefault()?.ImageURL
+                               ?? "default-product.jpg"
+                }).ToList()
             };
 
-            return View(product);
+            return View(productVM);
         }
     }
 }

@@ -9,10 +9,10 @@
     <div class="hero-content">
         <h1>Welcome to Last Summer</h1>
         <p>Experience the perfect blend of tradition and innovation in every cup</p>
-        <a href="/Menu" class="btn">Explore Our Menu</a>
+
+        <a asp-controller="Menu" asp-action="Menu" class="btn">Explore Our Menu</a>
     </div>
 </section>
-
 <section class="section">
     <div class="container">
         <div class="grid grid-2 fade-in">
@@ -44,16 +44,16 @@
                     // Məhsulun əsas şəklini (IsPrimary) və ya ilk şəklini tapırıq. Heç biri yoxdursa default şəkil qoyuruq.
                     var primaryImage = product.ProductImages?.FirstOrDefault(i => i.IsPrimary == true)?.ImageURL
                     ?? product.ProductImages?.FirstOrDefault()?.ImageURL
-                    ?? "/img/default-product.jpg";
+                    ?? "default-product.jpg"; // <-- Sadəcə şəklin adını saxladıq
 
                     <div class="card">
-                        <img src="@primaryImage" alt="@product.Name">
+                        <img src="~/img/@primaryImage" alt="@product.Name">
 
                         <div class="card-content">
                             <h3>@product.Name</h3>
                             <p>@product.Description</p>
                             <p class="mb-2"><strong>$@product.Price.ToString("0.00")</strong></p>
-                            <a href="/Menu/Detail/@product.Id" class="btn btn-full">View Details</a>
+                            <a href="/Menu/Details/@product.Id" class="btn btn-full">View Details</a>
                         </div>
                     </div>
                 }
@@ -61,7 +61,7 @@
         </div>
 
         <div class="text-center mt-3">
-            <a href="/Menu" class="btn">View Full Menu</a>
+            <a asp-controller="Menu" asp-action="Menu" class="btn">View Full Menu</a>
         </div>
     </div>
 </section>

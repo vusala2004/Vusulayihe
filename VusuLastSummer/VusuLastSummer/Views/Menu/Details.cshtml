@@ -9,7 +9,7 @@
     <div class="container">
         <div class="grid grid-2" id="product-details">
             <div>
-                <img src="@Model.ImageUrl" alt="@Model.Name" style="width: 100%; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                <img src="~/img/@Model.ImageUrl" alt="@Model.Name" style="width: 100%; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
             </div>
 
             <div>
@@ -55,7 +55,7 @@
             @foreach (var related in Model.RelatedProducts)
             {
                 <div class="card">
-                    <img src="@related.ImageUrl" alt="@related.Name" style="width: 100%; border-radius: 10px 10px 0 0;">
+                    <img src="~/img/@related.ImageUrl" alt="@related.Name" style="width: 100%; border-radius: 10px 10px 0 0;">
                     <div class="card-content">
                         <h3>@related.Name</h3>
                         <p class="mb-2"><strong>$@related.Price.ToString("0.00")</strong></p>
