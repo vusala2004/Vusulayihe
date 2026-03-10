@@ -10,7 +10,7 @@ namespace VusuLastSummer.Controllers
     {
         // 1. Səhifə açılanda bu işləyir
         [HttpGet]
-        public IActionResult Checkout()
+        public IActionResult Index()
         {
             var model = new CheckoutVM();
             return View(model);
@@ -18,7 +18,7 @@ namespace VusuLastSummer.Controllers
 
         // 2. Form doldurulub göndəriləndə bu işləyir
         [HttpPost]
-        public IActionResult Checkout(CheckoutVM model)
+        public IActionResult Index(CheckoutVM model)
         {
             // Əgər formdakı məlumatlar düzgündürsə:
             if (ModelState.IsValid)

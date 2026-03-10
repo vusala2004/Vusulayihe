@@ -5,16 +5,16 @@ namespace VusuLastSummer.Controllers
 {
     public class ContactController : Controller
     {
-        // Səhifə açılanda bu işləyir
+        // Səhifə açılanda bu işləyir (Metodun adı Index edildi)
         [HttpGet]
-        public IActionResult Contact()
+        public IActionResult Index()
         {
             return View();
         }
 
-        // Düyməyə basıb form göndəriləndə bu işləyir
+        // Düyməyə basıb form göndəriləndə bu işləyir (Metodun adı Index edildi)
         [HttpPost]
-        public IActionResult Contact(ContactVM model)
+        public IActionResult Index(ContactVM model)
         {
             if (ModelState.IsValid)
             {

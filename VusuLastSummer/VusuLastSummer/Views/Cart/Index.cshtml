@@ -15,14 +15,13 @@
                 <div class="text-center" style="padding: 4rem 0;">
                     <h2>Your cart is empty</h2>
                     <p>Add some delicious items from our menu!</p>
-                    <a href="/Menu" class="btn" style="margin-top: 1rem;">Browse Menu</a>
+                    <a asp-controller="Menu" asp-action="Menu" class="btn" style="margin-top: 1rem;">Browse Menu</a>
                 </div>
             }
             else
             {
                 <div class="grid grid-1" style="gap: 1.5rem; max-width: 800px; margin: 0 auto;">
 
-                    @* BURA DƏYİŞDİ: Yeni dizaynlı səbət məhsulları *@
                     @foreach (var item in Model.CartItems)
                     {
                         <div class="cart-item-card" style="display: flex; align-items: center; justify-content: space-between; background: #fff; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
@@ -41,10 +40,15 @@
 
                             <div style="display: flex; align-items: center; gap: 3rem;">
 
+                                @* DƏYİŞƏN HİSSƏ: + və - düymələri artıq Controller-ə sorğu göndərir *@
                                 <div style="display: flex; align-items: center; border: 1px solid #ddd; border-radius: 6px; overflow: hidden; background: #fafafa;">
-                                    <button class="btn-secondary qty-btn" style="border: none; background: transparent; padding: 0.5rem 1rem; cursor: pointer; font-size: 1.2rem;">-</button>
+                                    <a asp-controller="Cart" asp-action="Decrease" asp-route-productId="@item.ProductId" asp-route-size="@item.Size"
+                                       class="btn-secondary qty-btn" style="border: none; background: transparent; padding: 0.5rem 1rem; cursor: pointer; font-size: 1.2rem; text-decoration: none; color: inherit;">-</a>
+
                                     <span style="padding: 0 1rem; font-weight: bold; color: #333;">@item.Quantity</span>
-                                    <button class="btn-secondary qty-btn" style="border: none; background: transparent; padding: 0.5rem 1rem; cursor: pointer; font-size: 1.2rem;">+</button>
+
+                                    <a asp-controller="Cart" asp-action="Increase" asp-route-productId="@item.ProductId" asp-route-size="@item.Size"
+                                       class="btn-secondary qty-btn" style="border: none; background: transparent; padding: 0.5rem 1rem; cursor: pointer; font-size: 1.2rem; text-decoration: none; color: inherit;">+</a>
                                 </div>
 
                                 <div style="text-align: right; min-width: 90px;">
@@ -52,7 +56,7 @@
                                         $@item.Total.ToString("0.00")
                                     </h4>
 
-                                    <a href="/Cart/Remove?productId=@item.ProductId&size=@item.Size"
+                                    <a asp-controller="Cart" asp-action="Remove" asp-route-productId="@item.ProductId" asp-route-size="@item.Size"
                                        style="color: #d9534f; text-decoration: none; font-size: 0.9rem; border-bottom: 1px solid #d9534f; transition: 0.3s; cursor: pointer;">
                                         Remove
                                     </a>
@@ -61,7 +65,6 @@
                             </div>
                         </div>
                     }
-                    @* YENİ DİZAYN BURADA BİTİR *@
 
                 </div>
             }
@@ -89,7 +92,8 @@
                             <strong style="color: var(--gold);">$@Model.TotalAmount.ToString("0.00")</strong>
                         </div>
 
-                        <a href="/Checkout" class="btn btn-full" style="width: 100%; display: block; text-align: center;">Proceed to Checkout</a>
+                        @* DƏYİŞƏN HİSSƏ: Checkout Linki *@
+                        <a asp-controller="Checkout" asp-action="Index" class="btn btn-full" style="width: 100%; display: block; text-align: center;">Proceed to Checkout</a>
                     </div>
                 </div>
             </div>
@@ -99,7 +103,6 @@
 
 @section Scripts {
     <script>
-        // Hələlik yalnız vizual məntiq
+        // Artıq bu skriptə ehtiyac qalmadı, çünki düymələr birbaşa backend-lə işləyir.
     </script>
 }
-

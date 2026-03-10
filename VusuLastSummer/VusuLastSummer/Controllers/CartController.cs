@@ -21,10 +21,9 @@ namespace VusuLastSummer.Controllers
             _context = context;
         }
 
-        // 1. SƏBƏT SƏHİFƏSİ
-        public IActionResult Cart()
+        // 1. SƏBƏT SƏHİFƏSİ (Adı Index olaraq dəyişdirildi)
+        public IActionResult Index()
         {
-            // Cəmi məbləğləri burada əllə mənimsətməyə ehtiyac yoxdur (Xəta CS0200 bura idi)
             CartIndexVM model = new CartIndexVM
             {
                 CartItems = _cartItems,
@@ -56,7 +55,6 @@ namespace VusuLastSummer.Controllers
                 if (Size == "Medium") sizePrice = 0.50m;
                 if (Size == "Large") sizePrice = 1.00m;
 
-                // XƏTA CS0266 BURADA HƏLL OLUNDU: == true əlavə etdik
                 string imgUrl = product.ProductImages?.FirstOrDefault(pi => pi.IsPrimary == true)?.ImageURL
                                 ?? product.ProductImages?.FirstOrDefault()?.ImageURL
                                 ?? "default-product.jpg";
@@ -72,7 +70,8 @@ namespace VusuLastSummer.Controllers
                 });
             }
 
-            return RedirectToAction("Cart");
+            // Geri dönəcəyi yer Index olmalıdır
+            return RedirectToAction("Index");
         }
 
         // 3. SAYI ARTIRMAQ
@@ -83,7 +82,8 @@ namespace VusuLastSummer.Controllers
             {
                 item.Quantity++;
             }
-            return RedirectToAction("Cart");
+            // Geri dönəcəyi yer Index olmalıdır
+            return RedirectToAction("Index");
         }
 
         // 4. SAYI AZALTMAQ
@@ -94,7 +94,8 @@ namespace VusuLastSummer.Controllers
             {
                 item.Quantity--;
             }
-            return RedirectToAction("Cart");
+            // Geri dönəcəyi yer Index olmalıdır
+            return RedirectToAction("Index");
         }
 
         // 5. SƏBƏTDƏN SİLMƏK
@@ -105,7 +106,8 @@ namespace VusuLastSummer.Controllers
             {
                 _cartItems.Remove(item);
             }
-            return RedirectToAction("Cart");
+            // Geri dönəcəyi yer Index olmalıdır
+            return RedirectToAction("Index");
         }
     }
 }

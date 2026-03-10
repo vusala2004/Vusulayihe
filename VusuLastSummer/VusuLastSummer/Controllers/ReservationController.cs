@@ -6,12 +6,12 @@ namespace VusuLastSummer.Controllers
     public class ReservationController : Controller
     {
         [HttpGet]
-        public IActionResult Reservation()
+        public IActionResult Index() // Metodun adı Index oldu
         {
-            // Gələcəkdə bu tarixçə bazadan gələcək.
-            // Hələlik istifadəçiyə əvvəlki rezervasiyalarını göstərmək üçün saxta data:
             var model = new ReservationVM
             {
+                // Səhifə yüklənəndə default olaraq bu günün tarixini təyin edirik
+                Date = DateTime.Today,
                 History = new List<ReservationHistoryVM>
                 {
                     new ReservationHistoryVM { Date = DateTime.Today.AddDays(-5), Time = "18:00", Guests = 2, Status = "Completed" },
@@ -23,8 +23,14 @@ namespace VusuLastSummer.Controllers
         }
 
         [HttpPost]
-        public IActionResult Reservation(ReservationVM model)
+        public IActionResult Index(ReservationVM model) // Metodun adı Index oldu
         {
+            // 1-ci Müdafiə: Server tərəfdə tarix yoxlanışı (Keçmiş tarix seçilə bilməz)
+            if (model.Date.Date < DateTime.Today)
+            {
+                ModelState.AddModelError("Date", "You cannot select a past date for reservation.");
+            }
+
             if (ModelState.IsValid)
             {
                 // Gələcəkdə burada məlumatları SQL bazasına yazacağıq.
@@ -32,7 +38,7 @@ namespace VusuLastSummer.Controllers
                 return RedirectToAction("Index");
             }
 
-            // Xəta varsa, səhifəni yenidən qaytar (tarixçəni boş qoymamaq üçün təkrar yükləmək lazımdır)
+            // Xəta varsa, səhifəni yenidən qaytar
             model.History = new List<ReservationHistoryVM>();
             return View(model);
         }

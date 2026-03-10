@@ -1,21 +1,32 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using VusuLastSummer.Models;
 using VusuLastSummer.ViewModels.Profile;
 
 namespace VusuLastSummer.Controllers
 {
+    [Authorize] // Profilə yalnız giriş edənlər baxa bilsin
     public class ProfileController : Controller
     {
-        [HttpGet]
-        public IActionResult Profile()
+        private readonly UserManager<AppUser> _userManager;
+
+        public ProfileController(UserManager<AppUser> userManager)
         {
-            // Gələcəkdə bu məlumatlar Login olmuş istifadəçinin bazadakı məlumatları olacaq.
-            // Hələlik test etmək üçün saxta data göndəririk:
+            _userManager = userManager;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Index() // Metodun adını Index etmək daha standartdır
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null) return RedirectToAction("Login", "Account");
+
             var model = new ProfileVM
             {
-                Name = "John Doe",
-                Email = "john@example.com",
-                Phone = "+1 234 567 890",
-                Birthday = new DateTime(1995, 5, 15),
+                Name = $"{user.Name} {user.Surname}",
+                Email = user.Email,
+                // Digər datalar hələlik statik qala bilər, bazanı qurduqca dəyişəcəyik
                 LoyaltyPoints = 120,
                 Orders = new List<UserOrderVM>
                 {
@@ -28,11 +39,11 @@ namespace VusuLastSummer.Controllers
         }
 
         [HttpPost]
-        public IActionResult Profile(ProfileVM model)
+        public IActionResult Index(ProfileVM model)
         {
-            // Formdan gələn məlumatları qəbul edib bazada yeniləyəcəyimiz yer
             if (ModelState.IsValid)
             {
+                // Bura gələcəkdə bazada yeniləmə kodunu yazacağıq
                 TempData["SuccessMessage"] = "Profile updated successfully!";
                 return RedirectToAction("Index");
             }

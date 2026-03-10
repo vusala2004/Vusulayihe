@@ -1,8 +1,6 @@
 ﻿using VusuLastSummer.Enums;
 namespace VusuLastSummer.Extensions
 {
-   
-
 public static class FileValidator
     {
         public static bool CheckFileType(this IFormFile file, string type)

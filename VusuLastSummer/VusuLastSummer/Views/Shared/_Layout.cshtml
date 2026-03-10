@@ -42,14 +42,14 @@
                 <li><a asp-controller="Menu" asp-action="Menu" data-key="menu">Menu</a></li>
                 <li><a asp-controller="About" asp-action="Index" data-key="about">About</a></li>
                 <li><a asp-controller="Blog" asp-action="Index" data-key="blog">Blog</a></li>
-                <li><a asp-controller="Contact" asp-action="Contact" data-key="contact">Contact</a></li>
-                <li><a asp-controller="Reservation" asp-action="Reservation" data-key="reservations">Reservations</a></li>
+                <li><a asp-controller="Contact" asp-action="Index" data-key="contact">Contact</a></li>
+                <li><a asp-controller="Reservation" asp-action="Index" data-key="reservations">Reservations</a></li>
             </ul>
 
             <div class="flex gap-2 align-center">
 
                 @* Səbət İkonu və Dinamik Sayğac *@
-                <a asp-controller="Basket" asp-action="Index" class="cart-icon" style="text-decoration: none; position: relative;">
+                <a asp-controller="Cart" asp-action="Index" class="cart-icon" style="text-decoration: none; position: relative;">
                     🛒
                     @if (basketCount > 0)
                     {
@@ -69,20 +69,38 @@
 
             </div>
         </div>
-
         <div id="user-menu" class="hidden"
-             style="position: absolute; top: 100%; right: 20px; background: var(--cream); padding: 1rem; border-radius: 5px; box-shadow: 0 4px 15px var(--shadow);">
+             style="position: absolute; top: 100%; right: 20px; background: var(--cream); padding: 1rem; border-radius: 8px; box-shadow: 0 4px 15px var(--shadow); min-width: 160px; z-index: 1000;">
+
             @if (User.Identity.IsAuthenticated)
             {
-                <a href="/Profile">Profile (@User.Identity.Name)</a>
-                <form asp-controller="Account" asp-action="Logout" method="post" style="display:inline;">
-                    <button type="submit" style="background:none; border:none; color:inherit; cursor:pointer; padding:0; font:inherit;">Logout</button>
-                </form>
+                <div style="display: flex; flex-direction: column; gap: 10px; text-align: center;">
+                    <div style="font-weight: bold; border-bottom: 1px solid #ccc; padding-bottom: 8px; font-size: 14px;">
+                        Hi, @User.Identity.Name! 👋
+                    </div>
+
+                    <a asp-controller="Account" asp-action="Register" class="btn" style="text-decoration: none; padding: 0.5rem 1rem; font-size: 14px; background-color: #2c2c2c; color: #fff; text-align: center; display: block; border: none;">
+                        My Profile
+                    </a>
+
+                    <form asp-controller="Account" asp-action="Logout" method="post" style="margin: 0;">
+                        <button type="submit" class="btn" style="width: 100%; padding: 0.5rem; font-size: 14px; background-color: #dc3545; color: white; border: none; cursor: pointer;">
+                            Logout
+                        </button>
+                    </form>
+                </div>
             }
             else
             {
-                <a asp-controller="Account" asp-action="Login">Login</a>
-                <a asp-controller="Account" asp-action="Register">Register</a>
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <a asp-controller="Account" asp-action="Login" class="btn" style="text-decoration: none; padding: 0.5rem 1rem; font-size: 14px; text-align: center; display: block;">
+                        Login
+                    </a>
+
+                    <a asp-controller="Account" asp-action="Register" class="btn" style="text-decoration: none; padding: 0.5rem 1rem; font-size: 14px; background-color: #2c2c2c; color: #fff; text-align: center; display: block; border: none;">
+                        Register
+                    </a>
+                </div>
             }
         </div>
     </nav>
@@ -91,6 +109,31 @@
         @RenderBody()
     </main>
 
+    <footer style="background-color: #2b1b12; color: #f6f3eb; padding: 5rem 1rem 2rem 1rem; text-align: center; margin-top: 4rem;">
+        <div class="container" style="max-width: 600px; margin: 0 auto;">
+
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 1rem; font-weight: normal;">Stay Updated</h2>
+            <p style="font-size: 1rem; margin-bottom: 2rem; color: #e6dfd7; line-height: 1.5;">
+                Subscribe to our newsletter for the latest coffee tips, seasonal specials, and exclusive offers.
+            </p>
+
+            <form action="#" method="post" style="display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap;">
+                <input type="email" placeholder="Enter your email" required
+                       style="flex: 1; min-width: 250px; padding: 12px 15px; border: none; border-radius: 4px; font-size: 1rem; outline: none;">
+
+                <button type="submit"
+                        style="background-color: #c4a98b; color: #2b1b12; padding: 12px 30px; border: none; border-radius: 4px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: opacity 0.3s ease;">
+                    Subscribe
+                </button>
+            </form>
+        </div>
+
+        <div style="margin-top: 4rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.85rem; color: #a89f91;">
+            &copy; @DateTime.Now.Year Last Summer Coffee. All rights reserved.
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/js/header.js" asp-append-version="true"></script>
     <script src="~/js/footer.js" asp-append-version="true"></script>
     <script src="~/js/toast.js" asp-append-version="true"></script>

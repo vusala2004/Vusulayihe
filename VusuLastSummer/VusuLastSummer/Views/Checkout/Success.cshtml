@@ -75,9 +75,9 @@
 
                     @foreach (var item in Model.Items)
                     {
-                        <div class="flex justify-between mb-1">
-                            <span>@item.ProductName (@item.Size) x@item.Quantity</span>
-                            <span>$@item.Total.ToString("0.00")</span>
+                        <div class="flex justify-between mb-1" style="font-size: 0.9rem;">
+                            <span>@item.Quantity x @item.ProductName (@item.Size)</span>
+                            <span>$@((item.Price * item.Quantity).ToString("0.00"))</span>
                         </div>
                     }
 

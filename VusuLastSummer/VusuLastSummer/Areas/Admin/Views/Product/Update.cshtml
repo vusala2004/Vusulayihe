@@ -24,7 +24,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label asp-for="Description" class="form-label">Təsvir</label>
+                    <label asp-for="Description" class="form-label">Melumat</label>
                     <textarea asp-for="Description" class="form-control" rows="4"></textarea>
                     <span asp-validation-for="Description" class="text-danger"></span>
                 </div>
@@ -33,16 +33,33 @@
             <div class="col-md-4">
                 <div class="mb-3">
                     <label class="form-label">Cari Şəkil</label>
+
                     <div class="mb-2">
                         @if (Model.ProductImages != null && Model.ProductImages.Any())
                         {
-                            <img src="~/assets/images/products/@Model.ProductImages.FirstOrDefault().ImageURL" alt="Product Image" style="width: 100%; max-height: 200px; object-fit: cover; border-radius: 8px;" />
+                            var image = Model.ProductImages.FirstOrDefault();
+
+                            <img src="@Url.Content("~/img/" + image.ImageURL)"
+                                 alt="Product Image"
+                                 style="width: 30%; height: 500px; object-fit: cover; border-radius: 8px; border:1px solid #ddd;" />
+                        }
+                        else
+                        {
+                            <img src="~/img/no-image.png"
+                                 alt="No Image"
+                                 style="width: 30%; height: 500px; object-fit: cover; border-radius: 8px; border:1px solid #ddd;" />
                         }
                     </div>
-                    <label asp-for="Photo" class="form-label">Yeni Şəkil Yüklə (Dəyişmək istəyirsinizsə)</label>
+
+                    <label asp-for="Photo" class="form-label">
+                        Yeni Şəkil Yüklə (Dəyişmək istəyirsinizsə)
+                    </label>
+
                     <input asp-for="Photo" type="file" class="form-control" accept="image/*" />
+
                     <span asp-validation-for="Photo" class="text-danger"></span>
                 </div>
+
 
                 <div class="mb-3">
                     <label asp-for="CategoryId" class="form-label">Kateqoriya</label>
@@ -52,11 +69,7 @@
                     <span asp-validation-for="CategoryId" class="text-danger"></span>
                 </div>
 
-                <div class="mb-3">
-                    <label asp-for="TagIds" class="form-label">Teqlər</label>
-                    <select asp-for="TagIds" class="form-select" multiple asp-items="@(new SelectList(Model.Tags, "Id", "Name"))">
-                    </select>
-                </div>
+              
 
                 <button type="submit" class="btn btn-warning w-100">Yadda Saxla</button>
                 <a asp-action="Index" class="btn btn-secondary w-100 mt-2">Geri Qayıt</a>

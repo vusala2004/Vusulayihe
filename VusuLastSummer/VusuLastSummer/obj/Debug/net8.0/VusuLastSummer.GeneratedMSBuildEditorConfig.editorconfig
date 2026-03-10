@@ -112,10 +112,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Acer/OneDrive/Desktop/Vusulayihe/VusuLastSummer/VusuLastSummer/ViewModels/Checkout/Payment.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld01vZGVsc1xDaGVja291dFxQYXltZW50LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/Acer/OneDrive/Desktop/Vusulayihe/VusuLastSummer/VusuLastSummer/Views/About/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWJvdXRcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -132,20 +128,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmxvZ1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Acer/OneDrive/Desktop/Vusulayihe/VusuLastSummer/VusuLastSummer/Views/Cart/Cart.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxDYXJ0LmNzaHRtbA==
+[C:/Users/Acer/OneDrive/Desktop/Vusulayihe/VusuLastSummer/VusuLastSummer/Views/Cart/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Acer/OneDrive/Desktop/Vusulayihe/VusuLastSummer/VusuLastSummer/Views/Checkout/Checkout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hlY2tvdXRcQ2hlY2tvdXQuY3NodG1s
+[C:/Users/Acer/OneDrive/Desktop/Vusulayihe/VusuLastSummer/VusuLastSummer/Views/Checkout/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hlY2tvdXRcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Acer/OneDrive/Desktop/Vusulayihe/VusuLastSummer/VusuLastSummer/Views/Checkout/Payment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hlY2tvdXRcUGF5bWVudC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Acer/OneDrive/Desktop/Vusulayihe/VusuLastSummer/VusuLastSummer/Views/Checkout/Success.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hlY2tvdXRcU3VjY2Vzcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Acer/OneDrive/Desktop/Vusulayihe/VusuLastSummer/VusuLastSummer/Views/Contact/Contact.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdFxDb250YWN0LmNzaHRtbA==
+[C:/Users/Acer/OneDrive/Desktop/Vusulayihe/VusuLastSummer/VusuLastSummer/Views/Contact/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Acer/OneDrive/Desktop/Vusulayihe/VusuLastSummer/VusuLastSummer/Views/Home/Index.cshtml]
@@ -160,12 +160,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVudVxNZW51LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Acer/OneDrive/Desktop/Vusulayihe/VusuLastSummer/VusuLastSummer/Views/Profile/Profile.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxQcm9maWxlLmNzaHRtbA==
+[C:/Users/Acer/OneDrive/Desktop/Vusulayihe/VusuLastSummer/VusuLastSummer/Views/Profile/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Acer/OneDrive/Desktop/Vusulayihe/VusuLastSummer/VusuLastSummer/Views/Reservation/Reservation.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzZXJ2YXRpb25cUmVzZXJ2YXRpb24uY3NodG1s
+[C:/Users/Acer/OneDrive/Desktop/Vusulayihe/VusuLastSummer/VusuLastSummer/Views/Reservation/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzZXJ2YXRpb25cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Acer/OneDrive/Desktop/Vusulayihe/VusuLastSummer/VusuLastSummer/Views/Track/Track.cshtml]
