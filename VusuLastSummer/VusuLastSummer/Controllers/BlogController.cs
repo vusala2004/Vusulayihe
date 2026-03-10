@@ -28,7 +28,7 @@ namespace VusuLastSummer.Controllers
                     .ToListAsync()
             };
 
-            return View();
+            return View(model);
         }
     }
 }
