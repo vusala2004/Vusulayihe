@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using VusuLastSummer.Enums;
 using VusuLastSummer.Models;
 using VusuLastSummer.ViewModels.Account;
 
@@ -55,7 +56,7 @@ namespace VusuLastSummer.Controllers
 
 
 
-            return RedirectToAction(nameof(HomeController.Index), "Home");
+            return RedirectToAction(nameof(Login), "Account");
 
 
         }
@@ -114,24 +115,25 @@ namespace VusuLastSummer.Controllers
 
             return Redirect(returnUrl);
         }
+        [HttpPost]
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
             return RedirectToAction(nameof(HomeController.Index), "Home");
         }
-        //public async Task<IActionResult> CreateRoles()
-        //{
+        public async Task<IActionResult> CreateRoles()
+        {
 
-        //    foreach (UserRole role in Enum.GetValues(typeof(UserRole)))
-        //    {
-        //        if (!await _roleManager.RoleExistsAsync(role.ToString()))
-        //        {
-        //            await _roleManager.CreateAsync(new IdentityRole { Name = role.ToString() });
-        //        }
+            foreach (UserRole role in Enum.GetValues(typeof(UserRole)))
+            {
+                if (!await _roleManager.RoleExistsAsync(role.ToString()))
+                {
+                    await _roleManager.CreateAsync(new IdentityRole { Name = role.ToString() });
+                }
 
-        //    }
-        //    return RedirectToAction(nameof(HomeController.Index), "Home");
-        //}
+            }
+            return RedirectToAction(nameof(HomeController.Index), "Home");
+        }
 
     }
 }

@@ -1,29 +1,48 @@
 ﻿@using VusuLastSummer.ViewModels.Account
 @model RegisterVM
-<!-- Begin Main Content Area -->
+
 <div style="display: flex; justify-content: center; align-items: center; min-height: 70vh;">
     <div style="width: 100%; max-width: 450px; padding: 20px;">
         <h2 style="text-align: center; font-family: serif; color: #3e2723; margin-bottom: 30px;">Register</h2>
 
         <form method="post">
-            <div style="margin-bottom: 15px;">
-                <label style="display: block; margin-bottom: 5px; color: #3e2723;">Username</label>
-                <input type="text" name="Username" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" />
+            <div asp-validation-summary="ModelOnly" style="color: red; margin-bottom: 15px; font-size: 14px;"></div>
+
+            <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                <div style="flex: 1;">
+                    <label asp-for="Name" style="display: block; margin-bottom: 5px; color: #3e2723;">Name</label>
+                    <input asp-for="Name" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" />
+                    <span asp-validation-for="Name" style="color: red; font-size: 12px;"></span>
+                </div>
+                <div style="flex: 1;">
+                    <label asp-for="Surname" style="display: block; margin-bottom: 5px; color: #3e2723;">Surname</label>
+                    <input asp-for="Surname" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" />
+                    <span asp-validation-for="Surname" style="color: red; font-size: 12px;"></span>
+                </div>
             </div>
 
             <div style="margin-bottom: 15px;">
-                <label style="display: block; margin-bottom: 5px; color: #3e2723;">Email Address</label>
-                <input type="email" name="Email" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" />
+                <label asp-for="UserName" style="display: block; margin-bottom: 5px; color: #3e2723;">Username</label>
+                <input asp-for="UserName" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" />
+                <span asp-validation-for="UserName" style="color: red; font-size: 12px;"></span>
             </div>
 
             <div style="margin-bottom: 15px;">
-                <label style="display: block; margin-bottom: 5px; color: #3e2723;">Password</label>
-                <input type="password" name="Password" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" />
+                <label asp-for="Email" style="display: block; margin-bottom: 5px; color: #3e2723;">Email Address</label>
+                <input asp-for="Email" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" />
+                <span asp-validation-for="Email" style="color: red; font-size: 12px;"></span>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <label asp-for="Password" style="display: block; margin-bottom: 5px; color: #3e2723;">Password</label>
+                <input asp-for="Password" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" />
+                <span asp-validation-for="Password" style="color: red; font-size: 12px;"></span>
             </div>
 
             <div style="margin-bottom: 25px;">
-                <label style="display: block; margin-bottom: 5px; color: #3e2723;">Confirm Password</label>
-                <input type="password" name="ConfirmPassword" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" />
+                <label asp-for="ConfirmPassword" style="display: block; margin-bottom: 5px; color: #3e2723;">Confirm Password</label>
+                <input asp-for="ConfirmPassword" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" />
+                <span asp-validation-for="ConfirmPassword" style="color: red; font-size: 12px;"></span>
             </div>
 
             <button type="submit" style="width: 100%; padding: 10px; background-color: #c09e7a; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;">
@@ -31,7 +50,7 @@
             </button>
 
             <div style="margin-top: 15px; text-align: center;">
-                <a href="/Account/Login" style="color: #c09e7a; text-decoration: none; font-size: 14px;">Already have an account? Login here</a>
+                <a asp-controller="Account" asp-action="Login" style="color: #c09e7a; text-decoration: none; font-size: 14px;">Already have an account? Login here</a>
             </div>
         </form>
     </div>

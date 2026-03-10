@@ -1,22 +1,27 @@
 ﻿@using VusuLastSummer.ViewModels.Account
 @model LoginVM
+
 <div style="display: flex; justify-content: center; align-items: center; min-height: 60vh;">
     <div style="width: 100%; max-width: 400px; padding: 20px;">
         <h2 style="text-align: center; font-family: serif; color: #3e2723; margin-bottom: 30px;">Login</h2>
 
         <form method="post">
+            <div asp-validation-summary="ModelOnly" style="color: red; margin-bottom: 15px; font-size: 14px;"></div>
+
             <div style="margin-bottom: 15px;">
-                <label style="display: block; margin-bottom: 5px; color: #3e2723;">Username Or Email</label>
-                <input type="text" name="UsernameOrEmail" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" />
+                <label asp-for="UsernameorEmail" style="display: block; margin-bottom: 5px; color: #3e2723;">Username Or Email</label>
+                <input asp-for="UsernameorEmail" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" />
+                <span asp-validation-for="UsernameorEmail" style="color: red; font-size: 12px;"></span>
             </div>
 
             <div style="margin-bottom: 15px;">
-                <label style="display: block; margin-bottom: 5px; color: #3e2723;">Password</label>
-                <input type="password" name="Password" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" />
+                <label asp-for="Password" style="display: block; margin-bottom: 5px; color: #3e2723;">Password</label>
+                <input asp-for="Password" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" />
+                <span asp-validation-for="Password" style="color: red; font-size: 12px;"></span>
             </div>
 
             <div style="margin-bottom: 20px; display: flex; align-items: center;">
-                <input type="checkbox" id="rememberMe" style="margin-right: 8px;" />
+                <input asp-for="IsPersistent" id="rememberMe" style="margin-right: 8px;" />
                 <label for="rememberMe" style="color: #3e2723;">Remember Me</label>
             </div>
 
