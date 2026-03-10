@@ -1,0 +1,73 @@
+﻿@model VusuLastSummer.Models.Basket
+@{
+    ViewData["Title"] = "Səbətim";
+    decimal totalBasketPrice = 0; // Səbətin ümumi məbləğini hesablamaq üçün
+}
+
+<section class="basket-section py-5">
+    <div class="container">
+        <h2 class="mb-4">Mənim Səbətim 🛒</h2>
+
+        @if (Model.BasketItems == null || Model.BasketItems.Count == 0)
+        {
+            <div class="alert alert-info text-center py-5">
+                <h4>Səbətiniz hazırda boşdur!</h4>
+                <p>Kofe içmək üçün əla vaxtdır.</p>
+                <a asp-controller="Home" asp-action="Index" class="btn btn-primary mt-3">Menyuya Qayıt</a>
+            </div>
+        }
+        else
+        {
+            <div class="row">
+                <div class="col-lg-8">
+                    <table class="table table-hover shadow-sm align-middle">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Məhsul</th>
+                                <th>Ölçü</th>
+                                <th>Qiymət</th>
+                                <th>Say</th>
+                                <th>Cəmi</th>
+                                <th>Əməliyyat</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.BasketItems)
+                            {
+                                // Hər məhsulun öz ümumi qiymətini hesablayırıq
+                                decimal itemTotalPrice = item.Product.Price * item.Quantity;
+                                totalBasketPrice += itemTotalPrice;
+
+                                <tr>
+                                    <td>
+                                        <strong>@item.Product.Name</strong>
+                                    </td>
+                                    <td>@item.Size</td>
+                                    <td>@item.Product.Price.ToString("C")</td>
+                                    <td>@item.Quantity</td>
+                                    <td><strong>@itemTotalPrice.ToString("C")</strong></td>
+                                    <td>
+                                        <button class="btn btn-danger btn-sm">Sil</button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h4 class="card-title border-bottom pb-3 mb-3">Sifarişin Xülasəsi</h4>
+                            <div class="d-flex justify-content-between mb-3">
+                                <span>Ümumi Məbləğ:</span>
+                                <strong>@totalBasketPrice.ToString("C")</strong>
+                            </div>
+                            <button class="btn btn-success w-100 py-2">Sifarişi Təsdiqlə (Checkout)</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</section>

@@ -1,4 +1,5 @@
-﻿@{
+﻿@model VusuLastSummer.Areas.Admin.ViewModels.Dashboard.DashboardVM
+@{
     ViewData["Title"] = "Dashboard";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
@@ -10,19 +11,19 @@
     <div class="stats-grid">
         <div class="stat-card">
             <h3>Total Orders</h3>
-            <p id="total-orders">120</p>
+            <p id="total-orders">@Model.TotalOrders</p>
         </div>
         <div class="stat-card">
             <h3>Revenue</h3>
-            <p id="total-revenue">$4,500.00</p>
+            <p id="total-revenue">@Model.TotalEarnings.ToString("C2")</p>
         </div>
         <div class="stat-card">
             <h3>Active Users</h3>
-            <p id="active-users">45</p>
+            <p id="active-users">@Model.ActiveUsers</p>
         </div>
         <div class="stat-card">
             <h3>Today's Reservations</h3>
-            <p id="today-reservations">8</p>
+            <p id="today-reservations">@Model.PendingReservations</p>
         </div>
     </div>
 </section>

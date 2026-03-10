@@ -1,0 +1,43 @@
+﻿@model IEnumerable<VusuLastSummer.Models.AppUser>
+@{
+    ViewData["Title"] = "İstifadəçilər";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    int count = 1;
+}
+
+<section class="admin-section active p-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>İstifadəçilər (Users)</h2>
+    </div>
+
+    <table class="table table-bordered table-hover shadow-sm align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th>#</th>
+                <th>Tam Adı</th>
+                <th>İstifadəçi Adı (Username)</th>
+                <th>Email</th>
+                <th>Telefon</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@(count++)</td>
+                    <td><strong>@user.Name</strong></td>
+                    <td>@user.UserName</td>
+                    <td>@user.Email</td>
+                    <td>@(user.PhoneNumber ?? "Qeyd edilməyib")</td>
+                </tr>
+            }
+
+            @if (!Model.Any())
+            {
+                <tr>
+                    <td colspan="5" class="text-center text-muted py-4">Hələ heç bir istifadəçi qeydiyyatdan keçməyib.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</section>

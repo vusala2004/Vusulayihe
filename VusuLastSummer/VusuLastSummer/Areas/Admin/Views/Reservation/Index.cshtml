@@ -1,0 +1,83 @@
+﻿@model IEnumerable<VusuLastSummer.Models.Reservation>
+@{
+    ViewData["Title"] = "Rezervasiyalar";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    int count = 1;
+}
+
+<div class="container-fluid p-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Rezervasiyalar (Masa Sifarişləri)</h2>
+        <a asp-action="Create" class="btn btn-primary"><i class="mdi mdi-plus"></i> Yeni Rezervasiya Əlavə Et</a>
+    </div>
+
+    <table class="table table-bordered table-hover shadow-sm align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th>#</th>
+                <th>Müştəri (Ad / Email)</th>
+                <th>Telefon</th>
+                <th>Tarix və Saat</th>
+                <th>Qonaq Sayı</th>
+                <th>Xüsusi İstək</th>
+                <th>Status</th>
+                <th>Əməliyyatlar</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@(count++)</td>
+                    <td>
+                        <strong>@item.Name</strong> <br />
+                        <small class="text-muted">@item.Email</small>
+                    </td>
+                    <td>@item.Phone</td>
+                    <td>
+                        @item.ReservationDate.ToString("dd MMM yyyy") <br />
+                        <span class="badge bg-info text-dark">@item.Time</span>
+                    </td>
+                    <td>@item.Guests nəfər</td>
+                    <td>@(string.IsNullOrEmpty(item.SpecialRequests) ? "Yoxdur" : item.SpecialRequests)</td>
+                    <td>
+                        @if (item.Status == VusuLastSummer.Enums.ReservationStatus.Pending)
+                        {
+                            <span class="badge bg-warning text-dark">Gözləyir</span>
+                        }
+                        else if (item.Status == VusuLastSummer.Enums.ReservationStatus.Confirmed)
+                        {
+                            <span class="badge bg-success">Təsdiqləndi</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-danger">Ləğv Edildi</span>
+                        }
+                    </td>
+                    <td>
+                        @if (item.Status == VusuLastSummer.Enums.ReservationStatus.Pending)
+                        {
+                            <form asp-action="ChangeStatus" asp-route-id="@item.Id" asp-route-status="@VusuLastSummer.Enums.ReservationStatus.Confirmed" method="post" class="d-inline">
+                                <button type="submit" class="btn btn-sm btn-success" title="Təsdiqlə">Təsdiqlə</button>
+                            </form>
+                            <form asp-action="ChangeStatus" asp-route-id="@item.Id" asp-route-status="@VusuLastSummer.Enums.ReservationStatus.Cancelled" method="post" class="d-inline">
+                                <button type="submit" class="btn btn-sm btn-warning" title="Ləğv et">Ləğv et</button>
+                            </form>
+                        }
+
+                        <form asp-action="Delete" asp-route-id="@item.Id" method="post" class="d-inline" onsubmit="return confirm('Silmək istədiyinizə əminsiniz?');">
+                            <button type="submit" class="btn btn-sm btn-danger">Sil</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+
+            @if (!Model.Any())
+            {
+                <tr>
+                    <td colspan="8" class="text-center text-muted py-4">Hələ heç bir rezervasiya yoxdur.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

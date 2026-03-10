@@ -1,0 +1,77 @@
+﻿@model IEnumerable<VusuLastSummer.Models.Order>
+@{
+    ViewData["Title"] = "Sifarişlər";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    int count = 1;
+}
+
+<div class="container-fluid p-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Sifarişlər</h2>
+    </div>
+
+    <table class="table table-bordered table-hover shadow-sm align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th>#</th>
+                <th>Sifariş Nömrəsi</th>
+                <th>Müştəri (Ad / Telefon)</th>
+                <th>Çatdırılma</th>
+                <th>Ümumi Məbləğ</th>
+                <th>Status</th>
+                <th>Əməliyyatlar</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@(count++)</td>
+                    <td><strong>@item.OrderNumber</strong></td>
+                    <td>
+                        @item.FullName <br />
+                        <small class="text-muted">@item.Phone</small>
+                    </td>
+                    <td>
+                        @(item.DeliveryMethod == "pickup" ? "Götür (Pickup)" : "Çatdırılma (Delivery)")
+                    </td>
+                    <td class="text-success fw-bold">@item.TotalAmount.ToString("C2")</td>
+                    <td>
+                        @if (item.Status == "Pending")
+                        {
+                            <span class="badge bg-warning text-dark">Gözləyir</span>
+                        }
+                        else if (item.Status == "Preparing")
+                        {
+                            <span class="badge bg-info text-dark">Hazırlanır</span>
+                        }
+                        else if (item.Status == "OnTheWay")
+                        {
+                            <span class="badge bg-primary">Yoldadır</span>
+                        }
+                        else if (item.Status == "Delivered")
+                        {
+                            <span class="badge bg-success">Çatdırıldı</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-secondary">@item.Status</span>
+                        }
+                    </td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-primary">
+                            <i class="mdi mdi-eye"></i> Ətraflı Bax
+                        </a>
+                    </td>
+                </tr>
+            }
+
+            @if (!Model.Any())
+            {
+                <tr>
+                    <td colspan="7" class="text-center text-muted py-4">Hələ heç bir sifariş yoxdur.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

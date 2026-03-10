@@ -1,0 +1,96 @@
+﻿@model VusuLastSummer.Models.Order
+@{
+    ViewData["Title"] = "Sifarişin Detalları";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid p-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Sifariş: @Model.OrderNumber</h2>
+        <a asp-action="Index" class="btn btn-secondary">Geriyə Qayıt</a>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="mb-0">Müştəri Məlumatları</h5>
+                </div>
+                <div class="card-body">
+                    <p><strong>Ad:</strong> @Model.FullName</p>
+                    <p><strong>Email:</strong> @Model.Email</p>
+                    <p><strong>Telefon:</strong> @Model.Phone</p>
+                    <hr />
+                    <p><strong>Çatdırılma Növü:</strong> @(Model.DeliveryMethod == "pickup" ? "Özü Götürəcək" : "Ünvana Çatdırılma")</p>
+                    @if (Model.DeliveryMethod != "pickup")
+                    {
+                        <p><strong>Şəhər:</strong> @Model.City</p>
+                        <p><strong>Ünvan:</strong> @Model.Address</p>
+                    }
+                </div>
+            </div>
+
+            <div class="card shadow-sm">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0">Sifarişin Statusunu Dəyiş</h5>
+                </div>
+                <div class="card-body">
+                    <form asp-action="ChangeStatus" method="post">
+                        <input type="hidden" name="id" value="@Model.Id" />
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Cari Status:</label>
+                            <select name="status" class="form-select">
+                                <!— Cari statusu seçili saxlamaq üçün şablon —>
+                                <!— ASP.NET Core-da HTML-də bu qədər logic yazmaqdansa sadə yolla edirik —>
+                                @Html.Raw(Model.Status == "Pending" ? "<option value='Pending' selected>Gözləyir (Pending)</option>" : "<option value='Pending'>Gözləyir (Pending)</option>")
+                                @Html.Raw(Model.Status == "Preparing" ? "<option value='Preparing' selected>Hazırlanır (Preparing)</option>" : "<option value='Preparing'>Hazırlanır (Preparing)</option>")
+                                @Html.Raw(Model.Status == "OnTheWay" ? "<option value='OnTheWay' selected>Yoldadır (OnTheWay)</option>" : "<option value='OnTheWay'>Yoldadır (OnTheWay)</option>")
+                                @Html.Raw(Model.Status == "Delivered" ? "<option value='Delivered' selected>Çatdırıldı (Delivered)</option>" : "<option value='Delivered'>Çatdırıldı (Delivered)</option>")
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-success w-100">Statusu Yenilə</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Sifarişin İçindəkilər (Order Items)</h5>
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped align-middle">
+                        <thead>
+                            <tr>
+                                <th>Məhsulun Adı</th>
+                                <th>Ölçü</th>
+                                <th>Miqdar</th>
+                                <th>Qiymət (1 ədəd)</th>
+                                <th>Cəm</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.OrderItems)
+                            {
+                                <tr>
+                                    <td>@(item.Product?.Name ?? "Silinmiş Məhsul")</td>
+                                    <td><span class="badge bg-secondary">@item.Size</span></td>
+                                    <td>@item.Quantity ədəd</td>
+                                    <td>@item.UnitPrice.ToString("C2")</td>
+                                    <td class="fw-bold">@((item.Quantity * item.UnitPrice).ToString("C2"))</td>
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="4" class="text-end fw-bold fs-5">Ümumi Yekun:</td>
+                                <td class="text-success fw-bold fs-5">@Model.TotalAmount.ToString("C2")</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

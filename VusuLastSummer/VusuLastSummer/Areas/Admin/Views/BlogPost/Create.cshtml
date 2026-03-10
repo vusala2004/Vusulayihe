@@ -1,0 +1,65 @@
+﻿@model VusuLastSummer.Areas.Admin.ViewModels.Blogs.BlogPostCreateVM
+@{
+    ViewData["Title"] = "Yeni Məqalə";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid p-4">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Yeni Məqalə Yarat</h4>
+        </div>
+        <div class="card-body">
+            <form asp-action="Create" method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger fw-bold mb-3"></div>
+
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="mb-3">
+                            <label asp-for="Title" class="form-label fw-bold">Başlıq</label>
+                            <input asp-for="Title" class="form-control" placeholder="Məqalənin başlığı..." />
+                            <span asp-validation-for="Title" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Excerpt" class="form-label fw-bold">Qısa Məzmun (Giriş sözü)</label>
+                            <textarea asp-for="Excerpt" class="form-control" rows="2" placeholder="Ana səhifədə görünəcək qısa mətn..."></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Content" class="form-label fw-bold">Əsas Mətn</label>
+                            <textarea asp-for="Content" class="form-control" rows="6" placeholder="Məqalənin tam mətni..."></textarea>
+                            <span asp-validation-for="Content" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="mb-3">
+                            <label asp-for="BlogCategoryId" class="form-label fw-bold">Kateqoriya</label>
+                            <select asp-for="BlogCategoryId" class="form-select" asp-items="ViewBag.Categories">
+                                <option value="">-- Kateqoriya Seçin --</option>
+                            </select>
+                            <span asp-validation-for="BlogCategoryId" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Image" class="form-label fw-bold">Məqalə Şəkli</label>
+                            <input asp-for="Image" class="form-control" type="file" accept="image/*" />
+                            <span asp-validation-for="Image" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3 form-check mt-4">
+                            <input asp-for="IsPublished" class="form-check-input" type="checkbox" id="isPublishedCheck" />
+                            <label class="form-check-label fw-bold" for="isPublishedCheck">Dərhal Saytda Paylaşılsın?</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex gap-2 mt-3">
+                    <button type="submit" class="btn btn-primary">Yadda Saxla</button>
+                    <a asp-action="Index" class="btn btn-secondary">Siyahıya Qayıt</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

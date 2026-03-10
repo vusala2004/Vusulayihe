@@ -1,0 +1,75 @@
+﻿@model VusuLastSummer.Models.Reservation
+@{
+    ViewData["Title"] = "Yeni Rezervasiya";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid p-4">
+    <div class="card shadow-sm" style="max-width: 800px;">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Yeni Masa Rezervasiyası</h4>
+        </div>
+        <div class="card-body">
+            <form asp-action="Create" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3 fw-bold"></div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Name" class="form-label fw-bold">Müştərinin Adı</label>
+                        <input asp-for="Name" class="form-control" placeholder="Məs: Əli Əliyev" required />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Phone" class="form-label fw-bold">Əlaqə Nömrəsi</label>
+                        <input asp-for="Phone" class="form-control" placeholder="Məs: 050 123 45 67" required />
+                        <span asp-validation-for="Phone" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Email" class="form-label fw-bold">Email Adresi</label>
+                        <input asp-for="Email" type="email" class="form-control" placeholder="Məs: numune@mail.com" required />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Guests" class="form-label fw-bold">Qonaq Sayı</label>
+                        <input asp-for="Guests" type="number" min="1" max="50" class="form-control" value="2" required />
+                        <span asp-validation-for="Guests" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label asp-for="ReservationDate" class="form-label fw-bold">Tarix</label>
+                        <input asp-for="ReservationDate" type="date" class="form-control" required />
+                        <span asp-validation-for="ReservationDate" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label asp-for="Time" class="form-label fw-bold">Saat</label>
+                        <input asp-for="Time" type="time" class="form-control" required />
+                        <span asp-validation-for="Time" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label asp-for="Status" class="form-label fw-bold">İlkin Status</label>
+                        <select asp-for="Status" class="form-select">
+                            <option value="0">Gözləyir (Pending)</option>
+                            <option value="1">Təsdiqləndi (Confirmed)</option>
+                            <option value="2">Ləğv Edildi (Cancelled)</option>
+                        </select>
+                    </div>
+
+                    <div class="col-12 mb-3">
+                        <label asp-for="SpecialRequests" class="form-label fw-bold">Xüsusi İstəklər</label>
+                        <textarea asp-for="SpecialRequests" class="form-control" rows="3" placeholder="Məs: Pəncərə kənarında masa istəyirlər..."></textarea>
+                    </div>
+                </div>
+
+                <div class="d-flex gap-2 mt-3">
+                    <button type="submit" class="btn btn-success">Yadda Saxla</button>
+                    <a asp-action="Index" class="btn btn-secondary">Siyahıya Qayıt</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -11,6 +11,6 @@ namespace VusuLastSummer.Models
         public string Time { get; set; } = string.Empty;
         public int Guests { get; set; }
         public string? SpecialRequests { get; set; }
-        public string Status { get; set; } = "Confirmed"; // Confirmed, Cancelled, Completed
+        public VusuLastSummer.Enums.ReservationStatus Status { get; set; }
     }
 }
